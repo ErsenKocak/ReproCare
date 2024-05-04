@@ -1,0 +1,2 @@
+// XCode Runner --> Build Phases --> New Run Script Phase ile eklenmeli ve eklendikten XCode'un kendi Run Scriptinden önce gelecek şekilde sıralanmalı
+node "../scripts/javascript/ios_run_script.js"

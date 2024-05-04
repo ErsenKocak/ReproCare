@@ -1,0 +1,1 @@
+sh /Applications/SonarQube/bin/macosx-universal-64/sonar.sh console

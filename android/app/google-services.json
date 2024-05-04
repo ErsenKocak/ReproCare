@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "826475858519",
+    "project_id": "reprocare-293a9",
+    "storage_bucket": "reprocare-293a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826475858519:android:f24984b62f8e0473ff7112",
+        "android_client_info": {
+          "package_name": "com.reprocare.reprocare_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6QpbqLlIhcV7wrp23HwnIRjzL10Z-SqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826475858519:android:e3675bc944a4caacff7112",
+        "android_client_info": {
+          "package_name": "com.reprocare.reprocare_mobile.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6QpbqLlIhcV7wrp23HwnIRjzL10Z-SqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

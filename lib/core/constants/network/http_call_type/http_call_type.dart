@@ -1,0 +1,1 @@
+enum HttpCallType { POST, GET, PATCH, DELETE, PUT, DOWNLOAD }
