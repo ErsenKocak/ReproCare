@@ -1,0 +1,58 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "IOS new version"
+    lane :ios_firebase_distribution_dev do
+        sh("flutter clean")
+        sh("flutter pub get")
+        sh("flutter build ios --release")
+        build_app(
+            scheme: "Runner",
+            archive_path: "./build/Runner.xcarchive",
+            export_method: "development",
+            output_directory: "./build/Runner"
+        )
+        firebase_app_distribution(
+            app: "1:826475858519:ios:269f5d115b8b7388ff7112",
+            groups: "ios---dev",
+            release_notes: "",
+            firebase_cli_path: "/usr/local/bin/firebase",
+            ipa_path: "./build/Runner/Runner.ipa"
+        )
+    end
+   
+    lane :ios_firebase_distribution_prod do
+        sh("flutter clean")
+        sh("flutter pub get")
+        sh("pod install")
+        sh("flutter build ios --release")
+        build_app(
+            scheme: "Runner",
+            archive_path: "./build/Runner.xcarchive",
+            export_method: "development",
+            output_directory: "./build/Runner"
+        )
+        firebase_app_distribution(
+            app: "1:826475858519:ios:2dec6f95b512e272ff7112",
+            groups: "ios---prod",
+            release_notes: "PROD",
+            firebase_cli_path: "/usr/local/bin/firebase",
+            ipa_path: "./build/Runner/Runner.ipa"
+        )
+    end
+end
