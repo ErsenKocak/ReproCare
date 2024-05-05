@@ -9,6 +9,7 @@
         "Login": "Login",
         "LoginToReproCare": "Login to ReproCare",
         "Save": "Save",
+        "Delete": "Delete",
         "Send": "Send",
         "SeeAll": "See All",
         "Name": "Name",
@@ -23,6 +24,14 @@
     },
     "Login": {
         "LoginInformation": "If you continue to login,\nverification code will be sent to your entered phone."
+    },
+    "Notification": {
+        "Notifications": "Notifications",
+        "Show": "Show",
+        "Hide": "Hide",
+        "Read": "Read",
+        "AreYouSureDeleteNotification": "Are you sure you want to delete the notification?",
+        "NotificationEmptyInfo": "There are currently no notifications."
     },
     "ErrorMessages": {
         "GlobalError": "Sorry, an error occurred.",

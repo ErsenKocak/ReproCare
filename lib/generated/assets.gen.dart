@@ -14,11 +14,14 @@ import 'package:flutter/services.dart';
 class $AssetsI18nGen {
   const $AssetsI18nGen();
 
+  /// File path: assets/i18n/en.json
+  String get en => 'assets/i18n/en.json';
+
   /// File path: assets/i18n/tr.json
   String get tr => 'assets/i18n/tr.json';
 
   /// List of all assets
-  List<String> get values => [tr];
+  List<String> get values => [en, tr];
 }
 
 class $AssetsIconsGen {
@@ -29,6 +32,8 @@ class $AssetsIconsGen {
       const $AssetsIconsBottomNavigationBarGen();
   $AssetsIconsBottomSheetGen get bottomSheet =>
       const $AssetsIconsBottomSheetGen();
+  $AssetsIconsEmptyWidgetGen get emptyWidget =>
+      const $AssetsIconsEmptyWidgetGen();
   $AssetsIconsGeneralGen get general => const $AssetsIconsGeneralGen();
   $AssetsIconsSettingsGen get settings => const $AssetsIconsSettingsGen();
 }
@@ -104,8 +109,23 @@ class $AssetsIconsBottomSheetGen {
   List<SvgGenImage> get values => [iconClose];
 }
 
+class $AssetsIconsEmptyWidgetGen {
+  const $AssetsIconsEmptyWidgetGen();
+
+  /// File path: assets/icons/empty_widget/ic_empty_widget.svg
+  SvgGenImage get icEmptyWidget =>
+      const SvgGenImage('assets/icons/empty_widget/ic_empty_widget.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [icEmptyWidget];
+}
+
 class $AssetsIconsGeneralGen {
   const $AssetsIconsGeneralGen();
+
+  /// File path: assets/icons/general/icon_app_bar_notification.svg
+  SvgGenImage get iconAppBarNotification =>
+      const SvgGenImage('assets/icons/general/icon_app_bar_notification.svg');
 
   /// File path: assets/icons/general/icon_close.svg
   SvgGenImage get iconClose =>
@@ -119,8 +139,28 @@ class $AssetsIconsGeneralGen {
   SvgGenImage get iconInfo =>
       const SvgGenImage('assets/icons/general/icon_info.svg');
 
+  /// File path: assets/icons/general/icon_read_notification.svg
+  SvgGenImage get iconReadNotification =>
+      const SvgGenImage('assets/icons/general/icon_read_notification.svg');
+
+  /// File path: assets/icons/general/icon_trash.svg
+  SvgGenImage get iconTrash =>
+      const SvgGenImage('assets/icons/general/icon_trash.svg');
+
+  /// File path: assets/icons/general/icon_trash_fill.svg
+  SvgGenImage get iconTrashFill =>
+      const SvgGenImage('assets/icons/general/icon_trash_fill.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [iconClose, iconFilter, iconInfo];
+  List<SvgGenImage> get values => [
+        iconAppBarNotification,
+        iconClose,
+        iconFilter,
+        iconInfo,
+        iconReadNotification,
+        iconTrash,
+        iconTrashFill
+      ];
 }
 
 class $AssetsIconsSettingsGen {

@@ -9,6 +9,7 @@
     "Login": "Giriş Yap",
     "LoginToReproCare": "ReproCare'e Giriş Yap",
     "Save": "Kaydet",
+    "Delete": "Sil",
     "Send": "Gönder",
     "SeeAll": "Tümünü Gör",
     "Name": "Ad",
@@ -23,6 +24,14 @@
   },
   "Login": {
     "LoginInformation": "Giriş yapmaya devam ederseniz,\ngirmiş olduğunuz telefona onay kodu gelecektir."
+  },
+  "Notification": {
+    "Notifications": "Bildirimler",
+    "Show": "Göster",
+    "Hide": "Gizle",
+    "Read": "Okundu",
+    "AreYouSureDeleteNotification": "Bildirimi silmek istediğinize emin misiniz?",
+    "NotificationEmptyInfo": "Henüz bir bildirim bulunmamaktadır."
   },
   "ErrorMessages": {
     "GlobalError": "Üzgünüz, bir sorun oluştu.",

@@ -12,9 +12,9 @@ import 'package:reprocare/common/router/transition_builder.dart';
 import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/constants/cache/cache_constants.dart';
 import 'package:reprocare/features/bottom_navigation_bar/presentation/view/bottom_navigation_bar_view.dart';
-import 'package:reprocare/features/home/presentation/view/home_view.dart';
 import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
 import 'package:reprocare/features/login/presentation/view/login_view.dart';
+import 'package:reprocare/features/notification/presentation/view/notifications_view.dart';
 import 'package:reprocare/features/profile/presentation/view/profile_view.dart';
 import 'package:reprocare/features/settings/presentation/views/settings_view.dart';
 import 'package:reprocare/helper/firebase/analytics/firebase_analytics_helper.dart';
@@ -39,9 +39,9 @@ class AppRouter {
         },
         routes: [
           _generateGoRoute(
-            route: AppRoutes.Home.path,
+            route: AppRoutes.Notification.path,
             isShellRoute: true,
-            view: (parameter) => HomeView(),
+            view: (parameter) => NotificationsView(),
             routeEffect: AppRouteEffect.none,
           ),
           _generateGoRoute(
@@ -69,7 +69,7 @@ class AppRouter {
             await _loginLocalService.get(CacheConstants.AccessToken.name);
 
         if (_loginEntity != null) {
-          return AppRoutes.Home.path;
+          return AppRoutes.Notification.path;
         }
       }
       FirebaseAnalyticsHelper.logScreenView(state.matchedLocation);

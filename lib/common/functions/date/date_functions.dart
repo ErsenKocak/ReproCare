@@ -22,6 +22,7 @@ class DateFunctions {
     if (stringDate == null || stringDate.length == 0) DateTime.now();
 
     stringDate = stringDate!.replaceAll('T', ' ');
+    stringDate = stringDate.replaceAll('-', '/');
 
     DateTime dateFormatResult =
         DateFormat(dateFormat!.format).parse(stringDate);

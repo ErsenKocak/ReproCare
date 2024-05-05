@@ -2,7 +2,7 @@ import 'package:collection/collection.dart';
 
 enum AppRoutes {
   Onboarding('/onboarding'),
-  Home('/home'),
+  Notification('/notification'),
   Login('/login'),
   Profile('/profile'),
   Settings('/settings'),
@@ -16,7 +16,7 @@ extension AppRoutesStringExtension on String {
   AppRoutes get getAppRoute {
     AppRoutes? appRoute =
         AppRoutes.values.firstWhereOrNull((route) => route.path == this) ??
-            AppRoutes.Home;
+            AppRoutes.Notification;
 
     return appRoute;
   }

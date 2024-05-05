@@ -37,6 +37,7 @@ class AppLightColors {
   static const Color strokeGrey = Color(0xFFD8D8D8);
   static Color black50 = Color(0xFF1B1B1B).withOpacity(0.5);
   static Color black30 = Color(0xFF1B1B1B).withOpacity(0.3);
+  static const Color shimmerColor = Color.fromARGB(255, 240, 240, 240);
   static const Color formInfoBackground = Color(0xFFF2F4F7);
   static const Color formInfoText = Color(0xFF667085);
 }

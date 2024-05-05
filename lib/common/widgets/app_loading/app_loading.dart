@@ -19,7 +19,7 @@ class AppLoading {
       ..textColor = Colors.transparent
       ..boxShadow = []
       ..userInteractions = false
-      ..dismissOnTap = true
+      ..dismissOnTap = false
       ..maskType = EasyLoadingMaskType.black
       ..toastPosition = EasyLoadingToastPosition.center
       ..animationStyle = EasyLoadingAnimationStyle.scale;

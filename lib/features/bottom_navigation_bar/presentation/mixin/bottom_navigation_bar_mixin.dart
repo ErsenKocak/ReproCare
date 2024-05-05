@@ -40,7 +40,7 @@ mixin BottomNavigationBarMixin on State<BottomNavigationBarView>
     activeIndexNotifier.value = index;
     switch (index) {
       case 0:
-        bottomNavigatorRoute = AppRoutes.Home.path;
+        bottomNavigatorRoute = AppRoutes.Notification.path;
       case 1:
         bottomNavigatorRoute = AppRoutes.Settings.path;
     }

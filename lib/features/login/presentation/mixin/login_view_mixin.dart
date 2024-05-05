@@ -28,7 +28,7 @@ mixin LoginViewMixin on State<LoginView> {
     bool isValid = formKey.currentState?.validate() ?? false;
     log('validateInputs -- $isValid');
     log(AppTextInputFormatter.phoneNumberFormatter.getUnmaskedText());
-    AppRouter.goNamed(AppRoutes.Home.path);
+    AppRouter.goNamed(AppRoutes.Notification.path);
     return isValid;
   }
 }

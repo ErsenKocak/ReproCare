@@ -13,6 +13,11 @@ import 'package:reprocare/features/login/data/services/remote/auth_service.dart'
 import 'package:reprocare/features/login/data/services/remote/i_auth_service.dart';
 import 'package:reprocare/features/login/domain/repositories/login_repository/i_auth_repository.dart';
 import 'package:reprocare/features/login/presentation/cubit/auth_cubit/auth_cubit.dart';
+import 'package:reprocare/features/notification/data/repositories/notification_repository.dart';
+import 'package:reprocare/features/notification/data/services/i_notification_service.dart';
+import 'package:reprocare/features/notification/data/services/notification_service.dart';
+import 'package:reprocare/features/notification/domain/repositories/i_notification_repository.dart';
+import 'package:reprocare/features/notification/presentation/cubit/notification_cubit.dart';
 import 'package:reprocare/features/settings/data/repositories/user_settings_repository.dart';
 import 'package:reprocare/features/settings/data/services/i_user_settings_service.dart';
 import 'package:reprocare/features/settings/data/services/user_settings_service.dart';
@@ -72,6 +77,20 @@ Future<void> initalize() async {
           _serviceLocator<IAuthRepository>(),
           _serviceLocator<IAuthLocalService>(),
         ))
+    //# Notification
+    ..registerLazySingleton<INotificationService>(
+      () => NotificationService(_serviceLocator<NetworkClient>()),
+    )
+    ..registerLazySingleton<INotificationRepository>(
+      () => NotificationRepository(
+        _serviceLocator<INotificationService>(),
+      ),
+    )
+    ..registerLazySingleton<NotificationCubit>(() => NotificationCubit(
+          _serviceLocator<INotificationRepository>(),
+        ))
+
+    //#User Settings
     ..registerLazySingleton<IUserSettingsService>(
         () => UserSettingsService(_serviceLocator<NetworkClient>()))
     ..registerLazySingleton<IUserSettingsRepository>(

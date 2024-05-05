@@ -10,6 +10,7 @@ abstract class  LocaleKeys {
   static const Global_Login = 'Global.Login';
   static const Global_LoginToReproCare = 'Global.LoginToReproCare';
   static const Global_Save = 'Global.Save';
+  static const Global_Delete = 'Global.Delete';
   static const Global_Send = 'Global.Send';
   static const Global_SeeAll = 'Global.SeeAll';
   static const Global_Name = 'Global.Name';
@@ -24,6 +25,13 @@ abstract class  LocaleKeys {
   static const Global = 'Global';
   static const Login_LoginInformation = 'Login.LoginInformation';
   static const Login = 'Login';
+  static const Notification_Notifications = 'Notification.Notifications';
+  static const Notification_Show = 'Notification.Show';
+  static const Notification_Hide = 'Notification.Hide';
+  static const Notification_Read = 'Notification.Read';
+  static const Notification_AreYouSureDeleteNotification = 'Notification.AreYouSureDeleteNotification';
+  static const Notification_NotificationEmptyInfo = 'Notification.NotificationEmptyInfo';
+  static const Notification = 'Notification';
   static const ErrorMessages_GlobalError = 'ErrorMessages.GlobalError';
   static const ErrorMessages_NotEmpty = 'ErrorMessages.NotEmpty';
   static const ErrorMessages_NotShort = 'ErrorMessages.NotShort';

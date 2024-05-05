@@ -6,7 +6,7 @@ part 'login_request_param.g.dart';
 @freezed
 class LoginRequestParam with _$LoginRequestParam {
   factory LoginRequestParam({
-    required String email,
+    required String phoneNumber,
     required String password,
   }) = _LoginRequestParam;
 

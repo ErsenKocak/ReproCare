@@ -20,7 +20,7 @@ LoginRequestParam _$LoginRequestParamFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LoginRequestParam {
-  String get email => throw _privateConstructorUsedError;
+  String get phoneNumber => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $LoginRequestParamCopyWith<$Res> {
           LoginRequestParam value, $Res Function(LoginRequestParam) then) =
       _$LoginRequestParamCopyWithImpl<$Res, LoginRequestParam>;
   @useResult
-  $Res call({String email, String password});
+  $Res call({String phoneNumber, String password});
 }
 
 /// @nodoc
@@ -51,13 +51,13 @@ class _$LoginRequestParamCopyWithImpl<$Res, $Val extends LoginRequestParam>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? phoneNumber = null,
     Object? password = null,
   }) {
     return _then(_value.copyWith(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -75,7 +75,7 @@ abstract class _$$LoginRequestParamImplCopyWith<$Res>
       __$$LoginRequestParamImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String password});
+  $Res call({String phoneNumber, String password});
 }
 
 /// @nodoc
@@ -89,13 +89,13 @@ class __$$LoginRequestParamImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? phoneNumber = null,
     Object? password = null,
   }) {
     return _then(_$LoginRequestParamImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -108,19 +108,19 @@ class __$$LoginRequestParamImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LoginRequestParamImpl implements _LoginRequestParam {
-  _$LoginRequestParamImpl({required this.email, required this.password});
+  _$LoginRequestParamImpl({required this.phoneNumber, required this.password});
 
   factory _$LoginRequestParamImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoginRequestParamImplFromJson(json);
 
   @override
-  final String email;
+  final String phoneNumber;
   @override
   final String password;
 
   @override
   String toString() {
-    return 'LoginRequestParam(email: $email, password: $password)';
+    return 'LoginRequestParam(phoneNumber: $phoneNumber, password: $password)';
   }
 
   @override
@@ -128,14 +128,15 @@ class _$LoginRequestParamImpl implements _LoginRequestParam {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginRequestParamImpl &&
-            (identical(other.email, email) || other.email == email) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
             (identical(other.password, password) ||
                 other.password == password));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode => Object.hash(runtimeType, phoneNumber, password);
 
   @JsonKey(ignore: true)
   @override
@@ -154,14 +155,14 @@ class _$LoginRequestParamImpl implements _LoginRequestParam {
 
 abstract class _LoginRequestParam implements LoginRequestParam {
   factory _LoginRequestParam(
-      {required final String email,
+      {required final String phoneNumber,
       required final String password}) = _$LoginRequestParamImpl;
 
   factory _LoginRequestParam.fromJson(Map<String, dynamic> json) =
       _$LoginRequestParamImpl.fromJson;
 
   @override
-  String get email;
+  String get phoneNumber;
   @override
   String get password;
   @override

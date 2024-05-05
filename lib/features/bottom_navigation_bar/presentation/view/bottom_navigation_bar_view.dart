@@ -60,8 +60,8 @@ class _BottomNavigationBarViewState extends State<BottomNavigationBarView>
   List<BottomBarItem> get _buildBottomBarItems {
     final bottomBarItems = <BottomBarItem>[
       _buildBottomBarItem(
-        unSelectedIconPath: Assets.icons.bottomNavigationBar.homePassive.path,
-        selectedIconPath: Assets.icons.bottomNavigationBar.homeActive.path,
+        unSelectedIconPath: Assets.icons.general.iconAppBarNotification.path,
+        selectedIconPath: Assets.icons.general.iconAppBarNotification.path,
         title: LocaleKeys.BottomNavigationBar_Home.tr(),
         viewIndex: 0,
       ),
@@ -85,12 +85,14 @@ class _BottomNavigationBarViewState extends State<BottomNavigationBarView>
     return BottomBarItem(
       icon: AppSvgPicture(
         path: unSelectedIconPath,
+        height: 20.h,
         color:
             AppThemes.currentTheme.bottomNavigationBarTheme.unselectedItemColor,
         onTap: () => navigate(viewIndex),
       ),
       selectedIcon: AppSvgPicture(
         path: selectedIconPath,
+        height: 20.h,
         color:
             AppThemes.currentTheme.bottomNavigationBarTheme.selectedItemColor,
       ),
