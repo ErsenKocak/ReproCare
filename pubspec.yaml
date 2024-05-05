@@ -138,6 +138,7 @@ flutter:
     - assets/icons/general/
     - assets/icons/app_bar/
     - assets/icons/settings/
+    - assets/icons/inputs/
 
   fonts:
     - family: Euclid Circular B

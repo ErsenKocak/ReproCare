@@ -14,6 +14,7 @@ import 'package:reprocare/core/extensions/sized_box/sized_box_extension.dart';
 import 'package:reprocare/core/utils/formatter/text_input_formatter.dart';
 import 'package:reprocare/core/utils/validator/text_input_validator/text_input_validator.dart';
 import 'package:reprocare/features/login/presentation/mixin/login_view_mixin.dart';
+import 'package:reprocare/generated/assets.gen.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
 
 class LoginView extends StatefulWidget {
@@ -53,7 +54,9 @@ class _LoginViewState extends State<LoginView> with LoginViewMixin {
                 children: [
                   _buildloginInfo,
                   20.h.sbxh,
-                  _buildPhoneNumber,
+                  _buildPhoneNumberInput,
+                  20.h.sbxh,
+                  _buildPasswordInput
                 ],
               ),
               Spacer(flex: 2),
@@ -69,7 +72,7 @@ class _LoginViewState extends State<LoginView> with LoginViewMixin {
     );
   }
 
-  Widget get _buildPhoneNumber {
+  Widget get _buildPhoneNumberInput {
     return Padding(
       padding: context.paddingHorizontalHigh2,
       child: AppTextFormField(
@@ -86,6 +89,25 @@ class _LoginViewState extends State<LoginView> with LoginViewMixin {
     );
   }
 
+  Widget get _buildPasswordInput {
+    return Padding(
+        padding: context.paddingHorizontalHigh2,
+        child: ValueListenableBuilder(
+          valueListenable: passwordObscureTextNotifer,
+          builder: (context, value, child) {
+            return AppTextFormField(
+              hintText: LocaleKeys.Global_Password.tr(),
+              controller: passwordTextController,
+              keyboardType: TextInputType.text,
+              suffixIcon:
+                  _passwordSuffixIcon(onPress: () => changePasswordShowing()),
+              obscureText: passwordObscureTextNotifer.value,
+              validator: (text) => text?.emptyValidator(),
+            );
+          },
+        ));
+  }
+
   Widget get _buildLoginButton {
     return Padding(
       padding: context.paddingHorizontalHigh2,
@@ -93,6 +115,17 @@ class _LoginViewState extends State<LoginView> with LoginViewMixin {
         buttonText: LocaleKeys.Global_Login.tr(),
         onPressed: () => validateInputs(),
       ),
+    );
+  }
+
+  _passwordSuffixIcon({required Function onPress}) {
+    return GestureDetector(
+      onTap: () {
+        onPress();
+      },
+      child: passwordObscureTextNotifer.value
+          ? Assets.icons.inputs.iconEyeClose.svg()
+          : Assets.icons.inputs.iconEye.svg(),
     );
   }
 }

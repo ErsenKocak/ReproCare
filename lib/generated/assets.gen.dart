@@ -35,6 +35,7 @@ class $AssetsIconsGen {
   $AssetsIconsEmptyWidgetGen get emptyWidget =>
       const $AssetsIconsEmptyWidgetGen();
   $AssetsIconsGeneralGen get general => const $AssetsIconsGeneralGen();
+  $AssetsIconsInputsGen get inputs => const $AssetsIconsInputsGen();
   $AssetsIconsSettingsGen get settings => const $AssetsIconsSettingsGen();
 }
 
@@ -161,6 +162,29 @@ class $AssetsIconsGeneralGen {
         iconTrash,
         iconTrashFill
       ];
+}
+
+class $AssetsIconsInputsGen {
+  const $AssetsIconsInputsGen();
+
+  /// File path: assets/icons/inputs/icon_edit.svg
+  SvgGenImage get iconEdit =>
+      const SvgGenImage('assets/icons/inputs/icon_edit.svg');
+
+  /// File path: assets/icons/inputs/icon_eye.svg
+  SvgGenImage get iconEye =>
+      const SvgGenImage('assets/icons/inputs/icon_eye.svg');
+
+  /// File path: assets/icons/inputs/icon_eye_close.svg
+  SvgGenImage get iconEyeClose =>
+      const SvgGenImage('assets/icons/inputs/icon_eye_close.svg');
+
+  /// File path: assets/icons/inputs/icon_info.svg
+  SvgGenImage get iconInfo =>
+      const SvgGenImage('assets/icons/inputs/icon_info.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [iconEdit, iconEye, iconEyeClose, iconInfo];
 }
 
 class $AssetsIconsSettingsGen {
