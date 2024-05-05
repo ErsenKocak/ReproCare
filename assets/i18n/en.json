@@ -106,6 +106,8 @@
     },
     "Settings": {
         "Settings": "Settings",
+        "PermissionSettings": "Permission Settings",
+        "AllowNotifications": "Allow Notifications",
         "EditProfile": "Edit Profile",
         "Language": "Language",
         "LanguageSelection": "Language Selection",

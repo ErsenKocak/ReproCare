@@ -101,6 +101,8 @@ abstract class  LocaleKeys {
   static const Languages_French = 'Languages.French';
   static const Languages = 'Languages';
   static const Settings_Settings = 'Settings.Settings';
+  static const Settings_PermissionSettings = 'Settings.PermissionSettings';
+  static const Settings_AllowNotifications = 'Settings.AllowNotifications';
   static const Settings_EditProfile = 'Settings.EditProfile';
   static const Settings_Language = 'Settings.Language';
   static const Settings_LanguageSelection = 'Settings.LanguageSelection';

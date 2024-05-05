@@ -15,15 +15,18 @@ import 'package:reprocare/common/widgets/app_bar/leading/profile_avatar/app_bar_
 import 'package:reprocare/common/widgets/bottom_sheets/bottom_sheet/app_bottom_sheet.dart';
 import 'package:reprocare/common/widgets/buttons/elevated_button/elevated_button.dart';
 import 'package:reprocare/common/widgets/scrollable_widgets/scrollable_body/scrollable_body.dart';
+import 'package:reprocare/common/widgets/svg_picture/app_svg_picture.dart';
 import 'package:reprocare/core/constants/colors/app_dark_colors.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
 import 'package:reprocare/core/extensions/sized_box/sized_box_extension.dart';
+import 'package:reprocare/features/settings/domain/enums/permission_type.dart';
 import 'package:reprocare/features/settings/presentation/cubit/user_settings_cubit.dart';
 import 'package:reprocare/features/settings/presentation/mixin/settings_view_mixin.dart';
 import 'package:reprocare/features/settings/presentation/widgets/settings_language_item/settings_language_item.dart';
 import 'package:reprocare/features/settings/presentation/widgets/settings_list_item/data/entities/list_tile_item.dart';
 import 'package:reprocare/features/settings/presentation/widgets/settings_list_item/list_tile_item_widget.dart';
+import 'package:reprocare/features/settings/presentation/widgets/settings_permission_item/settings_permission_item.dart';
 import 'package:reprocare/features/settings/presentation/widgets/settings_theme_item.dart/settings_theme_item.dart';
 import 'package:reprocare/generated/assets.gen.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
@@ -125,6 +128,26 @@ class _SettingsViewState extends State<SettingsView>
                 SettingsLanguageItem(locale: AppLocalizationHelper.tr),
                 8.h.sbxh,
                 SettingsLanguageItem(locale: AppLocalizationHelper.en),
+              ],
+            ),
+          );
+        },
+      ),
+      ListTileItem(
+        leadingWidget: _listTileItemLeading(AppSvgPicture(
+          path: Assets.icons.general.iconAppBarNotification.path,
+          color: AppLightColors.white,
+        )),
+        title: LocaleKeys.Settings_PermissionSettings.tr(),
+        onTap: () {
+          AppBottomSheet.show(
+            contentPadding:
+                EdgeInsets.symmetric(vertical: 10.h, horizontal: 24.w),
+            child: (bottomSheetContext) => Column(
+              children: [
+                SettingsPermissionItem(
+                  permissionType: PermissionType.Notification,
+                ),
               ],
             ),
           );

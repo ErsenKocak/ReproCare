@@ -106,6 +106,8 @@
   },
   "Settings": {
     "Settings": "Ayarlar",
+    "PermissionSettings": "İzin Ayarları",
+    "AllowNotifications": "Bildirimlere İzin Ver",
     "EditProfile": "Profili Düzenle",
     "Language": "Dil",
     "LanguageSelection": "Dil Seçimi",
