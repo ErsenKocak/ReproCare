@@ -23,7 +23,7 @@
     "Information": "Bilgilendirme"
   },
   "Login": {
-    "LoginInformation": "Giriş yapmaya devam ederseniz,\ngirmiş olduğunuz telefona onay kodu gelecektir."
+    "LoginInformation": "Giriş yapmaya devam etmek için,\nsize daha öncesinde iletilen şifreyi kullanınız."
   },
   "Notification": {
     "Notifications": "Bildirimler",

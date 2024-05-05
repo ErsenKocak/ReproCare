@@ -23,7 +23,7 @@
         "Information": "Information"
     },
     "Login": {
-        "LoginInformation": "If you continue to login,\nverification code will be sent to your entered phone."
+        "LoginInformation": "To continue logging in\n, use the password previously sent to you"
     },
     "Notification": {
         "Notifications": "Notifications",
