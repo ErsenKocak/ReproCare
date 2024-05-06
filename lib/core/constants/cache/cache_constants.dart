@@ -1,1 +1,1 @@
-enum CacheConstants { User, AccessToken, Theme }
+enum CacheConstants { User, Theme }

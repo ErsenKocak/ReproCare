@@ -1,21 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_model.freezed.dart';
-
 part 'user_model.g.dart';
 
 @freezed
 class UserModel with _$UserModel {
   factory UserModel({
-    String? id,
-    String? email,
+    int? institutionId,
     String? name,
     String? surname,
-    dynamic birthday,
-    String? role,
-    String? photoPath,
-    String? photoUrl,
-    bool? premium,
+    String? phoneNumber,
+    String? password,
+    String? token,
+    String? refreshToken,
+    String? tokenExpireDate,
+    String? tokenCreatedDate,
+    String? createdDate,
+    @JsonKey(name: 'userSecretID') String? userSecretId,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

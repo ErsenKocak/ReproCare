@@ -66,7 +66,7 @@ class AppRouter {
             ServiceLocatorProvider.provide<IAuthLocalService>();
 
         final _loginEntity =
-            await _loginLocalService.get(CacheConstants.AccessToken.name);
+            await _loginLocalService.get(CacheConstants.User.name);
 
         if (_loginEntity != null) {
           return AppRoutes.Notification.path;

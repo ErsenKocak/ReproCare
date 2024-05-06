@@ -26,22 +26,7 @@ class AppBarCircleAvatarLeading extends StatelessWidget {
   }
 
   Widget _buildUserAvatar(UserSettingsEntity? userSettingsEntity) {
-    return userSettingsEntity?.user?.photoUrl != null &&
-            userSettingsEntity?.user?.photoUrl != ''
-        ? _buildUserPhoto(userSettingsEntity)
-        : _buildUserFirstLetterNameAndSurname(userSettingsEntity);
-  }
-
-  Widget _buildUserPhoto(UserSettingsEntity? userSettingsEntity) {
-    return CircleAvatar(
-      radius: 75.w,
-      backgroundImage: ExtendedNetworkImageProvider(
-        userSettingsEntity!.user!.photoUrl!,
-        cache: true,
-        imageCacheName: userSettingsEntity.user!.photoUrl!,
-        cacheMaxAge: Duration(days: 3),
-      ),
-    );
+    return _buildUserFirstLetterNameAndSurname(userSettingsEntity);
   }
 
   Widget _buildUserFirstLetterNameAndSurname(

@@ -8,8 +8,9 @@ import 'package:reprocare/common/router/app_routes.dart';
 import 'package:reprocare/core/constants/cache/cache_constants.dart';
 import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
 import 'package:reprocare/features/login/domain/entities/request/login_request_param/login_request_param.dart';
-import 'package:reprocare/features/login/domain/entities/response/login_response_entity/login_response_entity.dart';
+
 import 'package:reprocare/features/login/domain/repositories/login_repository/i_auth_repository.dart';
+import 'package:reprocare/features/settings/domain/entities/response/user_settings_entity/user_entity.dart';
 
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
@@ -20,7 +21,7 @@ final class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
 
   final IAuthRepository _loginRepository;
   final IAuthLocalService _loginLocalService;
-  late LoginResponseEntity loginResponseEntity;
+  late UserEntity loginResponseEntity;
   @override
   Future<void> initialize() async {
     safeEmit(AuthState.initial());
@@ -32,13 +33,12 @@ final class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
     final response = await _loginRepository.login(loginRequestParam);
 
     final value = switch (response) {
-      Success(value: final LoginResponseEntity entity) => {
+      Success(value: final UserEntity entity) => {
           loginResponseEntity = entity,
           safeEmit(AuthState.success(loginResponseEntity)),
-          //TODO
-          // AppRouter.goNamed(AppRoutes.Home.path),
+          AppRouter.goNamed(AppRoutes.Notification.path),
           _loginLocalService.put(
-            CacheConstants.AccessToken.name,
+            CacheConstants.User.name,
             loginResponseEntity,
           ),
         },
@@ -58,7 +58,7 @@ final class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
       Success(value: final bool isLogout) => {
           if (isLogout)
             {
-              _loginLocalService.delete(CacheConstants.AccessToken.name),
+              _loginLocalService.delete(CacheConstants.User.name),
               AppRouter.goNamed(AppRoutes.Login.path),
             }
         },

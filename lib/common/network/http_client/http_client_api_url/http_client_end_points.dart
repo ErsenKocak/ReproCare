@@ -1,6 +1,5 @@
 enum HttpClientEndPoints {
-  Register('/auth/register'),
-  Login('/auth/login'),
+  Login('/User/Login'),
   Logout('/auth/logout'),
   GetNotifications('/notifications'),
   DeleteNotification('/notifications'),

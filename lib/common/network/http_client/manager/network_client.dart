@@ -15,8 +15,8 @@ import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/constants/cache/cache_constants.dart';
 import 'package:reprocare/core/constants/network/http_call_type/http_call_type.dart';
 import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
-import 'package:reprocare/features/login/domain/entities/response/login_response_entity/login_response_entity.dart';
 import 'package:reprocare/features/login/presentation/cubit/auth_cubit/auth_cubit.dart';
+import 'package:reprocare/features/settings/domain/entities/response/user_settings_entity/user_entity.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
 import 'package:reprocare/helper/localization/localization_helper.dart';
 import 'package:reprocare/helper/network/internet_connection_check/internet_connection_check_helper.dart';
@@ -263,15 +263,15 @@ final class NetworkClient {
 
   Future<Map<String, String>> _generateHeaders() async {
     Map<String, String> headers = {
-      "X-Version-Code": "${Application.versionCode}",
-      "X-Version-Name": "${Application.versionName}",
-      "Accept-Language":
-          "${AppLocalizationHelper.currentLocale.languageCode.toUpperCase()}",
+      // "X-Version-Code": "${Application.versionCode}",
+      // "X-Version-Name": "${Application.versionName}",
+      // "Accept-Language":
+      //     "${AppLocalizationHelper.currentLocale.languageCode.toUpperCase()}",
     };
     final IAuthLocalService _loginService =
         ServiceLocatorProvider.provide<IAuthLocalService>();
-    LoginResponseEntity? _loginReponseEntity =
-        await _loginService.get(CacheConstants.AccessToken.name);
+    UserEntity? _loginReponseEntity =
+        await _loginService.get(CacheConstants.User.name);
     String token = _loginReponseEntity?.token ?? '';
 
     if (token.isNotEmpty) {

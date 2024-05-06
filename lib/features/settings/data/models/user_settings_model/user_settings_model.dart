@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:reprocare/features/settings/data/models/user_settings_model/user_model.dart';
+import 'package:reprocare/features/login/data/models/user_model/user_model.dart';
 
 part 'user_settings_model.freezed.dart';
 part 'user_settings_model.g.dart';

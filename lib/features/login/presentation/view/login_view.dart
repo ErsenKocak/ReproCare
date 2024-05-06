@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reprocare/common/widgets/app_bar/app_bar_widget.dart';
 import 'package:reprocare/common/widgets/buttons/elevated_button/elevated_button.dart';
@@ -13,6 +14,7 @@ import 'package:reprocare/core/enums/app_padding/app_padding.dart';
 import 'package:reprocare/core/extensions/sized_box/sized_box_extension.dart';
 import 'package:reprocare/core/utils/formatter/text_input_formatter.dart';
 import 'package:reprocare/core/utils/validator/text_input_validator/text_input_validator.dart';
+import 'package:reprocare/features/login/presentation/cubit/auth_cubit/auth_cubit.dart';
 import 'package:reprocare/features/login/presentation/mixin/login_view_mixin.dart';
 import 'package:reprocare/generated/assets.gen.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
@@ -41,28 +43,33 @@ class _LoginViewState extends State<LoginView> with LoginViewMixin {
   }
 
   Widget get _buildBody {
-    return Form(
-      key: formKey,
-      autovalidateMode: AutovalidateMode.disabled,
-      child: Padding(
-          padding: context.paddingVerticalHigh3,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Spacer(),
-              Column(
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: blocStateListener,
+      builder: (context, state) {
+        return Form(
+          key: formKey,
+          autovalidateMode: AutovalidateMode.disabled,
+          child: Padding(
+              padding: context.paddingVerticalHigh3,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
                 children: [
-                  _buildloginInfo,
-                  20.h.sbxh,
-                  _buildPhoneNumberInput,
-                  20.h.sbxh,
-                  _buildPasswordInput
+                  Spacer(),
+                  Column(
+                    children: [
+                      _buildloginInfo,
+                      20.h.sbxh,
+                      _buildPhoneNumberInput,
+                      20.h.sbxh,
+                      _buildPasswordInput
+                    ],
+                  ),
+                  Spacer(flex: 2),
+                  _buildLoginButton
                 ],
-              ),
-              Spacer(flex: 2),
-              _buildLoginButton
-            ],
-          )),
+              )),
+        );
+      },
     );
   }
 
@@ -113,7 +120,11 @@ class _LoginViewState extends State<LoginView> with LoginViewMixin {
       padding: context.paddingHorizontalHigh2,
       child: AppElevatedButton(
         buttonText: LocaleKeys.Global_Login.tr(),
-        onPressed: () => validateInputs(),
+        onPressed: () async {
+          if (validateInputs() == true) {
+            await login();
+          }
+        },
       ),
     );
   }

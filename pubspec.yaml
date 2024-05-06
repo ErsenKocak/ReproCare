@@ -90,6 +90,9 @@ dependencies:
   #Device
   device_info_plus: ^9.1.2
 
+  #Splash
+  flutter_native_splash: ^2.3.7
+
 
 
 dev_dependencies:
@@ -131,8 +134,12 @@ flutter:
     - assets/i18n/
     - assets/images/
     - assets/images/bottom_sheet/
+    - assets/images/splash/
+    - assets/images/splash/ios/
+    - assets/images/splash/android/
     - assets/icons/
     - assets/icons/bottom_sheet/
+    - assets/icons/launcher/
     - assets/icons/empty_widget/
     - assets/icons/bottom_navigation_bar/
     - assets/icons/general/

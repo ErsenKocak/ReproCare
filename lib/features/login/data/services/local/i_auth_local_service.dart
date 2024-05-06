@@ -1,5 +1,4 @@
 import 'package:reprocare/core/cache/hive_cache_manager.dart';
-import 'package:reprocare/features/login/domain/entities/response/login_response_entity/login_response_entity.dart';
+import 'package:reprocare/features/settings/domain/entities/response/user_settings_entity/user_entity.dart';
 
-abstract class IAuthLocalService
-    extends HiveCacheManager<LoginResponseEntity> {}
+abstract class IAuthLocalService extends HiveCacheManager<UserEntity> {}
