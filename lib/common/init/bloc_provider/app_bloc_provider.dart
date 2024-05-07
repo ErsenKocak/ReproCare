@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:reprocare/common/cubit/language/language_cubit.dart';
 import 'package:reprocare/common/cubit/theme/theme_cubit.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/features/login/presentation/cubit/auth_cubit/auth_cubit.dart';
@@ -14,6 +15,9 @@ class AppBlocProvider {
 
     BlocProvider.value(
       value: ServiceLocatorProvider.provide<ThemeCubit>(),
+    ),
+    BlocProvider.value(
+      value: ServiceLocatorProvider.provide<LanguageCubit>(),
     ),
     BlocProvider.value(
       value: ServiceLocatorProvider.provide<AuthCubit>(),

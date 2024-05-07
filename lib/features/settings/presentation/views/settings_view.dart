@@ -2,8 +2,12 @@ import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:reprocare/common/cubit/language/language_cubit.dart';
 import 'package:reprocare/common/cubit/theme/data/enums/theme_mode_enum.dart';
+import 'package:reprocare/common/cubit/theme/theme_cubit.dart';
+import 'package:reprocare/common/cubit/theme/theme_state_model.dart';
 import 'package:reprocare/common/functions/app/app_functions.dart';
 import 'package:reprocare/common/router/app_route_observer_mixin.dart';
 import 'package:reprocare/common/widgets/app_bar/app_bar_widget.dart';
@@ -17,6 +21,7 @@ import 'package:reprocare/core/constants/colors/app_light_colors.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
 import 'package:reprocare/core/extensions/sized_box/sized_box_extension.dart';
 import 'package:reprocare/features/settings/domain/enums/permission_type.dart';
+import 'package:reprocare/features/settings/presentation/cubit/user_settings_cubit.dart';
 import 'package:reprocare/features/settings/presentation/mixin/settings_view_mixin.dart';
 import 'package:reprocare/features/settings/presentation/widgets/settings_language_item/settings_language_item.dart';
 import 'package:reprocare/features/settings/presentation/widgets/settings_list_item/data/entities/list_tile_item.dart';
@@ -38,9 +43,17 @@ class _SettingsViewState extends State<SettingsView>
     with SettingsViewMixin, RouterObserverMixin {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildAppBar,
-      body: _buildBody,
+    return BlocBuilder<ThemeCubit, ThemeStateModel>(
+      builder: (context, state) {
+        return BlocBuilder<LanguageCubit, Locale>(
+          builder: (context, state) {
+            return Scaffold(
+              appBar: _buildAppBar,
+              body: _buildBody,
+            );
+          },
+        );
+      },
     );
   }
 
@@ -51,13 +64,17 @@ class _SettingsViewState extends State<SettingsView>
   }
 
   Widget get _buildBody {
-    return ScrollableBody(
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          _buildSettingsItems,
-        ],
-      ),
+    return BlocBuilder<UserSettingsCubit, UserSettingsState>(
+      builder: (context, state) {
+        return ScrollableBody(
+          body: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              _buildSettingsItems,
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -115,6 +132,14 @@ class _SettingsViewState extends State<SettingsView>
               children: [
                 SettingsPermissionItem(
                   permissionType: PermissionType.Notification,
+                  isActive:
+                      userSettingsCubit.userSettings?.isNotificationActive ??
+                          false,
+                  onChange: () {
+                    changeUserSettings(userSettingsCubit.userSettings!.copyWith(
+                        isNotificationActive: !userSettingsCubit
+                            .userSettings!.isNotificationActive!));
+                  },
                 ),
               ],
             ),

@@ -77,9 +77,14 @@ class SettingsThemeItem extends StatelessWidget {
   }
 
   Future<void> _onTapChangeLocale() async {
-    final themeCubit = ServiceLocatorProvider.provide<ThemeCubit>();
-    themeCubit.changeThemeWithParameter(themeMode);
-
     AppRouter.pop();
+
+    await Future.delayed(
+      Duration(milliseconds: 300),
+      () async {
+        final themeCubit = ServiceLocatorProvider.provide<ThemeCubit>();
+        themeCubit.changeThemeWithParameter(themeMode);
+      },
+    );
   }
 }

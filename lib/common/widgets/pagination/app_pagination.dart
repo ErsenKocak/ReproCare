@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:reprocare/common/base/model/request/pagination_request_param/pagination_request_param.dart';

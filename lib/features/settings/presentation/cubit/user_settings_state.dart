@@ -1,6 +1,6 @@
 part of 'user_settings_cubit.dart';
 
-@freezed
+@Freezed(equal: false)
 class UserSettingsState with _$UserSettingsState implements BaseState {
   const factory UserSettingsState.initial() = _Initial;
   const factory UserSettingsState.loading() = _Loading;

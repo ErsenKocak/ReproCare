@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:reprocare/common/base/cubit/base_cubit.dart';
@@ -6,6 +5,7 @@ import 'package:reprocare/common/base/cubit/base_state.dart';
 import 'package:reprocare/common/base/result/base_result.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
+import 'package:reprocare/features/settings/domain/entities/request/user_settings_request/user_settings_request.dart';
 import 'package:reprocare/features/settings/domain/entities/response/user_settings_entity/user_settings_entity.dart';
 import 'package:reprocare/features/settings/domain/repositories/i_user_settings_repository.dart';
 
@@ -26,6 +26,11 @@ class UserSettingsCubit extends Cubit<UserSettingsState>
     safeEmit(UserSettingsState.initial());
   }
 
+  void changeUserSettings(UserSettingsEntity settings) {
+    userSettings = settings;
+    safeEmit(UserSettingsState.success());
+  }
+
   Future<void> getUserSettings() async {
     safeEmit(UserSettingsState.loading());
     final response = await _userSettingsRepository.getUserSettings();
@@ -42,8 +47,23 @@ class UserSettingsCubit extends Cubit<UserSettingsState>
     };
   }
 
+  Future<void> updateUserSettings(
+      UserSettingsRequest userSettingsRequest) async {
+    safeEmit(UserSettingsState.loading());
+    final response =
+        await _userSettingsRepository.updateUserSettings(userSettingsRequest);
+
+    final value = switch (response) {
+      Success(value: final UserSettingsEntity _userSettingsEntityResponse) => {
+          userSettings = _userSettingsEntityResponse,
+          safeEmit(UserSettingsState.success()),
+        },
+      Failure(exception: final AppException exception) => {
+          safeEmit(UserSettingsState.error(exception.message)),
+          showErrorBottomSheet(exceptionMessage: exception.message),
+        }
+    };
+  }
+
   emitState() => safeEmit(UserSettingsState.success());
 }
-
-UserSettingsCubit userSettingsCubit =
-    ServiceLocatorProvider.provide<UserSettingsCubit>();

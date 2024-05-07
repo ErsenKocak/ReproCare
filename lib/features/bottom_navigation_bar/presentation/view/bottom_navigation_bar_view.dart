@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:reprocare/common/cubit/theme/theme_cubit.dart';
+import 'package:reprocare/common/cubit/theme/theme_state_model.dart';
 import 'package:reprocare/common/router/app_route_observer_mixin.dart';
 import 'package:reprocare/common/widgets/svg_picture/app_svg_picture.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
@@ -24,11 +27,15 @@ class _BottomNavigationBarViewState extends State<BottomNavigationBarView>
     with BottomNavigationBarMixin, RouterObserverMixin {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: UniqueKey(),
-      resizeToAvoidBottomInset: false,
-      body: widget.navigationShell,
-      bottomNavigationBar: _buildBottomNavigationBar,
+    return BlocBuilder<ThemeCubit, ThemeStateModel>(
+      builder: (context, state) {
+        return Scaffold(
+          key: UniqueKey(),
+          resizeToAvoidBottomInset: false,
+          body: widget.navigationShell,
+          bottomNavigationBar: _buildBottomNavigationBar,
+        );
+      },
     );
   }
 

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:reprocare/common/cubit/language/language_cubit.dart';
 import 'package:reprocare/common/cubit/theme/data/services/i_theme_local_service.dart';
 import 'package:reprocare/common/cubit/theme/data/services/theme_local_service.dart';
 import 'package:reprocare/common/cubit/theme/theme_cubit.dart';
@@ -61,6 +62,9 @@ Future<void> initalize() async {
     ..registerLazySingleton<IThemeLocalService>(() => ThemeLocalService())
     ..registerLazySingleton<ThemeCubit>(
       () => ThemeCubit(_serviceLocator<IThemeLocalService>()),
+    )
+    ..registerLazySingleton<LanguageCubit>(
+      () => LanguageCubit(),
     )
 
     // #Login

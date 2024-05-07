@@ -40,8 +40,6 @@ class NotificationCubit extends Cubit<NotificationState>
           createdDate: DateTime.now().toString()));
     }
 
-    await Future.delayed(Duration(seconds: 3));
-
     // final response =
     //     await _notificationRepository.getNotifications(paginationRequest);
 
