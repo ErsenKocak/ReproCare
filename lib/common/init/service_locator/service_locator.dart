@@ -7,6 +7,11 @@ import 'package:reprocare/common/cubit/theme/theme_cubit.dart';
 import 'package:reprocare/common/logger/app_logger.dart';
 import 'package:reprocare/common/network/http_client/manager/network_client.dart';
 import 'package:reprocare/core/constants/application/application.dart';
+import 'package:reprocare/features/device/data/repositories/device_repository.dart';
+import 'package:reprocare/features/device/data/services/device_service.dart';
+import 'package:reprocare/features/device/data/services/i_device_service.dart';
+import 'package:reprocare/features/device/domain/repositories/i_device_repository.dart';
+import 'package:reprocare/features/device/presentation/cubit/device_cubit.dart';
 import 'package:reprocare/features/login/data/repositories/auth_repository/auth_repository.dart';
 import 'package:reprocare/features/login/data/services/local/auth_local_service.dart';
 import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
@@ -55,9 +60,6 @@ Future<void> initalize() async {
       ),
     )
 
-    // #Device Info
-    ..registerLazySingleton(() => DeviceInfoHelper())
-
     // #Theme
     ..registerLazySingleton<IThemeLocalService>(() => ThemeLocalService())
     ..registerLazySingleton<ThemeCubit>(
@@ -65,6 +67,21 @@ Future<void> initalize() async {
     )
     ..registerLazySingleton<LanguageCubit>(
       () => LanguageCubit(),
+    )
+// #Device Info
+    ..registerLazySingleton(() => DeviceInfoHelper())
+    // #Device
+    ..registerLazySingleton<IDeviceService>(
+      () => DeviceService(_serviceLocator<NetworkClient>()),
+    )
+    ..registerLazySingleton<IDeviceRepository>(
+      () => DeviceRepository(_serviceLocator<IDeviceService>()),
+    )
+    ..registerLazySingleton<DeviceCubit>(
+      () => DeviceCubit(
+        _serviceLocator<IDeviceRepository>(),
+        _serviceLocator<DeviceInfoHelper>(),
+      ),
     )
 
     // #Login

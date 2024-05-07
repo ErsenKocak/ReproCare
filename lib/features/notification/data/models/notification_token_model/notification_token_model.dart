@@ -8,9 +8,9 @@ part 'notification_token_model.g.dart';
 class NotificationTokenModel with _$NotificationTokenModel {
   @JsonSerializable(explicitToJson: true)
   factory NotificationTokenModel({
-    String? id,
-    UserDeviceModel? device,
-    String? token,
+    String? userSecretId,
+    String? deviceId,
+    String? pushNotificationToken,
   }) = _NotificationTokenModel;
 
   factory NotificationTokenModel.fromJson(Map<String, dynamic> json) =>

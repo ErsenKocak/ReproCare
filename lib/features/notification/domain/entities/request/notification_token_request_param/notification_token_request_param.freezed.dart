@@ -22,7 +22,7 @@ NotificationTokenRequestParam _$NotificationTokenRequestParamFromJson(
 /// @nodoc
 mixin _$NotificationTokenRequestParam {
   String? get deviceId => throw _privateConstructorUsedError;
-  String? get token => throw _privateConstructorUsedError;
+  String? get pushNotificationToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +38,7 @@ abstract class $NotificationTokenRequestParamCopyWith<$Res> {
       _$NotificationTokenRequestParamCopyWithImpl<$Res,
           NotificationTokenRequestParam>;
   @useResult
-  $Res call({String? deviceId, String? token});
+  $Res call({String? deviceId, String? pushNotificationToken});
 }
 
 /// @nodoc
@@ -56,16 +56,16 @@ class _$NotificationTokenRequestParamCopyWithImpl<$Res,
   @override
   $Res call({
     Object? deviceId = freezed,
-    Object? token = freezed,
+    Object? pushNotificationToken = freezed,
   }) {
     return _then(_value.copyWith(
       deviceId: freezed == deviceId
           ? _value.deviceId
           : deviceId // ignore: cast_nullable_to_non_nullable
               as String?,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
+      pushNotificationToken: freezed == pushNotificationToken
+          ? _value.pushNotificationToken
+          : pushNotificationToken // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -80,7 +80,7 @@ abstract class _$$NotificationTokenRequestParamImplCopyWith<$Res>
       __$$NotificationTokenRequestParamImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? deviceId, String? token});
+  $Res call({String? deviceId, String? pushNotificationToken});
 }
 
 /// @nodoc
@@ -97,16 +97,16 @@ class __$$NotificationTokenRequestParamImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? deviceId = freezed,
-    Object? token = freezed,
+    Object? pushNotificationToken = freezed,
   }) {
     return _then(_$NotificationTokenRequestParamImpl(
       deviceId: freezed == deviceId
           ? _value.deviceId
           : deviceId // ignore: cast_nullable_to_non_nullable
               as String?,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
+      pushNotificationToken: freezed == pushNotificationToken
+          ? _value.pushNotificationToken
+          : pushNotificationToken // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -116,7 +116,8 @@ class __$$NotificationTokenRequestParamImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$NotificationTokenRequestParamImpl
     implements _NotificationTokenRequestParam {
-  _$NotificationTokenRequestParamImpl({this.deviceId, this.token});
+  _$NotificationTokenRequestParamImpl(
+      {this.deviceId, this.pushNotificationToken});
 
   factory _$NotificationTokenRequestParamImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -125,11 +126,11 @@ class _$NotificationTokenRequestParamImpl
   @override
   final String? deviceId;
   @override
-  final String? token;
+  final String? pushNotificationToken;
 
   @override
   String toString() {
-    return 'NotificationTokenRequestParam(deviceId: $deviceId, token: $token)';
+    return 'NotificationTokenRequestParam(deviceId: $deviceId, pushNotificationToken: $pushNotificationToken)';
   }
 
   @override
@@ -139,12 +140,13 @@ class _$NotificationTokenRequestParamImpl
             other is _$NotificationTokenRequestParamImpl &&
             (identical(other.deviceId, deviceId) ||
                 other.deviceId == deviceId) &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.pushNotificationToken, pushNotificationToken) ||
+                other.pushNotificationToken == pushNotificationToken));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, deviceId, token);
+  int get hashCode => Object.hash(runtimeType, deviceId, pushNotificationToken);
 
   @JsonKey(ignore: true)
   @override
@@ -165,8 +167,8 @@ class _$NotificationTokenRequestParamImpl
 abstract class _NotificationTokenRequestParam
     implements NotificationTokenRequestParam {
   factory _NotificationTokenRequestParam(
-      {final String? deviceId,
-      final String? token}) = _$NotificationTokenRequestParamImpl;
+          {final String? deviceId, final String? pushNotificationToken}) =
+      _$NotificationTokenRequestParamImpl;
 
   factory _NotificationTokenRequestParam.fromJson(Map<String, dynamic> json) =
       _$NotificationTokenRequestParamImpl.fromJson;
@@ -174,7 +176,7 @@ abstract class _NotificationTokenRequestParam
   @override
   String? get deviceId;
   @override
-  String? get token;
+  String? get pushNotificationToken;
   @override
   @JsonKey(ignore: true)
   _$$NotificationTokenRequestParamImplCopyWith<

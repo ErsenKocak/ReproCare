@@ -7,7 +7,7 @@ part 'notification_token_request_param.g.dart';
 class NotificationTokenRequestParam with _$NotificationTokenRequestParam {
   factory NotificationTokenRequestParam({
     String? deviceId,
-    String? token,
+    String? pushNotificationToken,
   }) = _NotificationTokenRequestParam;
 
   factory NotificationTokenRequestParam.fromJson(Map<String, dynamic> json) =>

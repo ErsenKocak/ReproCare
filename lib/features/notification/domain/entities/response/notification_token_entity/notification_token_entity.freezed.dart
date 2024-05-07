@@ -21,9 +21,9 @@ NotificationTokenEntity _$NotificationTokenEntityFromJson(
 
 /// @nodoc
 mixin _$NotificationTokenEntity {
-  String? get id => throw _privateConstructorUsedError;
-  UserDeviceEntity? get device => throw _privateConstructorUsedError;
-  String? get token => throw _privateConstructorUsedError;
+  String? get userSecretId => throw _privateConstructorUsedError;
+  String? get deviceId => throw _privateConstructorUsedError;
+  String? get pushNotificationToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,9 +37,8 @@ abstract class $NotificationTokenEntityCopyWith<$Res> {
           $Res Function(NotificationTokenEntity) then) =
       _$NotificationTokenEntityCopyWithImpl<$Res, NotificationTokenEntity>;
   @useResult
-  $Res call({String? id, UserDeviceEntity? device, String? token});
-
-  $UserDeviceEntityCopyWith<$Res>? get device;
+  $Res call(
+      {String? userSecretId, String? deviceId, String? pushNotificationToken});
 }
 
 /// @nodoc
@@ -56,36 +55,24 @@ class _$NotificationTokenEntityCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? device = freezed,
-    Object? token = freezed,
+    Object? userSecretId = freezed,
+    Object? deviceId = freezed,
+    Object? pushNotificationToken = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      userSecretId: freezed == userSecretId
+          ? _value.userSecretId
+          : userSecretId // ignore: cast_nullable_to_non_nullable
               as String?,
-      device: freezed == device
-          ? _value.device
-          : device // ignore: cast_nullable_to_non_nullable
-              as UserDeviceEntity?,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
+      deviceId: freezed == deviceId
+          ? _value.deviceId
+          : deviceId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pushNotificationToken: freezed == pushNotificationToken
+          ? _value.pushNotificationToken
+          : pushNotificationToken // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserDeviceEntityCopyWith<$Res>? get device {
-    if (_value.device == null) {
-      return null;
-    }
-
-    return $UserDeviceEntityCopyWith<$Res>(_value.device!, (value) {
-      return _then(_value.copyWith(device: value) as $Val);
-    });
   }
 }
 
@@ -98,10 +85,8 @@ abstract class _$$NotificationTokenEntityImplCopyWith<$Res>
       __$$NotificationTokenEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? id, UserDeviceEntity? device, String? token});
-
-  @override
-  $UserDeviceEntityCopyWith<$Res>? get device;
+  $Res call(
+      {String? userSecretId, String? deviceId, String? pushNotificationToken});
 }
 
 /// @nodoc
@@ -117,22 +102,22 @@ class __$$NotificationTokenEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? device = freezed,
-    Object? token = freezed,
+    Object? userSecretId = freezed,
+    Object? deviceId = freezed,
+    Object? pushNotificationToken = freezed,
   }) {
     return _then(_$NotificationTokenEntityImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      userSecretId: freezed == userSecretId
+          ? _value.userSecretId
+          : userSecretId // ignore: cast_nullable_to_non_nullable
               as String?,
-      device: freezed == device
-          ? _value.device
-          : device // ignore: cast_nullable_to_non_nullable
-              as UserDeviceEntity?,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
+      deviceId: freezed == deviceId
+          ? _value.deviceId
+          : deviceId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pushNotificationToken: freezed == pushNotificationToken
+          ? _value.pushNotificationToken
+          : pushNotificationToken // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -142,21 +127,22 @@ class __$$NotificationTokenEntityImplCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$NotificationTokenEntityImpl implements _NotificationTokenEntity {
-  _$NotificationTokenEntityImpl({this.id, this.device, this.token});
+  _$NotificationTokenEntityImpl(
+      {this.userSecretId, this.deviceId, this.pushNotificationToken});
 
   factory _$NotificationTokenEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$NotificationTokenEntityImplFromJson(json);
 
   @override
-  final String? id;
+  final String? userSecretId;
   @override
-  final UserDeviceEntity? device;
+  final String? deviceId;
   @override
-  final String? token;
+  final String? pushNotificationToken;
 
   @override
   String toString() {
-    return 'NotificationTokenEntity(id: $id, device: $device, token: $token)';
+    return 'NotificationTokenEntity(userSecretId: $userSecretId, deviceId: $deviceId, pushNotificationToken: $pushNotificationToken)';
   }
 
   @override
@@ -164,14 +150,18 @@ class _$NotificationTokenEntityImpl implements _NotificationTokenEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NotificationTokenEntityImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.device, device) || other.device == device) &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.userSecretId, userSecretId) ||
+                other.userSecretId == userSecretId) &&
+            (identical(other.deviceId, deviceId) ||
+                other.deviceId == deviceId) &&
+            (identical(other.pushNotificationToken, pushNotificationToken) ||
+                other.pushNotificationToken == pushNotificationToken));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, device, token);
+  int get hashCode =>
+      Object.hash(runtimeType, userSecretId, deviceId, pushNotificationToken);
 
   @JsonKey(ignore: true)
   @override
@@ -190,19 +180,19 @@ class _$NotificationTokenEntityImpl implements _NotificationTokenEntity {
 
 abstract class _NotificationTokenEntity implements NotificationTokenEntity {
   factory _NotificationTokenEntity(
-      {final String? id,
-      final UserDeviceEntity? device,
-      final String? token}) = _$NotificationTokenEntityImpl;
+      {final String? userSecretId,
+      final String? deviceId,
+      final String? pushNotificationToken}) = _$NotificationTokenEntityImpl;
 
   factory _NotificationTokenEntity.fromJson(Map<String, dynamic> json) =
       _$NotificationTokenEntityImpl.fromJson;
 
   @override
-  String? get id;
+  String? get userSecretId;
   @override
-  UserDeviceEntity? get device;
+  String? get deviceId;
   @override
-  String? get token;
+  String? get pushNotificationToken;
   @override
   @JsonKey(ignore: true)
   _$$NotificationTokenEntityImplCopyWith<_$NotificationTokenEntityImpl>

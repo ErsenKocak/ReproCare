@@ -9,17 +9,15 @@ part of 'notification_token_entity.dart';
 _$NotificationTokenEntityImpl _$$NotificationTokenEntityImplFromJson(
         Map<String, dynamic> json) =>
     _$NotificationTokenEntityImpl(
-      id: json['id'] as String?,
-      device: json['device'] == null
-          ? null
-          : UserDeviceEntity.fromJson(json['device'] as Map<String, dynamic>),
-      token: json['token'] as String?,
+      userSecretId: json['userSecretId'] as String?,
+      deviceId: json['deviceId'] as String?,
+      pushNotificationToken: json['pushNotificationToken'] as String?,
     );
 
 Map<String, dynamic> _$$NotificationTokenEntityImplToJson(
         _$NotificationTokenEntityImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'device': instance.device?.toJson(),
-      'token': instance.token,
+      'userSecretId': instance.userSecretId,
+      'deviceId': instance.deviceId,
+      'pushNotificationToken': instance.pushNotificationToken,
     };

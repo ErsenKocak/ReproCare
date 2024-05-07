@@ -10,12 +10,12 @@ _$NotificationTokenRequestParamImpl
     _$$NotificationTokenRequestParamImplFromJson(Map<String, dynamic> json) =>
         _$NotificationTokenRequestParamImpl(
           deviceId: json['deviceId'] as String?,
-          token: json['token'] as String?,
+          pushNotificationToken: json['pushNotificationToken'] as String?,
         );
 
 Map<String, dynamic> _$$NotificationTokenRequestParamImplToJson(
         _$NotificationTokenRequestParamImpl instance) =>
     <String, dynamic>{
       'deviceId': instance.deviceId,
-      'token': instance.token,
+      'pushNotificationToken': instance.pushNotificationToken,
     };

@@ -4,9 +4,12 @@ enum HttpClientEndPoints {
   GetNotifications('/notifications'),
   DeleteNotification('/notifications'),
   ReadNotification('/notifications'),
-  InsertNotificationToken('/notifications'),
+  InsertNotificationToken(
+      '/PushNotificationToken/AddOrUpdatePushNotificationToken'),
   GetUserSettings('/UserSettings/GetUserSettings'),
-  UpdateUserSettings('/UserSettings/UpdateUserSettings');
+  UpdateUserSettings('/UserSettings/UpdateUserSettings'),
+  InsertDevice('/Device/AddOrUpdateDevice'),
+  GetAllDevice('/Device/GetAllDevice');
 
   const HttpClientEndPoints(this.URL);
   final String URL;

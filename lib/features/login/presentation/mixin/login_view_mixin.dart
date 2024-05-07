@@ -7,6 +7,7 @@ import 'package:reprocare/core/utils/formatter/text_input_formatter.dart';
 import 'package:reprocare/features/login/domain/entities/request/login_request_param/login_request_param.dart';
 import 'package:reprocare/features/login/presentation/cubit/auth_cubit/auth_cubit.dart';
 import 'package:reprocare/features/login/presentation/view/login_view.dart';
+import 'package:reprocare/helper/device/device_info/device_info_helper.dart';
 
 mixin LoginViewMixin on State<LoginView> {
   late GlobalKey<FormState> formKey;
@@ -27,6 +28,7 @@ mixin LoginViewMixin on State<LoginView> {
     passwordTextController = TextEditingController();
     passwordObscureTextNotifer = ValueNotifier<bool>(true);
     authCubit = ServiceLocatorProvider.provide<AuthCubit>();
+    DeviceInfoHelper().getUserDeviceRequest();
   }
 
   blocStateListener(BuildContext context, AuthState state) {
