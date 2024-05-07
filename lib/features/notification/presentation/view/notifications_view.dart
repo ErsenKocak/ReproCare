@@ -1,29 +1,32 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_time_ago/get_time_ago.dart';
 import 'package:reprocare/common/functions/app/app_functions.dart';
 import 'package:reprocare/common/functions/date/date_functions.dart';
+import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/common/widgets/app_bar/app_bar_widget.dart';
-import 'package:reprocare/common/widgets/app_loading/app_loading.dart';
 import 'package:reprocare/common/widgets/empty/empty_widget.dart';
 import 'package:reprocare/common/widgets/pagination/app_pagination.dart';
 import 'package:reprocare/common/widgets/slidable/slidable_widget.dart';
 import 'package:reprocare/common/widgets/slidable/widgets/slidable_item/slidable_item_widget.dart';
 import 'package:reprocare/common/widgets/svg_picture/app_svg_picture.dart';
+import 'package:reprocare/core/constants/cache/cache_constants.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
 import 'package:reprocare/core/constants/font_weight/app_font_weight.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
 import 'package:reprocare/core/enums/date/date_format_types.dart';
 import 'package:reprocare/core/extensions/sized_box/sized_box_extension.dart';
+import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
 import 'package:reprocare/features/notification/domain/entities/response/notification_model/notification_entity.dart';
 import 'package:reprocare/features/notification/presentation/mixin/notifications_view_mixin.dart';
 import 'package:reprocare/features/notification/presentation/widgets/shimmer/notification_view_shimmer.dart';
+import 'package:reprocare/features/settings/domain/entities/response/user_settings_entity/user_entity.dart';
 import 'package:reprocare/generated/assets.gen.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
 import 'package:reprocare/helper/localization/localization_helper.dart';
-import 'package:reprocare/helper/notification/local_notification/local_notification_helper.dart';
 import 'dart:ui' as ui;
 
 class NotificationsView extends StatefulWidget {
@@ -43,7 +46,12 @@ class _NotificationsViewState extends State<NotificationsView>
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.notification_add),
           onPressed: () async {
-            AppLoading.showLoading();
+            final IAuthLocalService _loginService =
+                ServiceLocatorProvider.provide<IAuthLocalService>();
+            UserEntity? _loginReponseEntity =
+                await _loginService.get(CacheConstants.User.name);
+            String token = _loginReponseEntity?.token ?? '';
+            log(token);
           }),
     );
   }

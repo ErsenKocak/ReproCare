@@ -2,16 +2,12 @@ import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reprocare/common/cubit/theme/data/enums/theme_mode_enum.dart';
 import 'package:reprocare/common/functions/app/app_functions.dart';
 import 'package:reprocare/common/router/app_route_observer_mixin.dart';
-import 'package:reprocare/common/router/app_router.dart';
-import 'package:reprocare/common/router/app_routes.dart';
 import 'package:reprocare/common/widgets/app_bar/app_bar_widget.dart';
-import 'package:reprocare/common/widgets/app_bar/leading/arrow_back/app_bar_arrow_back_leading.dart';
-import 'package:reprocare/common/widgets/app_bar/leading/profile_avatar/app_bar_profile_avatar_leading.dart';
+
 import 'package:reprocare/common/widgets/bottom_sheets/bottom_sheet/app_bottom_sheet.dart';
 import 'package:reprocare/common/widgets/buttons/elevated_button/elevated_button.dart';
 import 'package:reprocare/common/widgets/scrollable_widgets/scrollable_body/scrollable_body.dart';
@@ -21,7 +17,6 @@ import 'package:reprocare/core/constants/colors/app_light_colors.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
 import 'package:reprocare/core/extensions/sized_box/sized_box_extension.dart';
 import 'package:reprocare/features/settings/domain/enums/permission_type.dart';
-import 'package:reprocare/features/settings/presentation/cubit/user_settings_cubit.dart';
 import 'package:reprocare/features/settings/presentation/mixin/settings_view_mixin.dart';
 import 'package:reprocare/features/settings/presentation/widgets/settings_language_item/settings_language_item.dart';
 import 'package:reprocare/features/settings/presentation/widgets/settings_list_item/data/entities/list_tile_item.dart';
@@ -60,35 +55,8 @@ class _SettingsViewState extends State<SettingsView>
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          _buildUserInformation,
-          12.0.h.sbxh,
           _buildSettingsItems,
         ],
-      ),
-    );
-  }
-
-  Widget get _buildUserInformation {
-    return BlocBuilder<UserSettingsCubit, UserSettingsState>(
-      builder: (context, state) => state.when(
-        initial: () => const SizedBox(),
-        loading: () => const SizedBox(),
-        error: (final String errorMessage) => const SizedBox(),
-        success: () => Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            12.0.h.sbxh,
-            AppBarCircleAvatarLeading(),
-            12.0.h.sbxh,
-            Text(
-              '${userSettingsCubit.userSettings?.user?.name} ${userSettingsCubit.userSettings?.user?.surname}',
-              style: AppThemes.currentTheme.textTheme.bodyMedium,
-            ),
-            12.0.h.sbxh,
-            _buildEditProfile,
-          ],
-        ),
       ),
     );
   }

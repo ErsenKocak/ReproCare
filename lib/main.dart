@@ -52,8 +52,7 @@ class ReproCareApp extends StatelessWidget {
                 locale: context.locale,
                 themeMode:
                     ServiceLocatorProvider.provide<ThemeCubit>().themeMode,
-                // theme: ServiceLocatorProvider.provide<ThemeCubit>().themeData,
-                theme: AppThemes.lightTheme,
+                theme: ServiceLocatorProvider.provide<ThemeCubit>().themeData,
                 themeAnimationDuration: Duration(milliseconds: 0),
                 darkTheme: AppThemes.darkTheme,
                 debugShowCheckedModeBanner: false,

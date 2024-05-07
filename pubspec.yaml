@@ -135,8 +135,6 @@ flutter:
     - assets/images/
     - assets/images/bottom_sheet/
     - assets/images/splash/
-    - assets/images/splash/ios/
-    - assets/images/splash/android/
     - assets/icons/
     - assets/icons/bottom_sheet/
     - assets/icons/launcher/

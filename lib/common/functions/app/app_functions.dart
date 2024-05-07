@@ -1,9 +1,7 @@
 import 'dart:math';
-import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 import 'package:reprocare/common/logger/app_logger.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 

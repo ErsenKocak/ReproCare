@@ -36,6 +36,7 @@ class $AssetsIconsGen {
       const $AssetsIconsEmptyWidgetGen();
   $AssetsIconsGeneralGen get general => const $AssetsIconsGeneralGen();
   $AssetsIconsInputsGen get inputs => const $AssetsIconsInputsGen();
+  $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
   $AssetsIconsSettingsGen get settings => const $AssetsIconsSettingsGen();
 }
 
@@ -44,6 +45,7 @@ class $AssetsImagesGen {
 
   $AssetsImagesBottomSheetGen get bottomSheet =>
       const $AssetsImagesBottomSheetGen();
+  $AssetsImagesSplashGen get splash => const $AssetsImagesSplashGen();
 }
 
 class $AssetsIconsAppBarGen {
@@ -187,6 +189,10 @@ class $AssetsIconsInputsGen {
   List<SvgGenImage> get values => [iconEdit, iconEye, iconEyeClose, iconInfo];
 }
 
+class $AssetsIconsLauncherGen {
+  const $AssetsIconsLauncherGen();
+}
+
 class $AssetsIconsSettingsGen {
   const $AssetsIconsSettingsGen();
 
@@ -271,6 +277,21 @@ class $AssetsImagesBottomSheetGen {
         imgBigWarning,
         imgBigWarningDark
       ];
+}
+
+class $AssetsImagesSplashGen {
+  const $AssetsImagesSplashGen();
+
+  /// File path: assets/images/splash/img_splash.png
+  AssetGenImage get imgSplash =>
+      const AssetGenImage('assets/images/splash/img_splash.png');
+
+  /// File path: assets/images/splash/img_splash_full_white.png
+  AssetGenImage get imgSplashFullWhite =>
+      const AssetGenImage('assets/images/splash/img_splash_full_white.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [imgSplash, imgSplashFullWhite];
 }
 
 class Assets {

@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reprocare/common/widgets/svg_picture/app_svg_picture.dart';
 import 'package:reprocare/core/constants/colors/app_dark_colors.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
-import 'package:reprocare/core/constants/font_family/app_font_family.dart';
 import 'package:reprocare/core/constants/font_weight/app_font_weight.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
 import 'package:reprocare/core/enums/app_padding/app_padding.dart';

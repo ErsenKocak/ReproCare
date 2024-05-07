@@ -11,14 +11,12 @@ import 'package:reprocare/common/network/http_client/model/cancel_token.dart';
 import 'package:reprocare/common/widgets/app_loading/app_loading.dart';
 import 'package:reprocare/common/widgets/bottom_sheets/bottom_sheet/app_bottom_sheet.dart';
 import 'package:reprocare/common/widgets/bottom_sheets/error_bottom_sheet/error_bottom_sheet.dart';
-import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/constants/cache/cache_constants.dart';
 import 'package:reprocare/core/constants/network/http_call_type/http_call_type.dart';
 import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
 import 'package:reprocare/features/login/presentation/cubit/auth_cubit/auth_cubit.dart';
 import 'package:reprocare/features/settings/domain/entities/response/user_settings_entity/user_entity.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
-import 'package:reprocare/helper/localization/localization_helper.dart';
 import 'package:reprocare/helper/network/internet_connection_check/internet_connection_check_helper.dart';
 
 final class NetworkClient {

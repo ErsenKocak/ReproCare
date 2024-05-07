@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/common/router/app_router.dart';
 import 'package:reprocare/common/widgets/switch/app_switch.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';

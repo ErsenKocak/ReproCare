@@ -15,10 +15,28 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="sM7-BI-Sub">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="LaunchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Fl1-fO-dHG">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="btn-fg-MAB">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Fl1-fO-dHG" secondAttribute="trailing" id="7XA-gt-xCO"/>
+                            <constraint firstItem="Fl1-fO-dHG" firstAttribute="top" secondItem="sM7-BI-Sub" secondAttribute="top" id="7zl-uK-KxE"/>
+                            <constraint firstItem="btn-fg-MAB" firstAttribute="leading" secondItem="sM7-BI-Sub" secondAttribute="leading" id="DSA-xq-3cJ"/>
+                            <constraint firstItem="Fl1-fO-dHG" firstAttribute="bottom" secondItem="sM7-BI-Sub" secondAttribute="bottom" id="Ejn-Ch-FzW"/>
+                            <constraint firstItem="btn-fg-MAB" firstAttribute="top" secondItem="sM7-BI-Sub" secondAttribute="top" id="IAS-Uz-tc7"/>
+                            <constraint firstAttribute="trailing" secondItem="btn-fg-MAB" secondAttribute="trailing" id="rVb-TE-Brq"/>
+                            <constraint firstItem="btn-fg-MAB" firstAttribute="bottom" secondItem="sM7-BI-Sub" secondAttribute="bottom" id="toM-jQ-kUN"/>
+                            <constraint firstItem="Fl1-fO-dHG" firstAttribute="leading" secondItem="sM7-BI-Sub" secondAttribute="leading" id="zay-28-vrF"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -26,4 +44,8 @@
             <point key="canvasLocation" x="-176" y="-76"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LaunchBackground" width="1" height="1"/>
+        <image name="LaunchImage" width="294.33334350585938" height="295"/>
+    </resources>
 </document>

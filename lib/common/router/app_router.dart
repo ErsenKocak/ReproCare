@@ -15,7 +15,6 @@ import 'package:reprocare/features/bottom_navigation_bar/presentation/view/botto
 import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
 import 'package:reprocare/features/login/presentation/view/login_view.dart';
 import 'package:reprocare/features/notification/presentation/view/notifications_view.dart';
-import 'package:reprocare/features/profile/presentation/view/profile_view.dart';
 import 'package:reprocare/features/settings/presentation/views/settings_view.dart';
 import 'package:reprocare/helper/firebase/analytics/firebase_analytics_helper.dart';
 
@@ -61,7 +60,7 @@ class AppRouter {
     redirect: (context, state) async {
       AppLogger.call(title: 'Go Router Redirect', value: state.matchedLocation);
 
-      if (state.matchedLocation == AppRoutes.Onboarding.path) {
+      if (state.matchedLocation == AppRoutes.Login.path) {
         final IAuthLocalService _loginLocalService =
             ServiceLocatorProvider.provide<IAuthLocalService>();
 

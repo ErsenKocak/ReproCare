@@ -20,19 +20,7 @@ UserSettingsModel _$UserSettingsModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserSettingsModel {
-  String? get id => throw _privateConstructorUsedError;
-  String? get language => throw _privateConstructorUsedError;
-  int? get pomodoroTime => throw _privateConstructorUsedError;
-  int? get shortBreakTime => throw _privateConstructorUsedError;
-  int? get longBreakTime => throw _privateConstructorUsedError;
-  int? get longBreakPomodoroNumber => throw _privateConstructorUsedError;
-  bool? get startPomodoroAutomaticly => throw _privateConstructorUsedError;
-  bool? get startBreakAutomaticly => throw _privateConstructorUsedError;
-  bool? get noBreak => throw _privateConstructorUsedError;
-  bool? get useSystemTimeConfig => throw _privateConstructorUsedError;
-  int? get startWeekday => throw _privateConstructorUsedError;
-  bool? get pm => throw _privateConstructorUsedError;
-  UserModel? get user => throw _privateConstructorUsedError;
+  bool? get isNotificationActive => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,22 +34,7 @@ abstract class $UserSettingsModelCopyWith<$Res> {
           UserSettingsModel value, $Res Function(UserSettingsModel) then) =
       _$UserSettingsModelCopyWithImpl<$Res, UserSettingsModel>;
   @useResult
-  $Res call(
-      {String? id,
-      String? language,
-      int? pomodoroTime,
-      int? shortBreakTime,
-      int? longBreakTime,
-      int? longBreakPomodoroNumber,
-      bool? startPomodoroAutomaticly,
-      bool? startBreakAutomaticly,
-      bool? noBreak,
-      bool? useSystemTimeConfig,
-      int? startWeekday,
-      bool? pm,
-      UserModel? user});
-
-  $UserModelCopyWith<$Res>? get user;
+  $Res call({bool? isNotificationActive});
 }
 
 /// @nodoc
@@ -77,86 +50,14 @@ class _$UserSettingsModelCopyWithImpl<$Res, $Val extends UserSettingsModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? language = freezed,
-    Object? pomodoroTime = freezed,
-    Object? shortBreakTime = freezed,
-    Object? longBreakTime = freezed,
-    Object? longBreakPomodoroNumber = freezed,
-    Object? startPomodoroAutomaticly = freezed,
-    Object? startBreakAutomaticly = freezed,
-    Object? noBreak = freezed,
-    Object? useSystemTimeConfig = freezed,
-    Object? startWeekday = freezed,
-    Object? pm = freezed,
-    Object? user = freezed,
+    Object? isNotificationActive = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      language: freezed == language
-          ? _value.language
-          : language // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pomodoroTime: freezed == pomodoroTime
-          ? _value.pomodoroTime
-          : pomodoroTime // ignore: cast_nullable_to_non_nullable
-              as int?,
-      shortBreakTime: freezed == shortBreakTime
-          ? _value.shortBreakTime
-          : shortBreakTime // ignore: cast_nullable_to_non_nullable
-              as int?,
-      longBreakTime: freezed == longBreakTime
-          ? _value.longBreakTime
-          : longBreakTime // ignore: cast_nullable_to_non_nullable
-              as int?,
-      longBreakPomodoroNumber: freezed == longBreakPomodoroNumber
-          ? _value.longBreakPomodoroNumber
-          : longBreakPomodoroNumber // ignore: cast_nullable_to_non_nullable
-              as int?,
-      startPomodoroAutomaticly: freezed == startPomodoroAutomaticly
-          ? _value.startPomodoroAutomaticly
-          : startPomodoroAutomaticly // ignore: cast_nullable_to_non_nullable
+      isNotificationActive: freezed == isNotificationActive
+          ? _value.isNotificationActive
+          : isNotificationActive // ignore: cast_nullable_to_non_nullable
               as bool?,
-      startBreakAutomaticly: freezed == startBreakAutomaticly
-          ? _value.startBreakAutomaticly
-          : startBreakAutomaticly // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      noBreak: freezed == noBreak
-          ? _value.noBreak
-          : noBreak // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      useSystemTimeConfig: freezed == useSystemTimeConfig
-          ? _value.useSystemTimeConfig
-          : useSystemTimeConfig // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      startWeekday: freezed == startWeekday
-          ? _value.startWeekday
-          : startWeekday // ignore: cast_nullable_to_non_nullable
-              as int?,
-      pm: freezed == pm
-          ? _value.pm
-          : pm // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as UserModel?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res>? get user {
-    if (_value.user == null) {
-      return null;
-    }
-
-    return $UserModelCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
   }
 }
 
@@ -168,23 +69,7 @@ abstract class _$$UserSettingsModelImplCopyWith<$Res>
       __$$UserSettingsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? id,
-      String? language,
-      int? pomodoroTime,
-      int? shortBreakTime,
-      int? longBreakTime,
-      int? longBreakPomodoroNumber,
-      bool? startPomodoroAutomaticly,
-      bool? startBreakAutomaticly,
-      bool? noBreak,
-      bool? useSystemTimeConfig,
-      int? startWeekday,
-      bool? pm,
-      UserModel? user});
-
-  @override
-  $UserModelCopyWith<$Res>? get user;
+  $Res call({bool? isNotificationActive});
 }
 
 /// @nodoc
@@ -198,73 +83,13 @@ class __$$UserSettingsModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? language = freezed,
-    Object? pomodoroTime = freezed,
-    Object? shortBreakTime = freezed,
-    Object? longBreakTime = freezed,
-    Object? longBreakPomodoroNumber = freezed,
-    Object? startPomodoroAutomaticly = freezed,
-    Object? startBreakAutomaticly = freezed,
-    Object? noBreak = freezed,
-    Object? useSystemTimeConfig = freezed,
-    Object? startWeekday = freezed,
-    Object? pm = freezed,
-    Object? user = freezed,
+    Object? isNotificationActive = freezed,
   }) {
     return _then(_$UserSettingsModelImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      language: freezed == language
-          ? _value.language
-          : language // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pomodoroTime: freezed == pomodoroTime
-          ? _value.pomodoroTime
-          : pomodoroTime // ignore: cast_nullable_to_non_nullable
-              as int?,
-      shortBreakTime: freezed == shortBreakTime
-          ? _value.shortBreakTime
-          : shortBreakTime // ignore: cast_nullable_to_non_nullable
-              as int?,
-      longBreakTime: freezed == longBreakTime
-          ? _value.longBreakTime
-          : longBreakTime // ignore: cast_nullable_to_non_nullable
-              as int?,
-      longBreakPomodoroNumber: freezed == longBreakPomodoroNumber
-          ? _value.longBreakPomodoroNumber
-          : longBreakPomodoroNumber // ignore: cast_nullable_to_non_nullable
-              as int?,
-      startPomodoroAutomaticly: freezed == startPomodoroAutomaticly
-          ? _value.startPomodoroAutomaticly
-          : startPomodoroAutomaticly // ignore: cast_nullable_to_non_nullable
+      isNotificationActive: freezed == isNotificationActive
+          ? _value.isNotificationActive
+          : isNotificationActive // ignore: cast_nullable_to_non_nullable
               as bool?,
-      startBreakAutomaticly: freezed == startBreakAutomaticly
-          ? _value.startBreakAutomaticly
-          : startBreakAutomaticly // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      noBreak: freezed == noBreak
-          ? _value.noBreak
-          : noBreak // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      useSystemTimeConfig: freezed == useSystemTimeConfig
-          ? _value.useSystemTimeConfig
-          : useSystemTimeConfig // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      startWeekday: freezed == startWeekday
-          ? _value.startWeekday
-          : startWeekday // ignore: cast_nullable_to_non_nullable
-              as int?,
-      pm: freezed == pm
-          ? _value.pm
-          : pm // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as UserModel?,
     ));
   }
 }
@@ -273,54 +98,17 @@ class __$$UserSettingsModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$UserSettingsModelImpl implements _UserSettingsModel {
-  _$UserSettingsModelImpl(
-      {this.id,
-      this.language,
-      this.pomodoroTime,
-      this.shortBreakTime,
-      this.longBreakTime,
-      this.longBreakPomodoroNumber,
-      this.startPomodoroAutomaticly,
-      this.startBreakAutomaticly,
-      this.noBreak,
-      this.useSystemTimeConfig,
-      this.startWeekday,
-      this.pm,
-      this.user});
+  _$UserSettingsModelImpl({this.isNotificationActive});
 
   factory _$UserSettingsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserSettingsModelImplFromJson(json);
 
   @override
-  final String? id;
-  @override
-  final String? language;
-  @override
-  final int? pomodoroTime;
-  @override
-  final int? shortBreakTime;
-  @override
-  final int? longBreakTime;
-  @override
-  final int? longBreakPomodoroNumber;
-  @override
-  final bool? startPomodoroAutomaticly;
-  @override
-  final bool? startBreakAutomaticly;
-  @override
-  final bool? noBreak;
-  @override
-  final bool? useSystemTimeConfig;
-  @override
-  final int? startWeekday;
-  @override
-  final bool? pm;
-  @override
-  final UserModel? user;
+  final bool? isNotificationActive;
 
   @override
   String toString() {
-    return 'UserSettingsModel(id: $id, language: $language, pomodoroTime: $pomodoroTime, shortBreakTime: $shortBreakTime, longBreakTime: $longBreakTime, longBreakPomodoroNumber: $longBreakPomodoroNumber, startPomodoroAutomaticly: $startPomodoroAutomaticly, startBreakAutomaticly: $startBreakAutomaticly, noBreak: $noBreak, useSystemTimeConfig: $useSystemTimeConfig, startWeekday: $startWeekday, pm: $pm, user: $user)';
+    return 'UserSettingsModel(isNotificationActive: $isNotificationActive)';
   }
 
   @override
@@ -328,49 +116,13 @@ class _$UserSettingsModelImpl implements _UserSettingsModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserSettingsModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.language, language) ||
-                other.language == language) &&
-            (identical(other.pomodoroTime, pomodoroTime) ||
-                other.pomodoroTime == pomodoroTime) &&
-            (identical(other.shortBreakTime, shortBreakTime) ||
-                other.shortBreakTime == shortBreakTime) &&
-            (identical(other.longBreakTime, longBreakTime) ||
-                other.longBreakTime == longBreakTime) &&
-            (identical(
-                    other.longBreakPomodoroNumber, longBreakPomodoroNumber) ||
-                other.longBreakPomodoroNumber == longBreakPomodoroNumber) &&
-            (identical(
-                    other.startPomodoroAutomaticly, startPomodoroAutomaticly) ||
-                other.startPomodoroAutomaticly == startPomodoroAutomaticly) &&
-            (identical(other.startBreakAutomaticly, startBreakAutomaticly) ||
-                other.startBreakAutomaticly == startBreakAutomaticly) &&
-            (identical(other.noBreak, noBreak) || other.noBreak == noBreak) &&
-            (identical(other.useSystemTimeConfig, useSystemTimeConfig) ||
-                other.useSystemTimeConfig == useSystemTimeConfig) &&
-            (identical(other.startWeekday, startWeekday) ||
-                other.startWeekday == startWeekday) &&
-            (identical(other.pm, pm) || other.pm == pm) &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.isNotificationActive, isNotificationActive) ||
+                other.isNotificationActive == isNotificationActive));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      language,
-      pomodoroTime,
-      shortBreakTime,
-      longBreakTime,
-      longBreakPomodoroNumber,
-      startPomodoroAutomaticly,
-      startBreakAutomaticly,
-      noBreak,
-      useSystemTimeConfig,
-      startWeekday,
-      pm,
-      user);
+  int get hashCode => Object.hash(runtimeType, isNotificationActive);
 
   @JsonKey(ignore: true)
   @override
@@ -388,50 +140,14 @@ class _$UserSettingsModelImpl implements _UserSettingsModel {
 }
 
 abstract class _UserSettingsModel implements UserSettingsModel {
-  factory _UserSettingsModel(
-      {final String? id,
-      final String? language,
-      final int? pomodoroTime,
-      final int? shortBreakTime,
-      final int? longBreakTime,
-      final int? longBreakPomodoroNumber,
-      final bool? startPomodoroAutomaticly,
-      final bool? startBreakAutomaticly,
-      final bool? noBreak,
-      final bool? useSystemTimeConfig,
-      final int? startWeekday,
-      final bool? pm,
-      final UserModel? user}) = _$UserSettingsModelImpl;
+  factory _UserSettingsModel({final bool? isNotificationActive}) =
+      _$UserSettingsModelImpl;
 
   factory _UserSettingsModel.fromJson(Map<String, dynamic> json) =
       _$UserSettingsModelImpl.fromJson;
 
   @override
-  String? get id;
-  @override
-  String? get language;
-  @override
-  int? get pomodoroTime;
-  @override
-  int? get shortBreakTime;
-  @override
-  int? get longBreakTime;
-  @override
-  int? get longBreakPomodoroNumber;
-  @override
-  bool? get startPomodoroAutomaticly;
-  @override
-  bool? get startBreakAutomaticly;
-  @override
-  bool? get noBreak;
-  @override
-  bool? get useSystemTimeConfig;
-  @override
-  int? get startWeekday;
-  @override
-  bool? get pm;
-  @override
-  UserModel? get user;
+  bool? get isNotificationActive;
   @override
   @JsonKey(ignore: true)
   _$$UserSettingsModelImplCopyWith<_$UserSettingsModelImpl> get copyWith =>

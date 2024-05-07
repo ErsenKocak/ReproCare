@@ -1,17 +1,12 @@
 import 'dart:developer';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
-import 'package:reprocare/common/router/app_router.dart';
-import 'package:reprocare/common/router/app_routes.dart';
 import 'package:reprocare/common/widgets/app_loading/app_loading.dart';
 import 'package:reprocare/core/utils/formatter/text_input_formatter.dart';
-import 'package:reprocare/core/utils/validator/text_input_validator/text_input_validator.dart';
 import 'package:reprocare/features/login/domain/entities/request/login_request_param/login_request_param.dart';
 import 'package:reprocare/features/login/presentation/cubit/auth_cubit/auth_cubit.dart';
 import 'package:reprocare/features/login/presentation/view/login_view.dart';
-import 'package:reprocare/generated/locale_keys.g.dart';
 
 mixin LoginViewMixin on State<LoginView> {
   late GlobalKey<FormState> formKey;
