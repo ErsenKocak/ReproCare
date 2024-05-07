@@ -86,11 +86,11 @@ final class AppThemes {
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: AppDarkColors.secondaryDarkColor,
-          selectedItemColor: AppDarkColors.primaryPink,
+          selectedItemColor: AppDarkColors.primaryRed,
           unselectedItemColor: AppDarkColors.white,
         ),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: AppDarkColors.primaryPink,
+          backgroundColor: AppDarkColors.primaryRed,
           foregroundColor: AppDarkColors.black,
         ),
         cardTheme: const CardTheme(

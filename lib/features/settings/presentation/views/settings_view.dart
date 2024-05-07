@@ -90,7 +90,7 @@ class _SettingsViewState extends State<SettingsView>
             : AppDarkColors.secondaryDarkColor,
         textColor: AppThemes.brightness == Brightness.light
             ? null
-            : AppDarkColors.primaryPink,
+            : AppDarkColors.primaryRed,
         // onPressed: () =>
         //     AppRouter.navigatePushNamed(AppRoutes.ProfileSettings.path),
       ),

@@ -6,7 +6,8 @@ class AppDarkColors {
   static const Color primaryGrey = Color(0xFFE1E5E8);
   static const Color grey = Color(0xFFA6A6A6);
   static const Color grey2 = Color(0xFF3D464B);
-  static const Color primaryPink = Color(0xFFFF5848);
+  static const Color primaryRed = Color(0xFFB52D30);
+
   static const Color primaryColor = Color(0xFF0D1723);
   static const Color secondaryDarkColor = Color(0xFF232D38);
   static const Color onBoardingAnswerSelectedColor = Color(0xFF7A8086);

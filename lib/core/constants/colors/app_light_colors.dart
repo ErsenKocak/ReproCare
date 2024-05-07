@@ -4,7 +4,7 @@ class AppLightColors {
   static const Color white = Color(0xFFFDFDFD);
   static const Color black = Color(0xFF1B1B1B);
   static const Color scaffoldColor = Color(0xFFF7F7FA);
-  static const Color primaryColor = Color.fromARGB(255, 181, 25, 19);
+  static const Color primaryColor = Color(0xFFB52D30);
   static const Color primaryGreen = Color(0xFF7FBDAE);
   static const Color primaryTextColor = Color(0xFF050506);
   static const Color secondaryTextColor = Color(0xFF808080);
