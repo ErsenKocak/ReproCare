@@ -70,6 +70,7 @@ class _SettingsViewState extends State<SettingsView>
           body: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              8.h.sbxh,
               _buildSettingsItems,
             ],
           ),
