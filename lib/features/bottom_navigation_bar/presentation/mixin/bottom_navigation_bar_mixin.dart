@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:reprocare/common/base/mixin/base_mixin.dart';
 import 'package:reprocare/common/base/model/request/pagination_request_param/pagination_request_param.dart';
@@ -9,6 +11,7 @@ import 'package:reprocare/features/device/domain/entities/request/user_device_re
 import 'package:reprocare/features/device/presentation/cubit/device_cubit.dart';
 import 'package:reprocare/features/notification/domain/entities/request/notification_token_request_param/notification_token_request_param.dart';
 import 'package:reprocare/features/notification/presentation/cubit/notification_cubit.dart';
+import 'package:reprocare/helper/firebase/analytics/firebase_analytics_helper.dart';
 import 'package:reprocare/helper/localization/localization_helper.dart';
 import 'package:reprocare/helper/notification/firebase_notification/firebase_nofitication_helper.dart';
 
@@ -33,8 +36,6 @@ mixin BottomNavigationBarMixin on State<BottomNavigationBarView> {
 
   Future<void> initializeServices() async {
     await insertUserDevice();
-    // notificationCubit
-    //     .getNotifications(PaginationRequestParam(page: 0, size: 20));
   }
 
   Future<void> insertUserDevice() async {
@@ -46,13 +47,14 @@ mixin BottomNavigationBarMixin on State<BottomNavigationBarView> {
   Future<void> insertNotificationToken() async {
     if (deviceCubit.currentUserDevice != null) {
       String? token = await FirebaseNotificationHelper.getToken;
-      if (token != '') {
-        notificationCubit.insertNotificationToken(
+      if (token != '' && token != null) {
+        await notificationCubit.insertNotificationToken(
           NotificationTokenRequestParam(
             deviceId: deviceCubit.currentUserDevice!.deviceId,
             pushNotificationToken: token,
           ),
         );
+        await notificationCubit.getNotifications();
       }
     }
   }
@@ -66,8 +68,7 @@ mixin BottomNavigationBarMixin on State<BottomNavigationBarView> {
       case 1:
         bottomNavigatorRoute = AppRoutes.Settings.path;
     }
-    //TODO
-    // FirebaseAnalyticsHelper.logScreenView(bottomNavigatorRoute);
+    FirebaseAnalyticsHelper.logScreenView(bottomNavigatorRoute);
     AppRouter.goNamed(bottomNavigatorRoute);
   }
 }

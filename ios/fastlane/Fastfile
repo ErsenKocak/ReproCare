@@ -18,9 +18,9 @@ default_platform(:ios)
 platform :ios do
   desc "IOS new version"
     lane :ios_firebase_distribution_dev do
-        sh("flutter clean")
-        sh("flutter pub get")
-        sh("flutter build ios --release")
+        # sh("flutter clean")
+        # sh("flutter pub get")
+        # sh("flutter build ios --release")
         build_app(
             scheme: "Runner",
             archive_path: "./build/Runner.xcarchive",
@@ -28,7 +28,7 @@ platform :ios do
             output_directory: "./build/Runner"
         )
         firebase_app_distribution(
-            app: "1:826475858519:ios:269f5d115b8b7388ff7112",
+            app: "1:826475858519:ios:06a394d988d35b99ff7112",
             groups: "ios---dev",
             release_notes: "",
             firebase_cli_path: "/usr/local/bin/firebase",

@@ -5,7 +5,7 @@ relocations:
   - { offsetInCU: 0x34, offset: 0x538D4, size: 0x8, addend: 0x0, symName: _FirebaseRemoteConfigInteropVersionString, symObjAddr: 0x0, symBinAddr: 0x86D0, symSize: 0x0 }
   - { offsetInCU: 0x69, offset: 0x53909, size: 0x8, addend: 0x0, symName: _FirebaseRemoteConfigInteropVersionNumber, symObjAddr: 0x40, symBinAddr: 0x8710, symSize: 0x0 }
   - { offsetInCU: 0x27, offset: 0x53946, size: 0x8, addend: 0x0, symName: '_$s27FirebaseRemoteConfigInterop0bC9ConstantsC29NamespaceGoogleMobilePlatform_WZ', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x24 }
-  - { offsetInCU: 0x4B, offset: 0x5396A, size: 0x8, addend: 0x0, symName: '_$s27FirebaseRemoteConfigInterop0bC9ConstantsC29NamespaceGoogleMobilePlatformSSvpZ', symObjAddr: 0x1F80, symBinAddr: 0xD130, symSize: 0x0 }
+  - { offsetInCU: 0x4B, offset: 0x5396A, size: 0x8, addend: 0x0, symName: '_$s27FirebaseRemoteConfigInterop0bC9ConstantsC29NamespaceGoogleMobilePlatformSSvpZ', symObjAddr: 0x1FA0, symBinAddr: 0xD130, symSize: 0x0 }
   - { offsetInCU: 0x59, offset: 0x53978, size: 0x8, addend: 0x0, symName: '_$s27FirebaseRemoteConfigInterop0bC9ConstantsC29NamespaceGoogleMobilePlatform_WZ', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x24 }
   - { offsetInCU: 0x73, offset: 0x53992, size: 0x8, addend: 0x0, symName: '_$s27FirebaseRemoteConfigInterop0bC9ConstantsC29NamespaceGoogleMobilePlatformSSvau', symObjAddr: 0x24, symBinAddr: 0x4024, symSize: 0x40 }
   - { offsetInCU: 0xA4, offset: 0x539C3, size: 0x8, addend: 0x0, symName: '_$s27FirebaseRemoteConfigInterop0bC9ConstantsC29NamespaceGoogleMobilePlatformSSvgZ', symObjAddr: 0x64, symBinAddr: 0x4064, symSize: 0x5C }

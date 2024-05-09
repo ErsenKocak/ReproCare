@@ -14,13 +14,11 @@ final class NotificationService implements INotificationService {
 
   NotificationService(this._networkClient);
   @override
-  Future<Result<List<NotificationModel>, AppException>> getNotifications(
-    PaginationRequestParam paginationRequest,
-  ) async {
+  Future<Result<List<NotificationModel>, AppException>>
+      getNotifications() async {
     return await _networkClient.call(
       path: HttpClientEndPoints.GetNotifications.URL,
       callType: HttpCallType.GET,
-      queryParameters: paginationRequest.toJson(),
       mapper: (json) => APIModelMapper.jsonToList<NotificationModel>(
         json,
         (json) => NotificationModel.fromJson(json),
@@ -30,26 +28,25 @@ final class NotificationService implements INotificationService {
 
   @override
   Future<Result<bool, AppException>> deleteNotification(
-    String notificationId,
+    int id,
   ) async {
     return await _networkClient.call(
       path: HttpClientEndPoints.DeleteNotification.URL,
       callType: HttpCallType.DELETE,
       queryParameters: {
-        'notificationId': notificationId,
+        'Id': id,
       },
       mapper: (json) => true,
     );
   }
 
   @override
-  Future<Result<bool, AppException>> readNotification(
-      String notificationId) async {
+  Future<Result<bool, AppException>> readNotification(int id) async {
     return await _networkClient.call(
       path: HttpClientEndPoints.ReadNotification.URL,
-      callType: HttpCallType.PATCH,
-      queryParameters: {
-        'notificationId': notificationId,
+      callType: HttpCallType.POST,
+      data: {
+        'Id': id,
       },
       mapper: (json) => true,
     );

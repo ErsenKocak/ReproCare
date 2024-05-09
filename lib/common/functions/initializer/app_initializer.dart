@@ -19,7 +19,6 @@ import 'package:reprocare/helper/notification/firebase_notification/firebase_nof
 import 'package:reprocare/helper/notification/local_notification/local_notification_helper.dart';
 
 class AppInitializer {
-  //TODO
   static initialize() async {
     WidgetsFlutterBinding.ensureInitialized();
     await EasyLocalization.ensureInitialized();

@@ -6,8 +6,9 @@ part 'notification_model.g.dart';
 @freezed
 class NotificationModel with _$NotificationModel {
   factory NotificationModel({
-    String? id,
-    String? userId,
+    int? id,
+    int? userId,
+    String? userSecretID,
     String? messageTitle,
     String? messageBody,
     String? createdDate,

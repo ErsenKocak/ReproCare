@@ -9,8 +9,9 @@ part of 'notification_entity.dart';
 _$NotificationEntityImpl _$$NotificationEntityImplFromJson(
         Map<String, dynamic> json) =>
     _$NotificationEntityImpl(
-      id: json['id'] as String?,
-      userId: json['userId'] as String?,
+      id: (json['id'] as num?)?.toInt(),
+      userId: (json['userId'] as num?)?.toInt(),
+      userSecretID: json['userSecretID'] as String?,
       messageTitle: json['messageTitle'] as String?,
       messageBody: json['messageBody'] as String?,
       createdDate: json['createdDate'] as String?,
@@ -24,6 +25,7 @@ Map<String, dynamic> _$$NotificationEntityImplToJson(
     <String, dynamic>{
       'id': instance.id,
       'userId': instance.userId,
+      'userSecretID': instance.userSecretID,
       'messageTitle': instance.messageTitle,
       'messageBody': instance.messageBody,
       'createdDate': instance.createdDate,

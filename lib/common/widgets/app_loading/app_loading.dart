@@ -28,14 +28,18 @@ class AppLoading {
   static showLoading() {
     if (!EasyLoading.isShow) {
       EasyLoading.show(
-        indicator: LoadingAnimationWidget.discreteCircle(
-          color: Colors.white,
-          secondRingColor: AppLightColors.primaryColor,
-          thirdRingColor: AppLightColors.black,
-          size: 50.h,
-        ),
+        indicator: getLoadingWidget,
       );
     }
+  }
+
+  static get getLoadingWidget {
+    return LoadingAnimationWidget.discreteCircle(
+      color: Colors.white,
+      secondRingColor: AppLightColors.primaryColor,
+      thirdRingColor: AppLightColors.black,
+      size: 50.h,
+    );
   }
 
   static dismissLoading() => EasyLoading.dismiss();

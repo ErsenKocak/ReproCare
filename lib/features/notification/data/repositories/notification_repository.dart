@@ -14,10 +14,9 @@ final class NotificationRepository implements INotificationRepository {
   NotificationRepository(this._notificationService);
 
   @override
-  Future<Result<List<NotificationEntity>, AppException>> getNotifications(
-      PaginationRequestParam paginationRequest) async {
-    final response =
-        await _notificationService.getNotifications(paginationRequest);
+  Future<Result<List<NotificationEntity>, AppException>>
+      getNotifications() async {
+    final response = await _notificationService.getNotifications();
 
     return switch (response) {
       Success(value: final List<NotificationModel> _notificationModelList) =>
@@ -30,14 +29,16 @@ final class NotificationRepository implements INotificationRepository {
 
   @override
   Future<Result<bool, AppException>> deleteNotification(
-      String notificationId) async {
-    return await _notificationService.deleteNotification(notificationId);
+    int id,
+  ) async {
+    return await _notificationService.deleteNotification(id);
   }
 
   @override
   Future<Result<bool, AppException>> readNotification(
-      String notificationId) async {
-    return await _notificationService.readNotification(notificationId);
+    int id,
+  ) async {
+    return await _notificationService.readNotification(id);
   }
 
   @override

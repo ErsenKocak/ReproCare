@@ -6,3 +6,9 @@ extension ListUpdate<T> on List<T> {
     return this;
   }
 }
+
+extension ListNullOrEmptyExtension on List? {
+  bool get isNullOrEmpty {
+    return this == null || this?.length == 0;
+  }
+}

@@ -21,9 +21,6 @@ mixin _$NotificationState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() listSuccess,
-    required TResult Function() readSuccess,
-    required TResult Function() deleteSuccess,
-    required TResult Function() insertSuccess,
     required TResult Function(String errorMessage) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,9 +29,6 @@ mixin _$NotificationState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? listSuccess,
-    TResult? Function()? readSuccess,
-    TResult? Function()? deleteSuccess,
-    TResult? Function()? insertSuccess,
     TResult? Function(String errorMessage)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -43,9 +37,6 @@ mixin _$NotificationState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? listSuccess,
-    TResult Function()? readSuccess,
-    TResult Function()? deleteSuccess,
-    TResult Function()? insertSuccess,
     TResult Function(String errorMessage)? failure,
     required TResult orElse(),
   }) =>
@@ -55,9 +46,6 @@ mixin _$NotificationState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_ListSuccess value) listSuccess,
-    required TResult Function(_ReadSuccess value) readSuccess,
-    required TResult Function(_DeleteSuccess value) deleteSuccess,
-    required TResult Function(_InsertSucccess value) insertSuccess,
     required TResult Function(_Failure value) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -66,9 +54,6 @@ mixin _$NotificationState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_ListSuccess value)? listSuccess,
-    TResult? Function(_ReadSuccess value)? readSuccess,
-    TResult? Function(_DeleteSuccess value)? deleteSuccess,
-    TResult? Function(_InsertSucccess value)? insertSuccess,
     TResult? Function(_Failure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -77,9 +62,6 @@ mixin _$NotificationState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_ListSuccess value)? listSuccess,
-    TResult Function(_ReadSuccess value)? readSuccess,
-    TResult Function(_DeleteSuccess value)? deleteSuccess,
-    TResult Function(_InsertSucccess value)? insertSuccess,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) =>
@@ -131,23 +113,11 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() listSuccess,
-    required TResult Function() readSuccess,
-    required TResult Function() deleteSuccess,
-    required TResult Function() insertSuccess,
     required TResult Function(String errorMessage) failure,
   }) {
     return initial();
@@ -159,9 +129,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? listSuccess,
-    TResult? Function()? readSuccess,
-    TResult? Function()? deleteSuccess,
-    TResult? Function()? insertSuccess,
     TResult? Function(String errorMessage)? failure,
   }) {
     return initial?.call();
@@ -173,9 +140,6 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? listSuccess,
-    TResult Function()? readSuccess,
-    TResult Function()? deleteSuccess,
-    TResult Function()? insertSuccess,
     TResult Function(String errorMessage)? failure,
     required TResult orElse(),
   }) {
@@ -191,9 +155,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_ListSuccess value) listSuccess,
-    required TResult Function(_ReadSuccess value) readSuccess,
-    required TResult Function(_DeleteSuccess value) deleteSuccess,
-    required TResult Function(_InsertSucccess value) insertSuccess,
     required TResult Function(_Failure value) failure,
   }) {
     return initial(this);
@@ -205,9 +166,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_ListSuccess value)? listSuccess,
-    TResult? Function(_ReadSuccess value)? readSuccess,
-    TResult? Function(_DeleteSuccess value)? deleteSuccess,
-    TResult? Function(_InsertSucccess value)? insertSuccess,
     TResult? Function(_Failure value)? failure,
   }) {
     return initial?.call(this);
@@ -219,9 +177,6 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_ListSuccess value)? listSuccess,
-    TResult Function(_ReadSuccess value)? readSuccess,
-    TResult Function(_DeleteSuccess value)? deleteSuccess,
-    TResult Function(_InsertSucccess value)? insertSuccess,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
@@ -263,23 +218,11 @@ class _$LoadingImpl implements _Loading {
   }
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() listSuccess,
-    required TResult Function() readSuccess,
-    required TResult Function() deleteSuccess,
-    required TResult Function() insertSuccess,
     required TResult Function(String errorMessage) failure,
   }) {
     return loading();
@@ -291,9 +234,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? listSuccess,
-    TResult? Function()? readSuccess,
-    TResult? Function()? deleteSuccess,
-    TResult? Function()? insertSuccess,
     TResult? Function(String errorMessage)? failure,
   }) {
     return loading?.call();
@@ -305,9 +245,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? listSuccess,
-    TResult Function()? readSuccess,
-    TResult Function()? deleteSuccess,
-    TResult Function()? insertSuccess,
     TResult Function(String errorMessage)? failure,
     required TResult orElse(),
   }) {
@@ -323,9 +260,6 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_ListSuccess value) listSuccess,
-    required TResult Function(_ReadSuccess value) readSuccess,
-    required TResult Function(_DeleteSuccess value) deleteSuccess,
-    required TResult Function(_InsertSucccess value) insertSuccess,
     required TResult Function(_Failure value) failure,
   }) {
     return loading(this);
@@ -337,9 +271,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_ListSuccess value)? listSuccess,
-    TResult? Function(_ReadSuccess value)? readSuccess,
-    TResult? Function(_DeleteSuccess value)? deleteSuccess,
-    TResult? Function(_InsertSucccess value)? insertSuccess,
     TResult? Function(_Failure value)? failure,
   }) {
     return loading?.call(this);
@@ -351,9 +282,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_ListSuccess value)? listSuccess,
-    TResult Function(_ReadSuccess value)? readSuccess,
-    TResult Function(_DeleteSuccess value)? deleteSuccess,
-    TResult Function(_InsertSucccess value)? insertSuccess,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
@@ -395,23 +323,11 @@ class _$ListSuccessImpl implements _ListSuccess {
   }
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ListSuccessImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() listSuccess,
-    required TResult Function() readSuccess,
-    required TResult Function() deleteSuccess,
-    required TResult Function() insertSuccess,
     required TResult Function(String errorMessage) failure,
   }) {
     return listSuccess();
@@ -423,9 +339,6 @@ class _$ListSuccessImpl implements _ListSuccess {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? listSuccess,
-    TResult? Function()? readSuccess,
-    TResult? Function()? deleteSuccess,
-    TResult? Function()? insertSuccess,
     TResult? Function(String errorMessage)? failure,
   }) {
     return listSuccess?.call();
@@ -437,9 +350,6 @@ class _$ListSuccessImpl implements _ListSuccess {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? listSuccess,
-    TResult Function()? readSuccess,
-    TResult Function()? deleteSuccess,
-    TResult Function()? insertSuccess,
     TResult Function(String errorMessage)? failure,
     required TResult orElse(),
   }) {
@@ -455,9 +365,6 @@ class _$ListSuccessImpl implements _ListSuccess {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_ListSuccess value) listSuccess,
-    required TResult Function(_ReadSuccess value) readSuccess,
-    required TResult Function(_DeleteSuccess value) deleteSuccess,
-    required TResult Function(_InsertSucccess value) insertSuccess,
     required TResult Function(_Failure value) failure,
   }) {
     return listSuccess(this);
@@ -469,9 +376,6 @@ class _$ListSuccessImpl implements _ListSuccess {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_ListSuccess value)? listSuccess,
-    TResult? Function(_ReadSuccess value)? readSuccess,
-    TResult? Function(_DeleteSuccess value)? deleteSuccess,
-    TResult? Function(_InsertSucccess value)? insertSuccess,
     TResult? Function(_Failure value)? failure,
   }) {
     return listSuccess?.call(this);
@@ -483,9 +387,6 @@ class _$ListSuccessImpl implements _ListSuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_ListSuccess value)? listSuccess,
-    TResult Function(_ReadSuccess value)? readSuccess,
-    TResult Function(_DeleteSuccess value)? deleteSuccess,
-    TResult Function(_InsertSucccess value)? insertSuccess,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
@@ -498,402 +399,6 @@ class _$ListSuccessImpl implements _ListSuccess {
 
 abstract class _ListSuccess implements NotificationState {
   const factory _ListSuccess() = _$ListSuccessImpl;
-}
-
-/// @nodoc
-abstract class _$$ReadSuccessImplCopyWith<$Res> {
-  factory _$$ReadSuccessImplCopyWith(
-          _$ReadSuccessImpl value, $Res Function(_$ReadSuccessImpl) then) =
-      __$$ReadSuccessImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ReadSuccessImplCopyWithImpl<$Res>
-    extends _$NotificationStateCopyWithImpl<$Res, _$ReadSuccessImpl>
-    implements _$$ReadSuccessImplCopyWith<$Res> {
-  __$$ReadSuccessImplCopyWithImpl(
-      _$ReadSuccessImpl _value, $Res Function(_$ReadSuccessImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ReadSuccessImpl implements _ReadSuccess {
-  const _$ReadSuccessImpl();
-
-  @override
-  String toString() {
-    return 'NotificationState.readSuccess()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ReadSuccessImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() listSuccess,
-    required TResult Function() readSuccess,
-    required TResult Function() deleteSuccess,
-    required TResult Function() insertSuccess,
-    required TResult Function(String errorMessage) failure,
-  }) {
-    return readSuccess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? listSuccess,
-    TResult? Function()? readSuccess,
-    TResult? Function()? deleteSuccess,
-    TResult? Function()? insertSuccess,
-    TResult? Function(String errorMessage)? failure,
-  }) {
-    return readSuccess?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? listSuccess,
-    TResult Function()? readSuccess,
-    TResult Function()? deleteSuccess,
-    TResult Function()? insertSuccess,
-    TResult Function(String errorMessage)? failure,
-    required TResult orElse(),
-  }) {
-    if (readSuccess != null) {
-      return readSuccess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_ListSuccess value) listSuccess,
-    required TResult Function(_ReadSuccess value) readSuccess,
-    required TResult Function(_DeleteSuccess value) deleteSuccess,
-    required TResult Function(_InsertSucccess value) insertSuccess,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return readSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_ListSuccess value)? listSuccess,
-    TResult? Function(_ReadSuccess value)? readSuccess,
-    TResult? Function(_DeleteSuccess value)? deleteSuccess,
-    TResult? Function(_InsertSucccess value)? insertSuccess,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return readSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_ListSuccess value)? listSuccess,
-    TResult Function(_ReadSuccess value)? readSuccess,
-    TResult Function(_DeleteSuccess value)? deleteSuccess,
-    TResult Function(_InsertSucccess value)? insertSuccess,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (readSuccess != null) {
-      return readSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ReadSuccess implements NotificationState {
-  const factory _ReadSuccess() = _$ReadSuccessImpl;
-}
-
-/// @nodoc
-abstract class _$$DeleteSuccessImplCopyWith<$Res> {
-  factory _$$DeleteSuccessImplCopyWith(
-          _$DeleteSuccessImpl value, $Res Function(_$DeleteSuccessImpl) then) =
-      __$$DeleteSuccessImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$DeleteSuccessImplCopyWithImpl<$Res>
-    extends _$NotificationStateCopyWithImpl<$Res, _$DeleteSuccessImpl>
-    implements _$$DeleteSuccessImplCopyWith<$Res> {
-  __$$DeleteSuccessImplCopyWithImpl(
-      _$DeleteSuccessImpl _value, $Res Function(_$DeleteSuccessImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$DeleteSuccessImpl implements _DeleteSuccess {
-  const _$DeleteSuccessImpl();
-
-  @override
-  String toString() {
-    return 'NotificationState.deleteSuccess()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DeleteSuccessImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() listSuccess,
-    required TResult Function() readSuccess,
-    required TResult Function() deleteSuccess,
-    required TResult Function() insertSuccess,
-    required TResult Function(String errorMessage) failure,
-  }) {
-    return deleteSuccess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? listSuccess,
-    TResult? Function()? readSuccess,
-    TResult? Function()? deleteSuccess,
-    TResult? Function()? insertSuccess,
-    TResult? Function(String errorMessage)? failure,
-  }) {
-    return deleteSuccess?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? listSuccess,
-    TResult Function()? readSuccess,
-    TResult Function()? deleteSuccess,
-    TResult Function()? insertSuccess,
-    TResult Function(String errorMessage)? failure,
-    required TResult orElse(),
-  }) {
-    if (deleteSuccess != null) {
-      return deleteSuccess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_ListSuccess value) listSuccess,
-    required TResult Function(_ReadSuccess value) readSuccess,
-    required TResult Function(_DeleteSuccess value) deleteSuccess,
-    required TResult Function(_InsertSucccess value) insertSuccess,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return deleteSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_ListSuccess value)? listSuccess,
-    TResult? Function(_ReadSuccess value)? readSuccess,
-    TResult? Function(_DeleteSuccess value)? deleteSuccess,
-    TResult? Function(_InsertSucccess value)? insertSuccess,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return deleteSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_ListSuccess value)? listSuccess,
-    TResult Function(_ReadSuccess value)? readSuccess,
-    TResult Function(_DeleteSuccess value)? deleteSuccess,
-    TResult Function(_InsertSucccess value)? insertSuccess,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (deleteSuccess != null) {
-      return deleteSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _DeleteSuccess implements NotificationState {
-  const factory _DeleteSuccess() = _$DeleteSuccessImpl;
-}
-
-/// @nodoc
-abstract class _$$InsertSucccessImplCopyWith<$Res> {
-  factory _$$InsertSucccessImplCopyWith(_$InsertSucccessImpl value,
-          $Res Function(_$InsertSucccessImpl) then) =
-      __$$InsertSucccessImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InsertSucccessImplCopyWithImpl<$Res>
-    extends _$NotificationStateCopyWithImpl<$Res, _$InsertSucccessImpl>
-    implements _$$InsertSucccessImplCopyWith<$Res> {
-  __$$InsertSucccessImplCopyWithImpl(
-      _$InsertSucccessImpl _value, $Res Function(_$InsertSucccessImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$InsertSucccessImpl implements _InsertSucccess {
-  const _$InsertSucccessImpl();
-
-  @override
-  String toString() {
-    return 'NotificationState.insertSuccess()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InsertSucccessImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() listSuccess,
-    required TResult Function() readSuccess,
-    required TResult Function() deleteSuccess,
-    required TResult Function() insertSuccess,
-    required TResult Function(String errorMessage) failure,
-  }) {
-    return insertSuccess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? listSuccess,
-    TResult? Function()? readSuccess,
-    TResult? Function()? deleteSuccess,
-    TResult? Function()? insertSuccess,
-    TResult? Function(String errorMessage)? failure,
-  }) {
-    return insertSuccess?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? listSuccess,
-    TResult Function()? readSuccess,
-    TResult Function()? deleteSuccess,
-    TResult Function()? insertSuccess,
-    TResult Function(String errorMessage)? failure,
-    required TResult orElse(),
-  }) {
-    if (insertSuccess != null) {
-      return insertSuccess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_ListSuccess value) listSuccess,
-    required TResult Function(_ReadSuccess value) readSuccess,
-    required TResult Function(_DeleteSuccess value) deleteSuccess,
-    required TResult Function(_InsertSucccess value) insertSuccess,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return insertSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_ListSuccess value)? listSuccess,
-    TResult? Function(_ReadSuccess value)? readSuccess,
-    TResult? Function(_DeleteSuccess value)? deleteSuccess,
-    TResult? Function(_InsertSucccess value)? insertSuccess,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return insertSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_ListSuccess value)? listSuccess,
-    TResult Function(_ReadSuccess value)? readSuccess,
-    TResult Function(_DeleteSuccess value)? deleteSuccess,
-    TResult Function(_InsertSucccess value)? insertSuccess,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (insertSuccess != null) {
-      return insertSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _InsertSucccess implements NotificationState {
-  const factory _InsertSucccess() = _$InsertSucccessImpl;
 }
 
 /// @nodoc
@@ -940,18 +445,6 @@ class _$FailureImpl implements _Failure {
     return 'NotificationState.failure(errorMessage: $errorMessage)';
   }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FailureImpl &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -964,9 +457,6 @@ class _$FailureImpl implements _Failure {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() listSuccess,
-    required TResult Function() readSuccess,
-    required TResult Function() deleteSuccess,
-    required TResult Function() insertSuccess,
     required TResult Function(String errorMessage) failure,
   }) {
     return failure(errorMessage);
@@ -978,9 +468,6 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? listSuccess,
-    TResult? Function()? readSuccess,
-    TResult? Function()? deleteSuccess,
-    TResult? Function()? insertSuccess,
     TResult? Function(String errorMessage)? failure,
   }) {
     return failure?.call(errorMessage);
@@ -992,9 +479,6 @@ class _$FailureImpl implements _Failure {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? listSuccess,
-    TResult Function()? readSuccess,
-    TResult Function()? deleteSuccess,
-    TResult Function()? insertSuccess,
     TResult Function(String errorMessage)? failure,
     required TResult orElse(),
   }) {
@@ -1010,9 +494,6 @@ class _$FailureImpl implements _Failure {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_ListSuccess value) listSuccess,
-    required TResult Function(_ReadSuccess value) readSuccess,
-    required TResult Function(_DeleteSuccess value) deleteSuccess,
-    required TResult Function(_InsertSucccess value) insertSuccess,
     required TResult Function(_Failure value) failure,
   }) {
     return failure(this);
@@ -1024,9 +505,6 @@ class _$FailureImpl implements _Failure {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_ListSuccess value)? listSuccess,
-    TResult? Function(_ReadSuccess value)? readSuccess,
-    TResult? Function(_DeleteSuccess value)? deleteSuccess,
-    TResult? Function(_InsertSucccess value)? insertSuccess,
     TResult? Function(_Failure value)? failure,
   }) {
     return failure?.call(this);
@@ -1038,9 +516,6 @@ class _$FailureImpl implements _Failure {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_ListSuccess value)? listSuccess,
-    TResult Function(_ReadSuccess value)? readSuccess,
-    TResult Function(_DeleteSuccess value)? deleteSuccess,
-    TResult Function(_InsertSucccess value)? insertSuccess,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {

@@ -4,9 +4,9 @@ binary-path:     '/Users/ersenkocak/Library/Developer/Xcode/DerivedData/Runner-e
 relocations:
   - { offsetInCU: 0x34, offset: 0x541DF, size: 0x8, addend: 0x0, symName: _ReachabilityVersionString, symObjAddr: 0x0, symBinAddr: 0x91C0, symSize: 0x0 }
   - { offsetInCU: 0x69, offset: 0x54214, size: 0x8, addend: 0x0, symName: _ReachabilityVersionNumber, symObjAddr: 0x30, symBinAddr: 0x91F0, symSize: 0x0 }
-  - { offsetInCU: 0x4F, offset: 0x54279, size: 0x8, addend: 0x0, symName: '_$s12Reachability0A19ChangedNotificationSo18NSNotificationNameavp', symObjAddr: 0x12F10, symBinAddr: 0xDA70, symSize: 0x0 }
-  - { offsetInCU: 0x69, offset: 0x54293, size: 0x8, addend: 0x0, symName: '_$sSo18NSNotificationNamea12ReachabilityE19reachabilityChangedABvpZ', symObjAddr: 0x12F18, symBinAddr: 0xDA78, symSize: 0x0 }
-  - { offsetInCU: 0x83, offset: 0x542AD, size: 0x8, addend: 0x0, symName: '_$s12ReachabilityAAC10ConnectionO4noneADvpZ', symObjAddr: 0x12F20, symBinAddr: 0xDA80, symSize: 0x0 }
+  - { offsetInCU: 0x4F, offset: 0x54279, size: 0x8, addend: 0x0, symName: '_$s12Reachability0A19ChangedNotificationSo18NSNotificationNameavp', symObjAddr: 0x12F30, symBinAddr: 0xDA70, symSize: 0x0 }
+  - { offsetInCU: 0x69, offset: 0x54293, size: 0x8, addend: 0x0, symName: '_$sSo18NSNotificationNamea12ReachabilityE19reachabilityChangedABvpZ', symObjAddr: 0x12F38, symBinAddr: 0xDA78, symSize: 0x0 }
+  - { offsetInCU: 0x83, offset: 0x542AD, size: 0x8, addend: 0x0, symName: '_$s12ReachabilityAAC10ConnectionO4noneADvpZ', symObjAddr: 0x12F40, symBinAddr: 0xDA80, symSize: 0x0 }
   - { offsetInCU: 0xA9, offset: 0x542D3, size: 0x8, addend: 0x0, symName: '_$s12ReachabilityAAC10ConnectionO11descriptionSSvg', symObjAddr: 0x16C, symBinAddr: 0x416C, symSize: 0x20 }
   - { offsetInCU: 0xD8, offset: 0x54302, size: 0x8, addend: 0x0, symName: '_$s12ReachabilityAAC10ConnectionO4noneADvgZ', symObjAddr: 0x1D8, symBinAddr: 0x41D8, symSize: 0x40 }
   - { offsetInCU: 0x101, offset: 0x5432B, size: 0x8, addend: 0x0, symName: '_$s12ReachabilityAAC10ConnectionO21__derived_enum_equalsySbAD_ADtFZ', symObjAddr: 0x218, symBinAddr: 0x4218, symSize: 0x10 }

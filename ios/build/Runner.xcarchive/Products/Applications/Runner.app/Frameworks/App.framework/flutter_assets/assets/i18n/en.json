@@ -9,6 +9,7 @@
         "Login": "Login",
         "LoginToReproCare": "Login to ReproCare",
         "Save": "Save",
+        "Delete": "Delete",
         "Send": "Send",
         "SeeAll": "See All",
         "Name": "Name",
@@ -22,7 +23,15 @@
         "Information": "Information"
     },
     "Login": {
-        "LoginInformation": "If you continue to login,\nverification code will be sent to your entered phone."
+        "LoginInformation": "To continue logging in\n, use the password previously sent to you"
+    },
+    "Notification": {
+        "Notifications": "Notifications",
+        "Show": "Show",
+        "Hide": "Hide",
+        "Read": "Read",
+        "AreYouSureDeleteNotification": "Are you sure you want to delete the notification?",
+        "NotificationEmptyInfo": "There are currently no notifications."
     },
     "ErrorMessages": {
         "GlobalError": "Sorry, an error occurred.",
@@ -97,6 +106,8 @@
     },
     "Settings": {
         "Settings": "Settings",
+        "PermissionSettings": "Permission Settings",
+        "AllowNotifications": "Allow Notifications",
         "EditProfile": "Edit Profile",
         "Language": "Language",
         "LanguageSelection": "Language Selection",

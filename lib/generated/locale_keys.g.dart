@@ -1,13 +1,12 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const Global_Close = 'Global.Close';
   static const Global_Continue = 'Global.Continue';
   static const Global_Finish = 'Global.Finish';
   static const Global_Done = 'Global.Done';
   static const Global_Cancel = 'Global.Cancel';
-  static const Global_ProcessCompletedSuccesfully =
-      'Global.ProcessCompletedSuccesfully';
+  static const Global_ProcessCompletedSuccesfully = 'Global.ProcessCompletedSuccesfully';
   static const Global_Login = 'Global.Login';
   static const Global_LoginToReproCare = 'Global.LoginToReproCare';
   static const Global_Save = 'Global.Save';
@@ -23,6 +22,7 @@ abstract class LocaleKeys {
   static const Global_ForgotMyPassword = 'Global.ForgotMyPassword';
   static const Global_ForgotYourPassword = 'Global.ForgotYourPassword';
   static const Global_Information = 'Global.Information';
+  static const Global_Refresh = 'Global.Refresh';
   static const Global = 'Global';
   static const Login_LoginInformation = 'Login.LoginInformation';
   static const Login = 'Login';
@@ -30,10 +30,8 @@ abstract class LocaleKeys {
   static const Notification_Show = 'Notification.Show';
   static const Notification_Hide = 'Notification.Hide';
   static const Notification_Read = 'Notification.Read';
-  static const Notification_AreYouSureDeleteNotification =
-      'Notification.AreYouSureDeleteNotification';
-  static const Notification_NotificationEmptyInfo =
-      'Notification.NotificationEmptyInfo';
+  static const Notification_AreYouSureDeleteNotification = 'Notification.AreYouSureDeleteNotification';
+  static const Notification_NotificationEmptyInfo = 'Notification.NotificationEmptyInfo';
   static const Notification = 'Notification';
   static const ErrorMessages_GlobalError = 'ErrorMessages.GlobalError';
   static const ErrorMessages_NotEmpty = 'ErrorMessages.NotEmpty';
@@ -41,8 +39,7 @@ abstract class LocaleKeys {
   static const ErrorMessages_InvalidEmail = 'ErrorMessages.InvalidEmail';
   static const ErrorMessages_InvalidPhone = 'ErrorMessages.InvalidPhone';
   static const ErrorMessages_NotEqual = 'ErrorMessages.NotEqual';
-  static const ErrorMessages_NotStrongPassword =
-      'ErrorMessages.NotStrongPassword';
+  static const ErrorMessages_NotStrongPassword = 'ErrorMessages.NotStrongPassword';
   static const ErrorMessages_SessionExpired = 'ErrorMessages.SessionExpired';
   static const ErrorMessages_PleaseReLogin = 'ErrorMessages.PleaseReLogin';
   static const ErrorMessages_EmptyWidgetInfo = 'ErrorMessages.EmptyWidgetInfo';
@@ -124,4 +121,5 @@ abstract class LocaleKeys {
   static const BottomNavigationBar_Settings = 'BottomNavigationBar.Settings';
   static const BottomNavigationBar_Profile = 'BottomNavigationBar.Profile';
   static const BottomNavigationBar = 'BottomNavigationBar';
+
 }

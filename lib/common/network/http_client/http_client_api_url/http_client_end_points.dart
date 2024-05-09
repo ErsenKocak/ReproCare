@@ -1,9 +1,9 @@
 enum HttpClientEndPoints {
   Login('/User/Login'),
-  Logout('/User/Logout'), //Aktif değil
-  GetNotifications('/notifications'),
-  DeleteNotification('/notifications'),
-  ReadNotification('/notifications'),
+  Logout(''), //Aktif değil
+  GetNotifications('/PushNotification/GetPushNotification'),
+  DeleteNotification(''), //Aktif değil
+  ReadNotification('/PushNotification/PushNotificationRead'),
   InsertNotificationToken(
       '/PushNotificationToken/AddOrUpdatePushNotificationToken'),
   GetUserSettings('/UserSettings/GetUserSettings'),

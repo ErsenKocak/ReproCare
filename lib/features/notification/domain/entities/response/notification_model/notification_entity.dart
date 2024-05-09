@@ -6,8 +6,9 @@ part 'notification_entity.g.dart';
 @freezed
 class NotificationEntity with _$NotificationEntity {
   factory NotificationEntity({
-    String? id,
-    String? userId,
+    int? id,
+    int? userId,
+    String? userSecretID,
     String? messageTitle,
     String? messageBody,
     String? createdDate,

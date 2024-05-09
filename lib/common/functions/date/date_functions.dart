@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:reprocare/core/enums/date/date_format_types.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
 import 'package:reprocare/helper/localization/localization_helper.dart';
@@ -19,15 +20,25 @@ class DateFunctions {
     required String? stringDate,
     DateFormatTypes? dateFormat = DateFormatTypes.ddMMyyyy,
   }) {
-    if (stringDate == null || stringDate.length == 0) DateTime.now();
+    if (stringDate == null || stringDate.length == 0)
+      stringDate = DateTime.now().toString();
 
-    stringDate = stringDate!.replaceAll('T', ' ');
-    stringDate = stringDate.replaceAll('-', '/');
-
-    DateTime dateFormatResult =
-        DateFormat(dateFormat!.format).parse(stringDate);
-    return dateFormatResult;
+    return Jiffy.parse(stringDate).dateTime;
   }
+  // static DateTime stringToDateTime({
+  //   required String? stringDate,
+  //   DateFormatTypes? dateFormat = DateFormatTypes.ddMMyyyy,
+  // }) {
+  //   if (stringDate == null || stringDate.length == 0)
+  //     stringDate = DateTime.now().toString();
+
+  //   // stringDate = stringDate!.replaceAll('T', ' ');
+  //   stringDate = stringDate.replaceAll('-', '/');
+
+  //   DateTime dateFormatResult =
+  //       DateFormat(dateFormat!.format).parse(stringDate);
+  //   return dateFormatResult;
+  // }
 
   static bool isEqualStringAndDate({
     required String stringDate,

@@ -6,11 +6,11 @@
 	<dict>
 		<key>Info.plist</key>
 		<data>
-		WqdHRo5vEwHmunakc8a+hN9u39c=
+		HYfyEm7EAeeBv4Ia1kzdZdwqAn0=
 		</data>
 		<key>Promises_Privacy.bundle/Info.plist</key>
 		<data>
-		xzpzsxlPV7KoNvJbPBQTMAPR5dg=
+		MyEvs93yPnVpuvYzUNRJhAFJroA=
 		</data>
 		<key>Promises_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -21,21 +21,13 @@
 	<dict>
 		<key>Promises_Privacy.bundle/Info.plist</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			xzpzsxlPV7KoNvJbPBQTMAPR5dg=
-			</data>
 			<key>hash2</key>
 			<data>
-			mmUXGYgIE++cGzCRLl/MaHUsDw0CyZHT6RaSNm3iXno=
+			v7MQaneSeyjIUgM/AVwY3X30GXX0lh49lvW7ijaQEHU=
 			</data>
 		</dict>
 		<key>Promises_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ZajnvEs/MYRS3X4TPLAhBWi8mc4=
-			</data>
 			<key>hash2</key>
 			<data>
 			dLDNcvwjwe8wLyLuJ1P2GBfNxa8P96fy0GMrUk+4rOo=

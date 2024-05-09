@@ -4,6 +4,7 @@ import 'package:reprocare/common/base/cubit/base_cubit.dart';
 import 'package:reprocare/common/base/cubit/base_state.dart';
 import 'package:reprocare/common/base/model/request/pagination_request_param/pagination_request_param.dart';
 import 'package:reprocare/common/base/result/base_result.dart';
+import 'package:reprocare/core/extensions/list/list_extension.dart';
 import 'package:reprocare/features/notification/domain/entities/request/notification_token_request_param/notification_token_request_param.dart';
 import 'package:reprocare/features/notification/domain/entities/response/notification_model/notification_entity.dart';
 import 'package:reprocare/features/notification/domain/entities/response/notification_token_entity/notification_token_entity.dart';
@@ -25,51 +26,37 @@ class NotificationCubit extends Cubit<NotificationState>
   @override
   Future<void> initialize() async {}
 
-  Future<Result<List<NotificationEntity>, AppException>> getNotifications(
-      PaginationRequestParam paginationRequest) async {
+  Future<void> getNotifications() async {
     safeEmit(NotificationState.loading());
 
-    for (var i = 0; i < 50; i++) {
-      notificationDummyList ??= [];
-      notificationDummyList?.add(NotificationEntity(
-          id: '$i',
-          isRead: i.isEven ? true : false,
-          messageTitle: 'What is Lorem Ipsum? $i',
-          messageBody:
-              'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham. $i',
-          createdDate: DateTime.now().toString()));
-    }
+    final response = await _notificationRepository.getNotifications();
 
-    // final response =
-    //     await _notificationRepository.getNotifications(paginationRequest);
-
-    // final value = switch (response) {
-    //   Success(
-    //     value: final List<NotificationEntity> _notificationTokenListEntity
-    //   ) =>
-    //     {
-    //       notificationList = _notificationTokenListEntity,
-    //       checkForUnReadNotifications,
-    //       safeEmit(NotificationState.listSuccess()),
-    //     },
-    //   Failure(exception: final AppException exception) => {
-    //       safeEmit(NotificationState.failure(exception.message)),
-    //     }
-    // };
-    safeEmit(NotificationState.listSuccess());
-
-    return Success(notificationDummyList ?? []);
+    final value = switch (response) {
+      Success(
+        value: final List<NotificationEntity> _notificationTokenListEntity
+      ) =>
+        {
+          notificationList = _notificationTokenListEntity,
+          checkForUnReadNotifications,
+          safeEmit(NotificationState.listSuccess()),
+        },
+      Failure(exception: final AppException exception) => {
+          safeEmit(NotificationState.failure(exception.message)),
+        }
+    };
   }
 
   Future<void> readNotification(NotificationEntity notification) async {
-    safeEmit(NotificationState.loading());
+    // safeEmit(NotificationState.loading());
 
     final response =
         await _notificationRepository.readNotification(notification.id!);
 
     final value = switch (response) {
       Success(value: final bool _response) => {
-          safeEmit(NotificationState.readSuccess()),
+          notification = notification.copyWith(isRead: true),
+          _updateNotificationInList(notification),
+          safeEmit(NotificationState.listSuccess()),
         },
       Failure(exception: final AppException exception) => {
           safeEmit(NotificationState.failure(exception.message)),
@@ -85,7 +72,7 @@ class NotificationCubit extends Cubit<NotificationState>
 
     final value = switch (response) {
       Success(value: final bool _response) => {
-          safeEmit(NotificationState.deleteSuccess()),
+          safeEmit(NotificationState.listSuccess()),
         },
       Failure(exception: final AppException exception) => {
           safeEmit(NotificationState.failure(exception.message)),
@@ -104,12 +91,21 @@ class NotificationCubit extends Cubit<NotificationState>
     final value = switch (response) {
       Success(value: final NotificationTokenEntity _notificationTokenEntity) =>
         {
-          safeEmit(NotificationState.insertSuccess()),
+          safeEmit(NotificationState.listSuccess()),
         },
       Failure(exception: final AppException exception) => {
           safeEmit(NotificationState.failure(exception.message)),
         }
     };
+  }
+
+  void _updateNotificationInList(
+    NotificationEntity newNotification,
+  ) {
+    int previousTaskIndex = notificationList!
+        .indexWhere((notification) => notification.id == newNotification.id);
+
+    notificationList?.update(previousTaskIndex, newNotification);
   }
 
   bool get checkForUnReadNotifications => notificationList?.firstWhereOrNull(

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:reprocare/common/logger/app_logger.dart';
@@ -13,7 +15,6 @@ final class FirebaseNotificationHelper {
       // name: Application.applicationName,
     );
 
-    await getToken;
     // await requestPermission();
     FirebaseMessaging.onMessage.listen(_handleForegroundNotification);
     FirebaseMessaging.onBackgroundMessage(_handleBackgroundNotification);
@@ -89,6 +90,44 @@ final class FirebaseNotificationHelper {
     );
 
     return notificationToken;
+    // if(Platform.isIOS ){
+
+    //    String? apnsToken = await getAPNsToken;
+    // if (apnsToken != null) {
+    //   String? notificationToken = await firebaseMessaging.getToken();
+    //   AppLogger.call(
+    //     title: 'Notification Token',
+    //     value: notificationToken,
+    //   );
+
+    //   return notificationToken;
+    // } else {
+    //   await Future.delayed(Duration(seconds: 3));
+    //   apnsToken = await getAPNsToken;
+    //   if (apnsToken != null) {
+    //     String? notificationToken = await firebaseMessaging.getToken();
+    //     AppLogger.call(
+    //       title: 'Notification Token',
+    //       value: notificationToken,
+    //     );
+
+    //     return notificationToken;
+    //   } else {
+    //     return null;
+    //   }
+    // }
+    // }
+  }
+
+  static Future<String?> get getAPNsToken async {
+    if (Platform.isIOS) {
+      String? apnsToken = await firebaseMessaging.getAPNSToken();
+
+      AppLogger.call(title: 'APNs Token', value: apnsToken ?? 'NULL');
+
+      return apnsToken ?? null;
+    }
+    return null;
   }
 
   static Future<void> subscribeToTopic(String topic) async {

@@ -20,8 +20,9 @@ NotificationEntity _$NotificationEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NotificationEntity {
-  String? get id => throw _privateConstructorUsedError;
-  String? get userId => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  int? get userId => throw _privateConstructorUsedError;
+  String? get userSecretID => throw _privateConstructorUsedError;
   String? get messageTitle => throw _privateConstructorUsedError;
   String? get messageBody => throw _privateConstructorUsedError;
   String? get createdDate => throw _privateConstructorUsedError;
@@ -42,8 +43,9 @@ abstract class $NotificationEntityCopyWith<$Res> {
       _$NotificationEntityCopyWithImpl<$Res, NotificationEntity>;
   @useResult
   $Res call(
-      {String? id,
-      String? userId,
+      {int? id,
+      int? userId,
+      String? userSecretID,
       String? messageTitle,
       String? messageBody,
       String? createdDate,
@@ -67,6 +69,7 @@ class _$NotificationEntityCopyWithImpl<$Res, $Val extends NotificationEntity>
   $Res call({
     Object? id = freezed,
     Object? userId = freezed,
+    Object? userSecretID = freezed,
     Object? messageTitle = freezed,
     Object? messageBody = freezed,
     Object? createdDate = freezed,
@@ -78,10 +81,14 @@ class _$NotificationEntityCopyWithImpl<$Res, $Val extends NotificationEntity>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userSecretID: freezed == userSecretID
+          ? _value.userSecretID
+          : userSecretID // ignore: cast_nullable_to_non_nullable
               as String?,
       messageTitle: freezed == messageTitle
           ? _value.messageTitle
@@ -120,8 +127,9 @@ abstract class _$$NotificationEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? id,
-      String? userId,
+      {int? id,
+      int? userId,
+      String? userSecretID,
       String? messageTitle,
       String? messageBody,
       String? createdDate,
@@ -143,6 +151,7 @@ class __$$NotificationEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? userId = freezed,
+    Object? userSecretID = freezed,
     Object? messageTitle = freezed,
     Object? messageBody = freezed,
     Object? createdDate = freezed,
@@ -154,10 +163,14 @@ class __$$NotificationEntityImplCopyWithImpl<$Res>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userSecretID: freezed == userSecretID
+          ? _value.userSecretID
+          : userSecretID // ignore: cast_nullable_to_non_nullable
               as String?,
       messageTitle: freezed == messageTitle
           ? _value.messageTitle
@@ -193,6 +206,7 @@ class _$NotificationEntityImpl implements _NotificationEntity {
   _$NotificationEntityImpl(
       {this.id,
       this.userId,
+      this.userSecretID,
       this.messageTitle,
       this.messageBody,
       this.createdDate,
@@ -204,9 +218,11 @@ class _$NotificationEntityImpl implements _NotificationEntity {
       _$$NotificationEntityImplFromJson(json);
 
   @override
-  final String? id;
+  final int? id;
   @override
-  final String? userId;
+  final int? userId;
+  @override
+  final String? userSecretID;
   @override
   final String? messageTitle;
   @override
@@ -222,7 +238,7 @@ class _$NotificationEntityImpl implements _NotificationEntity {
 
   @override
   String toString() {
-    return 'NotificationEntity(id: $id, userId: $userId, messageTitle: $messageTitle, messageBody: $messageBody, createdDate: $createdDate, notificationTypeId: $notificationTypeId, isSendSuccess: $isSendSuccess, isRead: $isRead)';
+    return 'NotificationEntity(id: $id, userId: $userId, userSecretID: $userSecretID, messageTitle: $messageTitle, messageBody: $messageBody, createdDate: $createdDate, notificationTypeId: $notificationTypeId, isSendSuccess: $isSendSuccess, isRead: $isRead)';
   }
 
   @override
@@ -232,6 +248,8 @@ class _$NotificationEntityImpl implements _NotificationEntity {
             other is _$NotificationEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.userSecretID, userSecretID) ||
+                other.userSecretID == userSecretID) &&
             (identical(other.messageTitle, messageTitle) ||
                 other.messageTitle == messageTitle) &&
             (identical(other.messageBody, messageBody) ||
@@ -247,8 +265,17 @@ class _$NotificationEntityImpl implements _NotificationEntity {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userId, messageTitle,
-      messageBody, createdDate, notificationTypeId, isSendSuccess, isRead);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      userId,
+      userSecretID,
+      messageTitle,
+      messageBody,
+      createdDate,
+      notificationTypeId,
+      isSendSuccess,
+      isRead);
 
   @JsonKey(ignore: true)
   @override
@@ -267,8 +294,9 @@ class _$NotificationEntityImpl implements _NotificationEntity {
 
 abstract class _NotificationEntity implements NotificationEntity {
   factory _NotificationEntity(
-      {final String? id,
-      final String? userId,
+      {final int? id,
+      final int? userId,
+      final String? userSecretID,
       final String? messageTitle,
       final String? messageBody,
       final String? createdDate,
@@ -280,9 +308,11 @@ abstract class _NotificationEntity implements NotificationEntity {
       _$NotificationEntityImpl.fromJson;
 
   @override
-  String? get id;
+  int? get id;
   @override
-  String? get userId;
+  int? get userId;
+  @override
+  String? get userSecretID;
   @override
   String? get messageTitle;
   @override

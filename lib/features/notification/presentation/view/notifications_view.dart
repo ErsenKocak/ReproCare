@@ -2,14 +2,17 @@ import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_time_ago/get_time_ago.dart';
 import 'package:reprocare/common/functions/app/app_functions.dart';
 import 'package:reprocare/common/functions/date/date_functions.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/common/widgets/app_bar/app_bar_widget.dart';
+import 'package:reprocare/common/widgets/app_loading/app_loading.dart';
 import 'package:reprocare/common/widgets/empty/empty_widget.dart';
 import 'package:reprocare/common/widgets/pagination/app_pagination.dart';
+import 'package:reprocare/common/widgets/refresh_indicator/app_refresh_indicator.dart';
 import 'package:reprocare/common/widgets/slidable/slidable_widget.dart';
 import 'package:reprocare/common/widgets/slidable/widgets/slidable_item/slidable_item_widget.dart';
 import 'package:reprocare/common/widgets/svg_picture/app_svg_picture.dart';
@@ -17,10 +20,13 @@ import 'package:reprocare/core/constants/cache/cache_constants.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
 import 'package:reprocare/core/constants/font_weight/app_font_weight.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
+import 'package:reprocare/core/enums/app_padding/app_padding.dart';
 import 'package:reprocare/core/enums/date/date_format_types.dart';
+import 'package:reprocare/core/extensions/list/list_extension.dart';
 import 'package:reprocare/core/extensions/sized_box/sized_box_extension.dart';
 import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
 import 'package:reprocare/features/notification/domain/entities/response/notification_model/notification_entity.dart';
+import 'package:reprocare/features/notification/presentation/cubit/notification_cubit.dart';
 import 'package:reprocare/features/notification/presentation/mixin/notifications_view_mixin.dart';
 import 'package:reprocare/features/notification/presentation/widgets/shimmer/notification_view_shimmer.dart';
 import 'package:reprocare/features/settings/domain/entities/response/user_settings_entity/user_entity.dart';
@@ -43,45 +49,73 @@ class _NotificationsViewState extends State<NotificationsView>
     return Scaffold(
       appBar: _buildAppbar,
       body: _buildBody,
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.notification_add),
-          onPressed: () async {
-            final IAuthLocalService _loginService =
-                ServiceLocatorProvider.provide<IAuthLocalService>();
-            UserEntity? _loginReponseEntity =
-                await _loginService.get(CacheConstants.User.name);
-            String token = _loginReponseEntity?.token ?? '';
-            log(token);
-          }),
     );
   }
 
   get _buildAppbar {
     return AppBarWidget(
-      titleText: LocaleKeys.Notification_Notifications.tr(),
+      titleWidget: Column(
+        children: [
+          Text(
+            LocaleKeys.Notification_Notifications.tr(),
+            style: AppThemes.currentTheme.textTheme.bodyLarge?.copyWith(
+              fontWeight: AppFontWeight.medium.value,
+              overflow: TextOverflow.visible,
+            ),
+          ),
+          // 4.h.sbxh,
+          // Text(
+          //   '',
+          //   style: AppThemes.currentTheme.textTheme.bodyLarge?.copyWith(
+          //     fontWeight: AppFontWeight.medium.value,
+          //     overflow: TextOverflow.visible,
+          //   ),
+          // ),
+        ],
+      ),
     );
   }
 
   Widget get _buildBody {
-    return AppPagination<NotificationEntity>(
-      pagingController: notificationPaginationController,
-      getItemsFunction: getNotifications,
-      paginationRequest: notificationPaginationRequest,
-      loadingWidget: NotificationViewShimmer(),
-      emptyWidget: Padding(
-          padding: EdgeInsets.only(top: 0.20.sh),
-          child: AppEmptyWidget(
-              title: LocaleKeys.Notification_NotificationEmptyInfo.tr())),
-      itemBuilder: (context, item, index) => _buildNotificationCard(item),
+    return BlocBuilder<NotificationCubit, NotificationState>(
+      builder: (context, state) => state.maybeWhen(
+        loading: () => NotificationViewShimmer(),
+        listSuccess: () => _buildNotificationList,
+        orElse: () => const SizedBox(),
+      ),
+    );
+  }
+
+  Widget get _buildNotificationList {
+    if (notificationCubit.notificationList.isNullOrEmpty)
+      return Padding(
+        padding: context.paddingAllHigh2,
+        child: AppEmptyWidget(
+          buttonText: LocaleKeys.Global_Refresh.tr(),
+          onPress: () async => await getNotifications(),
+        ),
+      );
+
+    return AppRefreshIndicator(
+      onRefresh: getNotifications,
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        itemCount: notificationCubit.notificationList?.length,
+        itemBuilder: (context, index) =>
+            _buildNotificationCard(notificationCubit.notificationList![index]),
+      ),
     );
   }
 
   Widget _buildNotificationCard(NotificationEntity notification) {
     return SlidableWidget(
-      slidableKey: notification.id ?? AppFunctions.randomGuid(),
+      slidableKey: notification.id != null
+          ? notification.id.toString()
+          : AppFunctions.randomGuid(),
       actionPaneWidgets: [
         _buildReadNotificationPane(notification),
-        _buildDeleteNotificationPane(notification),
+        // _buildDeleteNotificationPane(notification),
       ],
       child: Column(
         children: [
@@ -202,14 +236,11 @@ class _NotificationsViewState extends State<NotificationsView>
                 ),
                 4.h.sbxh,
                 Text(
-                  GetTimeAgo.parse(
-                    DateFunctions.stringToDateTime(
-                        stringDate: notification.createdDate,
-                        dateFormat: DateFormatTypes.ddMMyyyyHHmm),
-                    pattern: DateFormatTypes.ddMMyyyyHHmm.format,
-                    locale: AppLocalizationHelper.currentLocale.languageCode
-                        .toLowerCase(),
-                  ),
+                  DateFunctions.dateFormat(
+                          dateTime: DateFunctions.stringToDateTime(
+                              stringDate: notification.createdDate),
+                          dateFormat: DateFormatTypes.ddMMyyyyHHmm) ??
+                      '',
                   style: AppThemes.currentTheme.textTheme.labelSmall?.copyWith(
                       color: AppLightColors.secondaryTextColor, fontSize: 8.sp),
                 )
