@@ -40,6 +40,7 @@ mixin NotificationViewMixin on State<NotificationsView> {
   }
 
   Future<void> getNotifications() async {
+    notificationExpandNotifier.value.clear();
     return await notificationCubit.getNotifications();
   }
 
@@ -57,6 +58,7 @@ mixin NotificationViewMixin on State<NotificationsView> {
     } else {
       notificationExpandNotifier.value.add(notification);
     }
+    notificationCubit.safeEmit(NotificationState.listSuccess());
   }
 
   Future<void> onTapSlidableDeleteButton(
