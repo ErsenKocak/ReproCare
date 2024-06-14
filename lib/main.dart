@@ -38,7 +38,7 @@ class ReproCareApp extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
     return MultiBlocProvider(
-      providers: AppBlocProvider.getMainBlocProviderList(),
+      providers: AppBlocProvider.getMainBlocProviderList,
       child: BlocBuilder<ThemeCubit, ThemeStateModel>(
         builder: (context, state) {
           return ScreenUtilInit(

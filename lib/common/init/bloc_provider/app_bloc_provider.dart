@@ -30,5 +30,5 @@ class AppBlocProvider {
     ),
   ];
 
-  static List<SingleChildWidget> getMainBlocProviderList() => _appBlocs;
+  static List<SingleChildWidget> get getMainBlocProviderList => _appBlocs;
 }

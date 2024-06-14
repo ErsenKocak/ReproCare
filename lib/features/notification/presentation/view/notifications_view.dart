@@ -35,6 +35,8 @@ import 'package:reprocare/generated/locale_keys.g.dart';
 import 'package:reprocare/helper/localization/localization_helper.dart';
 import 'dart:ui' as ui;
 
+import 'package:reprocare/helper/notification/local_notification/local_notification_helper.dart';
+
 class NotificationsView extends StatefulWidget {
   const NotificationsView({super.key});
 
@@ -49,6 +51,10 @@ class _NotificationsViewState extends State<NotificationsView>
     return Scaffold(
       appBar: _buildAppbar,
       body: _buildBody,
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        AppLocalNotificationHelper.showLocalNotification(
+            body: 'asd', title: 'asd');
+      }),
     );
   }
 

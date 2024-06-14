@@ -13,10 +13,10 @@ final class AppLocalNotificationHelper {
 
   static int _notificationId = 0;
   static String _androidNotificationId =
-      '${Application.appMode}+${Application.applicationName} _NOTIFICATION_ID';
+      '${Application.applicationName}_NOTIFICATION_ID';
 
   static String _androidNotificationKey =
-      '${Application.appMode}+${Application.applicationName} _NOTIFICATION_KEY';
+      '${Application.applicationName} _NOTIFICATION_KEY';
 
   static Future<void> initialize() async {
     await flutterLocalNotificationsPlugin.initialize(
@@ -38,15 +38,24 @@ final class AppLocalNotificationHelper {
 
     if (Platform.isAndroid) {
       await requestPermission();
+
+      AppLogger.call(
+          title: 'Android Notification Channel ID',
+          value: _androidNotificationId);
+      AndroidNotificationChannel androidNotificationChannel =
+          AndroidNotificationChannel(
+        _androidNotificationId,
+        _androidNotificationKey,
+        playSound: true,
+        sound: RawResourceAndroidNotificationSound('alarm'),
+        importance: Importance.max,
+      );
+
       await flutterLocalNotificationsPlugin
           .resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
           ?.createNotificationChannel(
-            AndroidNotificationChannel(
-              _androidNotificationId,
-              _androidNotificationKey,
-              importance: Importance.max,
-            ),
+            androidNotificationChannel,
           );
     }
   }
@@ -88,42 +97,73 @@ final class AppLocalNotificationHelper {
     _notificationId++;
 
     try {
-      if (message.notification != null) {
-        if (Platform.isIOS) {
-          await flutterLocalNotificationsPlugin.show(
-            _notificationId,
-            message.notification!.title,
-            message.notification!.body,
-            NotificationDetails(
-              iOS: DarwinNotificationDetails(
-                presentAlert: true,
-                presentBadge: true,
-                presentSound: true,
-                sound: 'default',
-              ),
-            ),
-            payload: jsonEncode(message.data),
-          );
-        } else {
-          await flutterLocalNotificationsPlugin.show(
-            _notificationId,
-            message.notification!.title,
-            message.notification!.body,
-            NotificationDetails(
-              android: AndroidNotificationDetails(
-                _androidNotificationId,
-                _androidNotificationKey,
-                priority: Priority.high,
-                showWhen: true,
-                importance: Importance.max,
-                enableVibration: true,
-                playSound: true,
-              ),
-            ),
-            payload: jsonEncode(message.data),
-          );
-        }
-      }
+      // if (message.notification != null) {
+      await flutterLocalNotificationsPlugin.show(
+        _notificationId,
+        message.notification!.title,
+        message.notification!.body,
+        NotificationDetails(
+          iOS: DarwinNotificationDetails(
+            presentAlert: true,
+            presentBadge: true,
+            presentSound: true,
+            sound: 'alarm.wav',
+          ),
+          android: AndroidNotificationDetails(
+            _androidNotificationId,
+            _androidNotificationKey,
+            priority: Priority.high,
+            showWhen: true,
+            importance: Importance.max,
+            enableVibration: true,
+            playSound: true,
+          ),
+        ),
+        payload: jsonEncode(message.data),
+      );
+
+      // if (Platform.isIOS) {
+      //   await flutterLocalNotificationsPlugin.show(
+      //     _notificationId,
+      //     message.notification!.title,
+      //     message.notification!.body,
+      //     NotificationDetails(
+      //       iOS: DarwinNotificationDetails(
+      //         presentAlert: true,
+      //         presentBadge: true,
+      //         presentSound: true,
+      //         sound: 'default',
+      //       ),
+      //     ),
+      //     payload: jsonEncode(message.data),
+      //   );
+      // } else {
+      //   await flutterLocalNotificationsPlugin.show(
+      //     _notificationId,
+      //     message.notification!.title,
+      //     message.notification!.body,
+      //     NotificationDetails(
+      //           iOS: DarwinNotificationDetails(
+      //         presentAlert: true,
+      //         presentBadge: true,
+      //         presentSound: true,
+      //         sound: 'default',
+      //       ),
+      //       android: AndroidNotificationDetails(
+      //         _androidNotificationId,
+      //         _androidNotificationKey,
+      //         priority: Priority.high,
+      //         showWhen: true,
+      //         importance: Importance.max,
+      //         enableVibration: true,
+      //         playSound: true,
+      //         sound: RawResourceAndroidNotificationSound('alarm'),
+      //       ),
+      //     ),
+      //     payload: jsonEncode(message.data),
+      //   );
+      // }
+      // }
     } catch (e) {
       log('Catche düştü');
       log(e.toString());

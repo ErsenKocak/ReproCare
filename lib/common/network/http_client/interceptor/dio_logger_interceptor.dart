@@ -4,7 +4,7 @@ import 'package:reprocare/core/enums/app_mode/app_mode.dart';
 
 class DioLoggerInterceptor {
   static PrettyDioLogger getInterceptor() {
-    bool isLogActive = Application.appMode != AppMode.production;
+    bool isLogActive = true ?? Application.appMode != AppMode.production;
 
     return PrettyDioLogger(
       requestHeader: isLogActive,

@@ -74,6 +74,7 @@ dependencies:
   #Notification
   flutter_local_notifications: ^17.1.1
   firebase_messaging: ^14.7.16
+  flutter_notification_channel: ^3.1.0
 
   # Log
   logger: ^2.2.0

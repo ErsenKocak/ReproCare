@@ -2,7 +2,11 @@ import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_notification_channel/flutter_notification_channel.dart';
+import 'package:flutter_notification_channel/notification_importance.dart';
+import 'package:flutter_notification_channel/notification_visibility.dart';
 import 'package:reprocare/common/logger/app_logger.dart';
+import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/firebase_options.dart';
 import 'package:reprocare/helper/notification/local_notification/local_notification_helper.dart';
 
@@ -12,9 +16,10 @@ final class FirebaseNotificationHelper {
   static initialize() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
+
       // name: Application.applicationName,
     );
-
+    await createAndroidChannel();
     // await requestPermission();
     FirebaseMessaging.onMessage.listen(_handleForegroundNotification);
     FirebaseMessaging.onBackgroundMessage(_handleBackgroundNotification);
@@ -42,9 +47,25 @@ final class FirebaseNotificationHelper {
   ) async {
     AppLogger.call(
       title: 'Handle Background Notification',
-      value: message.toString(),
+      value: message.toMap(),
     );
     return Future.value();
+  }
+
+  static Future<void> createAndroidChannel() async {
+    if (Platform.isIOS) return;
+    var result = await FlutterNotificationChannel().registerNotificationChannel(
+        description: 'Your channel description',
+        id: 'notificationId',
+        importance: NotificationImportance.IMPORTANCE_HIGH,
+        name: '${Application.applicationName}_NOTIFICATION_ID',
+        visibility: NotificationVisibility.VISIBILITY_PUBLIC,
+        allowBubbles: true,
+        enableVibration: true,
+        enableSound: true,
+        showBadge: true,
+        customSound: 'alarm');
+    print(result);
   }
 
   @pragma('vm:entry-point')

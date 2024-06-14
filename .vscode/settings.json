@@ -23,7 +23,7 @@
   "dart.warnWhenEditingFilesOutsideWorkspace": false,
   "dart.renameFilesWithClasses": "prompt",
   "window.zoomLevel": 1,
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "Theme Darker",
   "editor.bracketPairColorization.enabled": true,
   "editor.inlineSuggest.enabled": true,
   "editor.formatOnSave": true,
