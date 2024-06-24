@@ -51,10 +51,6 @@ class _NotificationsViewState extends State<NotificationsView>
     return Scaffold(
       appBar: _buildAppbar,
       body: _buildBody,
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        AppLocalNotificationHelper.showLocalNotification(
-            body: 'asd', title: 'asd');
-      }),
     );
   }
 
