@@ -13,18 +13,18 @@
 		<key>CFBundleIdentifier</key>
 		<string>com.reprocare.reprocare-mobile.development</string>
 		<key>CFBundleShortVersionString</key>
-		<string>1.0.4</string>
+		<string>1.0.5</string>
 		<key>CFBundleVersion</key>
-		<string>4</string>
+		<string>5</string>
 		<key>SigningIdentity</key>
-		<string>Apple Development: Cemalettin Tombuloglu (RLDN3HUR8H)</string>
+		<string>Apple Development: Ersen Koçak (P3X8MDY2P9)</string>
 		<key>Team</key>
 		<string>BXBDS2KU6B</string>
 	</dict>
 	<key>ArchiveVersion</key>
 	<integer>2</integer>
 	<key>CreationDate</key>
-	<date>2024-05-08T19:54:11Z</date>
+	<date>2024-06-25T20:25:43Z</date>
 	<key>Name</key>
 	<string>Runner</string>
 	<key>SchemeName</key>

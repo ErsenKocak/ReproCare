@@ -1,6 +1,6 @@
 ---
 triple:          'arm64-apple-darwin'
-binary-path:     '/Users/ersenkocak/Library/Developer/Xcode/DerivedData/Runner-egpzaoqbmqkyxzdichjfvtjypyuu/Build/Intermediates.noindex/ArchiveIntermediates/Runner/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/FirebaseCoreExtension.framework/FirebaseCoreExtension'
+binary-path:     '/Users/ersenkocak/Library/Developer/Xcode/DerivedData/Runner-bebfgwsgbxhwbogvaktzmfzonndv/Build/Intermediates.noindex/ArchiveIntermediates/Runner/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/FirebaseCoreExtension.framework/FirebaseCoreExtension'
 relocations:
   - { offsetInCU: 0x33, offset: 0x33, size: 0x8, addend: 0x0, symName: _FirebaseCoreExtensionVersionString, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x0 }
   - { offsetInCU: 0x67, offset: 0x67, size: 0x8, addend: 0x0, symName: _FirebaseCoreExtensionVersionNumber, symObjAddr: 0x38, symBinAddr: 0x4038, symSize: 0x0 }

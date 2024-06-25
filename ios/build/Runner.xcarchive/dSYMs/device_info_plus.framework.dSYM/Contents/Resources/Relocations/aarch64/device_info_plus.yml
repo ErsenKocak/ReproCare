@@ -1,6 +1,6 @@
 ---
 triple:          'arm64-apple-darwin'
-binary-path:     '/Users/ersenkocak/Library/Developer/Xcode/DerivedData/Runner-egpzaoqbmqkyxzdichjfvtjypyuu/Build/Intermediates.noindex/ArchiveIntermediates/Runner/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/device_info_plus.framework/device_info_plus'
+binary-path:     '/Users/ersenkocak/Library/Developer/Xcode/DerivedData/Runner-bebfgwsgbxhwbogvaktzmfzonndv/Build/Intermediates.noindex/ArchiveIntermediates/Runner/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/device_info_plus.framework/device_info_plus'
 relocations:
   - { offsetInCU: 0x33, offset: 0x3C6C, size: 0x8, addend: 0x0, symName: _device_info_plusVersionString, symObjAddr: 0x0, symBinAddr: 0x4860, symSize: 0x0 }
   - { offsetInCU: 0x67, offset: 0x3CA0, size: 0x8, addend: 0x0, symName: _device_info_plusVersionNumber, symObjAddr: 0x30, symBinAddr: 0x4890, symSize: 0x0 }

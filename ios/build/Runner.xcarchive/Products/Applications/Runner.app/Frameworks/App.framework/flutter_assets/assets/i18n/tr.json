@@ -20,7 +20,8 @@
     "PasswordAgain": "Şifre Tekrarı",
     "ForgotMyPassword": "Şifremi unuttum",
     "ForgotYourPassword": "Şifrenizi mi unuttunuz?",
-    "Information": "Bilgilendirme"
+    "Information": "Bilgilendirme",
+    "Refresh": "Yenile"
   },
   "Login": {
     "LoginInformation": "Giriş yapmaya devam etmek için,\nsize daha öncesinde iletilen şifreyi kullanınız."

@@ -20,7 +20,8 @@
         "PasswordAgain": "Password Again",
         "ForgotMyPassword": "Forgot my password",
         "ForgotYourPassword": "Forgot your password?",
-        "Information": "Information"
+        "Information": "Information",
+        "Refresh": "Refresh"
     },
     "Login": {
         "LoginInformation": "To continue logging in\n, use the password previously sent to you"
