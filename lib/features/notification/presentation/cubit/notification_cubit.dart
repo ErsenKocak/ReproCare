@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:reprocare/common/base/cubit/base_cubit.dart';
 import 'package:reprocare/common/base/cubit/base_state.dart';
 import 'package:reprocare/common/base/model/request/pagination_request_param/pagination_request_param.dart';
@@ -20,23 +21,32 @@ class NotificationCubit extends Cubit<NotificationState>
 
   final INotificationRepository _notificationRepository;
   List<NotificationTokenEntity>? userNotificationTokenList;
-  List<NotificationEntity>? notificationList;
   List<NotificationEntity>? notificationDummyList;
+  PagingController<int, NotificationEntity>? notificationPaginationController;
+  late PaginationRequestParam notificationPaginationRequest;
+
+  void initializePagination() {
+    notificationPaginationController =
+        PagingController<int, NotificationEntity>(
+            firstPageKey: 0, invisibleItemsThreshold: 4);
+    notificationPaginationRequest = PaginationRequestParam(page: 0, size: 15);
+  }
 
   @override
   Future<void> initialize() async {}
 
-  Future<void> getNotifications() async {
+  Future<Result<List<NotificationEntity>, AppException>> getNotifications(
+      PaginationRequestParam paginationRequest) async {
     safeEmit(NotificationState.loading());
 
-    final response = await _notificationRepository.getNotifications();
+    final response =
+        await _notificationRepository.getNotifications(paginationRequest);
 
     final value = switch (response) {
       Success(
         value: final List<NotificationEntity> _notificationTokenListEntity
       ) =>
         {
-          notificationList = _notificationTokenListEntity,
           checkForUnReadNotifications,
           safeEmit(NotificationState.listSuccess()),
         },
@@ -44,6 +54,8 @@ class NotificationCubit extends Cubit<NotificationState>
           safeEmit(NotificationState.failure(exception.message)),
         }
     };
+
+    return response;
   }
 
   Future<void> readNotification(NotificationEntity notification) async {
@@ -72,6 +84,7 @@ class NotificationCubit extends Cubit<NotificationState>
 
     final value = switch (response) {
       Success(value: final bool _response) => {
+          notificationPaginationController!.itemList!.remove(notification),
           safeEmit(NotificationState.listSuccess()),
         },
       Failure(exception: final AppException exception) => {
@@ -102,15 +115,19 @@ class NotificationCubit extends Cubit<NotificationState>
   void _updateNotificationInList(
     NotificationEntity newNotification,
   ) {
-    int previousTaskIndex = notificationList!
+    int previousTaskIndex = notificationPaginationController!.itemList!
         .indexWhere((notification) => notification.id == newNotification.id);
 
-    notificationList?.update(previousTaskIndex, newNotification);
+    notificationPaginationController!.itemList!
+        .update(previousTaskIndex, newNotification);
+
+    notificationPaginationController?.notifyListeners();
   }
 
-  bool get checkForUnReadNotifications => notificationList?.firstWhereOrNull(
-              (notification) => notification.isRead == false) !=
-          null
-      ? true
-      : false;
+  bool get checkForUnReadNotifications =>
+      notificationPaginationController?.itemList?.firstWhereOrNull(
+                  (notification) => notification.isRead == false) !=
+              null
+          ? true
+          : false;
 }

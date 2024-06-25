@@ -14,11 +14,12 @@ final class NotificationService implements INotificationService {
 
   NotificationService(this._networkClient);
   @override
-  Future<Result<List<NotificationModel>, AppException>>
-      getNotifications() async {
+  Future<Result<List<NotificationModel>, AppException>> getNotifications(
+      PaginationRequestParam paginationRequest) async {
     return await _networkClient.call(
       path: HttpClientEndPoints.GetNotifications.URL,
-      callType: HttpCallType.GET,
+      callType: HttpCallType.POST,
+      data: paginationRequest,
       mapper: (json) => APIModelMapper.jsonToList<NotificationModel>(
         json,
         (json) => NotificationModel.fromJson(json),

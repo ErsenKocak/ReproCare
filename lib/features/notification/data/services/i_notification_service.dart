@@ -5,8 +5,11 @@ import 'package:reprocare/features/notification/data/models/notification_token_m
 import 'package:reprocare/features/notification/domain/entities/request/notification_token_request_param/notification_token_request_param.dart';
 
 abstract class INotificationService {
-  Future<Result<List<NotificationModel>, AppException>> getNotifications();
+  Future<Result<List<NotificationModel>, AppException>> getNotifications(
+      PaginationRequestParam paginationRequest);
+
   Future<Result<bool, AppException>> deleteNotification(int id);
+
   Future<Result<bool, AppException>> readNotification(int id);
 
   Future<Result<NotificationTokenModel, AppException>> insertNotificationToken(

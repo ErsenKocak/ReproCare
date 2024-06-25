@@ -50,7 +50,7 @@ platform :ios do
         firebase_app_distribution(
             app: "1:826475858519:ios:2dec6f95b512e272ff7112",
             groups: "ios---prod",
-            release_notes: "PROD",
+            release_notes: "",
             firebase_cli_path: "/usr/local/bin/firebase",
             ipa_path: "./build/Runner/Runner.ipa"
         )

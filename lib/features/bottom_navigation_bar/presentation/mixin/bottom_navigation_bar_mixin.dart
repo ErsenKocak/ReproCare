@@ -54,7 +54,6 @@ mixin BottomNavigationBarMixin on State<BottomNavigationBarView> {
             pushNotificationToken: token,
           ),
         );
-        await notificationCubit.getNotifications();
       }
     }
   }

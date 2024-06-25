@@ -14,9 +14,10 @@ final class NotificationRepository implements INotificationRepository {
   NotificationRepository(this._notificationService);
 
   @override
-  Future<Result<List<NotificationEntity>, AppException>>
-      getNotifications() async {
-    final response = await _notificationService.getNotifications();
+  Future<Result<List<NotificationEntity>, AppException>> getNotifications(
+      PaginationRequestParam paginationRequest) async {
+    final response =
+        await _notificationService.getNotifications(paginationRequest);
 
     return switch (response) {
       Success(value: final List<NotificationModel> _notificationModelList) =>

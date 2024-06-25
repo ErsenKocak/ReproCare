@@ -31,18 +31,11 @@ mixin NotificationViewMixin on State<NotificationsView> {
   Future<void> initializeMixin() async {
     notificationCubit = ServiceLocatorProvider.provide<NotificationCubit>();
     notificationExpandNotifier = ValueNotifier<List<NotificationEntity>>([]);
-
+    notificationCubit.initializePagination();
     await initializeServices();
   }
 
-  Future<void> initializeServices() async {
-    await getNotifications();
-  }
-
-  Future<void> getNotifications() async {
-    notificationExpandNotifier.value.clear();
-    return await notificationCubit.getNotifications();
-  }
+  Future<void> initializeServices() async {}
 
   Future<void> readNotification(NotificationEntity notification) async {
     await notificationCubit.readNotification(notification);

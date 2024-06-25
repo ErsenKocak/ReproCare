@@ -11,7 +11,7 @@ import 'package:reprocare/common/init/service_locator/service_locator_provider.d
 import 'package:reprocare/common/widgets/app_bar/app_bar_widget.dart';
 import 'package:reprocare/common/widgets/app_loading/app_loading.dart';
 import 'package:reprocare/common/widgets/empty/empty_widget.dart';
-import 'package:reprocare/common/widgets/pagination/app_pagination.dart';
+import 'package:reprocare/common/widgets/pagination/app_pagination_widget.dart';
 import 'package:reprocare/common/widgets/refresh_indicator/app_refresh_indicator.dart';
 import 'package:reprocare/common/widgets/slidable/slidable_widget.dart';
 import 'package:reprocare/common/widgets/slidable/widgets/slidable_item/slidable_item_widget.dart';
@@ -79,33 +79,49 @@ class _NotificationsViewState extends State<NotificationsView>
   }
 
   Widget get _buildBody {
-    return BlocBuilder<NotificationCubit, NotificationState>(
-      builder: (context, state) => state.maybeWhen(
-        loading: () => NotificationViewShimmer(),
-        listSuccess: () => _buildNotificationList,
-        orElse: () => const SizedBox(),
-      ),
-    );
+    // return BlocBuilder<NotificationCubit, NotificationState>(
+    //   builder: (context, state) => state.maybeWhen(
+    //     loading: () => NotificationViewShimmer(),
+    //     listSuccess: () => _buildNotificationList,
+    //     orElse: () => const SizedBox(),
+    //   ),
+    // );
+
+    return _buildNotificationList;
   }
 
   Widget get _buildNotificationList {
-    if (notificationCubit.notificationList.isNullOrEmpty)
-      return Padding(
-        padding: context.paddingAllHigh2,
-        child: AppEmptyWidget(
-          buttonText: LocaleKeys.Global_Refresh.tr(),
-          onPress: () async => await getNotifications(),
-        ),
-      );
+    return AppPaginationWidget<NotificationEntity>(
+      pagingController: notificationCubit.notificationPaginationController!,
+      paginationRequest: notificationCubit.notificationPaginationRequest,
+      getItemsFunction: (paginationRequest) {
+        notificationExpandNotifier.value.clear();
+        return notificationCubit.getNotifications(paginationRequest);
+      },
+      loadingWidget: NotificationViewShimmer(),
+      emptyWidget: _buildEmptyList,
+      itemBuilder: (context, item, index) => _buildNotificationCard(item),
+    );
 
-    return AppRefreshIndicator(
-      onRefresh: getNotifications,
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        itemCount: notificationCubit.notificationList?.length,
-        itemBuilder: (context, index) =>
-            _buildNotificationCard(notificationCubit.notificationList![index]),
+    // return AppRefreshIndicator(
+    //   onRefresh: getNotifications,
+    //   child: ListView.builder(
+    //     shrinkWrap: true,
+    //     physics: BouncingScrollPhysics(),
+    //     itemCount: notificationCubit.notificationList?.length,
+    //     itemBuilder: (context, index) =>
+    //         _buildNotificationCard(notificationCubit.notificationList![index]),
+    //   ),
+    // );
+  }
+
+  Widget get _buildEmptyList {
+    return Padding(
+      padding: context.paddingAllHigh2,
+      child: AppEmptyWidget(
+        buttonText: LocaleKeys.Global_Refresh.tr(),
+        onPress: () async => await notificationCubit
+            .getNotifications(notificationCubit.notificationPaginationRequest),
       ),
     );
   }
