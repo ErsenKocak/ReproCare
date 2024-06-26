@@ -52,6 +52,7 @@ mixin NotificationViewMixin on State<NotificationsView> {
       notificationExpandNotifier.value.add(notification);
     }
     notificationCubit.safeEmit(NotificationState.listSuccess());
+    notificationCubit.notificationPaginationController?.notifyListeners();
   }
 
   Future<void> onTapSlidableDeleteButton(
