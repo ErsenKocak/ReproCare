@@ -16,6 +16,7 @@ import 'package:reprocare/common/widgets/bottom_sheets/bottom_sheet/app_bottom_s
 import 'package:reprocare/common/widgets/buttons/elevated_button/elevated_button.dart';
 import 'package:reprocare/common/widgets/scrollable_widgets/scrollable_body/scrollable_body.dart';
 import 'package:reprocare/common/widgets/svg_picture/app_svg_picture.dart';
+import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/constants/colors/app_dark_colors.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
@@ -73,6 +74,13 @@ class _SettingsViewState extends State<SettingsView>
               8.h.sbxh,
               _buildSettingsItems,
             ],
+          ),
+          withoutExpandedWidget: Padding(
+            padding: EdgeInsets.only(bottom: 12.h),
+            child: Text(
+              '${Application.versionName}(${Application.versionCode})',
+              style: AppThemes.currentTheme.textTheme.labelSmall,
+            ),
           ),
         );
       },
