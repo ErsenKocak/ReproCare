@@ -24,20 +24,18 @@ class AppEmptyWidget extends StatelessWidget {
   final String? buttonText;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          _buildIcon,
-          24.h.sbxh,
-          _buildTitle,
-          12.h.sbxh,
-          _buildSubTitle,
-          _buildFooterButton
-        ],
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        _buildIcon,
+        24.h.sbxh,
+        _buildTitle,
+        12.h.sbxh,
+        _buildSubTitle,
+        _buildFooterButton
+      ],
     );
   }
 
@@ -51,7 +49,7 @@ class AppEmptyWidget extends StatelessWidget {
     return Text(
       title ?? LocaleKeys.ErrorMessages_EmptyWidgetInfo.tr(),
       textAlign: TextAlign.center,
-      style: AppThemes.currentTheme.textTheme.bodyLarge?.copyWith(
+      style: AppThemes.currentTheme.textTheme.bodyMedium?.copyWith(
         fontWeight: AppFontWeight.medium.value,
       ),
     );
@@ -68,11 +66,16 @@ class AppEmptyWidget extends StatelessWidget {
 
   Widget get _buildFooterButton {
     if (onPress == null) return const SizedBox();
-    return AppElevatedButton(
-      buttonText: buttonText ?? '',
-      onPressed: () {
-        onPress!();
-      },
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 12.h,
+      ),
+      child: AppElevatedButton(
+        buttonText: buttonText ?? '',
+        onPressed: () {
+          onPress!();
+        },
+      ),
     );
   }
 }

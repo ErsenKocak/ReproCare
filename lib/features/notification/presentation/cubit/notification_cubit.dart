@@ -22,6 +22,7 @@ class NotificationCubit extends Cubit<NotificationState>
   final INotificationRepository _notificationRepository;
   List<NotificationTokenEntity>? userNotificationTokenList;
   List<NotificationEntity>? notificationDummyList;
+  List<NotificationEntity>? notificationList;
   PagingController<int, NotificationEntity>? notificationPaginationController;
   late PaginationRequestParam notificationPaginationRequest;
 
@@ -43,11 +44,9 @@ class NotificationCubit extends Cubit<NotificationState>
         await _notificationRepository.getNotifications(paginationRequest);
 
     final value = switch (response) {
-      Success(
-        value: final List<NotificationEntity> _notificationTokenListEntity
-      ) =>
-        {
+      Success(value: final List<NotificationEntity> _responseList) => {
           checkForUnReadNotifications,
+          notificationList = _responseList,
           safeEmit(NotificationState.listSuccess()),
         },
       Failure(exception: final AppException exception) => {

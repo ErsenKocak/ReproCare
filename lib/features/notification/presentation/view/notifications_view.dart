@@ -91,6 +91,9 @@ class _NotificationsViewState extends State<NotificationsView>
   }
 
   Widget get _buildNotificationList {
+    if (notificationCubit.notificationList.isNullOrEmpty)
+      return _buildEmptyList;
+
     return AppPaginationWidget<NotificationEntity>(
       pagingController: notificationCubit.notificationPaginationController!,
       paginationRequest: notificationCubit.notificationPaginationRequest,
@@ -99,20 +102,8 @@ class _NotificationsViewState extends State<NotificationsView>
         return notificationCubit.getNotifications(paginationRequest);
       },
       loadingWidget: NotificationViewShimmer(),
-      emptyWidget: _buildEmptyList,
       itemBuilder: (context, item, index) => _buildNotificationCard(item),
     );
-
-    // return AppRefreshIndicator(
-    //   onRefresh: getNotifications,
-    //   child: ListView.builder(
-    //     shrinkWrap: true,
-    //     physics: BouncingScrollPhysics(),
-    //     itemCount: notificationCubit.notificationList?.length,
-    //     itemBuilder: (context, index) =>
-    //         _buildNotificationCard(notificationCubit.notificationList![index]),
-    //   ),
-    // );
   }
 
   Widget get _buildEmptyList {
@@ -120,8 +111,13 @@ class _NotificationsViewState extends State<NotificationsView>
       padding: context.paddingAllHigh2,
       child: AppEmptyWidget(
         buttonText: LocaleKeys.Global_Refresh.tr(),
-        onPress: () async => await notificationCubit
-            .getNotifications(notificationCubit.notificationPaginationRequest),
+        title: LocaleKeys.Notification_NotificationEmptyInfo.tr(),
+        subTitle: LocaleKeys.Notification_NotificationEmptyInfoSubTitle.tr(),
+        onPress: () async {
+          await notificationCubit.getNotifications(
+              notificationCubit.notificationPaginationRequest);
+          setState(() {});
+        },
       ),
     );
   }
@@ -223,46 +219,60 @@ class _NotificationsViewState extends State<NotificationsView>
           builder: (context, constraints) {
             int numberOfLines = getNumberOfLines(
                 text: notification.messageBody ?? '', constraints: constraints);
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  notification.messageTitle ?? '',
-                  style: AppThemes.currentTheme.textTheme.bodySmall?.copyWith(
-                    fontWeight: AppFontWeight.medium.value,
-                  ),
-                ),
-                4.h.sbxh,
-                Column(
+            return GestureDetector(
+              onTap: () {
+                if (notification.isRead == false) {
+                  readNotification(notification);
+                }
+              },
+              child: Container(
+                color: Colors.transparent,
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      notification.messageBody ?? '',
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: checkNotificationIsExpanded(notification)
-                          ? numberOfLines
-                          : numberOfLines >= 2
-                              ? 2
-                              : 1,
-                      style: AppThemes.currentTheme.textTheme.labelSmall
-                          ?.copyWith(color: AppLightColors.secondaryTextColor),
+                      notification.messageTitle ?? '',
+                      style:
+                          AppThemes.currentTheme.textTheme.bodySmall?.copyWith(
+                        fontWeight: AppFontWeight.medium.value,
+                      ),
                     ),
-                    if (numberOfLines > 2) _expandableLabel(notification),
+                    4.h.sbxh,
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          notification.messageBody ?? '',
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: checkNotificationIsExpanded(notification)
+                              ? numberOfLines
+                              : numberOfLines >= 2
+                                  ? 2
+                                  : 1,
+                          style: AppThemes.currentTheme.textTheme.labelSmall
+                              ?.copyWith(
+                                  color: AppLightColors.secondaryTextColor),
+                        ),
+                        if (numberOfLines > 2) _expandableLabel(notification),
+                      ],
+                    ),
+                    4.h.sbxh,
+                    Text(
+                      DateFunctions.dateFormat(
+                              dateTime: DateFunctions.stringToDateTime(
+                                  stringDate: notification.createdDate),
+                              dateFormat: DateFormatTypes.ddMMyyyyHHmm) ??
+                          '',
+                      style: AppThemes.currentTheme.textTheme.labelSmall
+                          ?.copyWith(
+                              color: AppLightColors.secondaryTextColor,
+                              fontSize: 8.sp),
+                    )
                   ],
                 ),
-                4.h.sbxh,
-                Text(
-                  DateFunctions.dateFormat(
-                          dateTime: DateFunctions.stringToDateTime(
-                              stringDate: notification.createdDate),
-                          dateFormat: DateFormatTypes.ddMMyyyyHHmm) ??
-                      '',
-                  style: AppThemes.currentTheme.textTheme.labelSmall?.copyWith(
-                      color: AppLightColors.secondaryTextColor, fontSize: 8.sp),
-                )
-              ],
+              ),
             );
           },
         );

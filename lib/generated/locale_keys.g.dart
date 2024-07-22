@@ -32,6 +32,7 @@ abstract class  LocaleKeys {
   static const Notification_Read = 'Notification.Read';
   static const Notification_AreYouSureDeleteNotification = 'Notification.AreYouSureDeleteNotification';
   static const Notification_NotificationEmptyInfo = 'Notification.NotificationEmptyInfo';
+  static const Notification_NotificationEmptyInfoSubTitle = 'Notification.NotificationEmptyInfoSubTitle';
   static const Notification = 'Notification';
   static const ErrorMessages_GlobalError = 'ErrorMessages.GlobalError';
   static const ErrorMessages_NotEmpty = 'ErrorMessages.NotEmpty';

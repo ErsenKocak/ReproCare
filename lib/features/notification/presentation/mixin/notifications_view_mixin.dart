@@ -45,10 +45,14 @@ mixin NotificationViewMixin on State<NotificationsView> {
     await notificationCubit.deleteNotification(notification);
   }
 
-  void onTapExpandNotification(NotificationEntity notification) {
+  Future<void> onTapExpandNotification(NotificationEntity notification) async {
     if (checkNotificationIsExpanded(notification)) {
       notificationExpandNotifier.value.remove(notification);
     } else {
+      if (notification.isRead == false) {
+        await readNotification(notification);
+        notification = notification.copyWith(isRead: true);
+      }
       notificationExpandNotifier.value.add(notification);
     }
     notificationCubit.safeEmit(NotificationState.listSuccess());
