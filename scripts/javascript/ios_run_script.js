@@ -1,5 +1,3 @@
-console.log('İşlem başladı');
-
 const Environment = require('../../.env.json');
 // const FirebaseAppIDFile = require('../../ios/firebase_app_id_file.json');
 const { sendScriptErrorMessageOnXCode, setInfoPListObj } = require('./helper');
@@ -93,13 +91,9 @@ exec(createFirebaseOptionsFile, (error) => { sendScriptErrorMessageOnXCode(error
 const createGoogleServicesInfo = `cp ${googleServicesInfoPListName} GoogleService-Info.plist`;
 exec(createGoogleServicesInfo, (error) => { sendScriptErrorMessageOnXCode(error) });
 
-
+console.log(`App Name: ${appName}`);
 setInfoPListObj('CFBundleShortVersionString', versionName);
-console.log(`CFBundleShortVersionString`);
 setInfoPListObj('CFBundleVersion', versionCode);
-console.log(`CFBundleVersion`);
 setInfoPListObj('CFBundleDisplayName', appName);
-console.log(`CFBundleDisplayName`);
 setInfoPListObj('CFBundleIdentifier', bundleId);
-console.log(`CFBundleIdentifier`);
 

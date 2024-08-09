@@ -26,7 +26,7 @@ final class UserSettingsService implements IUserSettingsService {
     return await _networkClient.call(
       path: HttpClientEndPoints.UpdateUserSettings.URL,
       callType: HttpCallType.PUT,
-      data: userSettings,
+      data: userSettings.toJson(),
       mapper: (json) => UserSettingsModel.fromJson(json),
     );
   }

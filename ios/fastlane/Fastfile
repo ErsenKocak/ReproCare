@@ -20,6 +20,7 @@ platform :ios do
     lane :ios_firebase_distribution_dev do
         # sh("flutter clean")
         # sh("flutter pub get")
+        # sh("pod install")
         # sh("flutter build ios --release")
         build_app(
             scheme: "Runner",
@@ -30,7 +31,7 @@ platform :ios do
         firebase_app_distribution(
             app: "1:826475858519:ios:06a394d988d35b99ff7112",
             groups: "ios---dev",
-            release_notes: "",
+            release_notes: "- Bildirimler Ekranı -- Bir bildirimin üzerine veya Göster bilgisine tıklandığında bildirimi okundu olarak güncellendi.",
             firebase_cli_path: "/usr/local/bin/firebase",
             ipa_path: "./build/Runner/Runner.ipa"
         )

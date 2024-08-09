@@ -107,26 +107,26 @@ class _SettingsViewState extends State<SettingsView>
 
   Widget get _buildSettingsItems {
     List<ListTileItem> viewItems = [
-      ListTileItem(
-        leadingWidget: _listTileItemLeading(Icon(
-          Icons.language,
-          color: AppLightColors.white,
-        )),
-        title: LocaleKeys.Settings_Language.tr(),
-        onTap: () {
-          AppBottomSheet.show(
-            contentPadding:
-                EdgeInsets.symmetric(vertical: 10.h, horizontal: 24.w),
-            child: (bottomSheetContext) => Column(
-              children: [
-                SettingsLanguageItem(locale: AppLocalizationHelper.tr),
-                8.h.sbxh,
-                SettingsLanguageItem(locale: AppLocalizationHelper.en),
-              ],
-            ),
-          );
-        },
-      ),
+      // ListTileItem(
+      //   leadingWidget: _listTileItemLeading(Icon(
+      //     Icons.language,
+      //     color: AppLightColors.white,
+      //   )),
+      //   title: LocaleKeys.Settings_Language.tr(),
+      //   onTap: () {
+      //     AppBottomSheet.show(
+      //       contentPadding:
+      //           EdgeInsets.symmetric(vertical: 10.h, horizontal: 24.w),
+      //       child: (bottomSheetContext) => Column(
+      //         children: [
+      //           SettingsLanguageItem(locale: AppLocalizationHelper.tr),
+      //           8.h.sbxh,
+      //           SettingsLanguageItem(locale: AppLocalizationHelper.en),
+      //         ],
+      //       ),
+      //     );
+      //   },
+      // ),
       ListTileItem(
         leadingWidget: _listTileItemLeading(AppSvgPicture(
           path: Assets.icons.general.iconAppBarNotification.path,

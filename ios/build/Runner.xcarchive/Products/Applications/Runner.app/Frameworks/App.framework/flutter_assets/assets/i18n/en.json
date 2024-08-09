@@ -32,7 +32,8 @@
         "Hide": "Hide",
         "Read": "Read",
         "AreYouSureDeleteNotification": "Are you sure you want to delete the notification?",
-        "NotificationEmptyInfo": "There are currently no notifications."
+        "NotificationEmptyInfo": "There are currently no notifications.",
+        "NotificationEmptyInfoSubTitle": "It will be displayed here when a notification is generated"
     },
     "ErrorMessages": {
         "GlobalError": "Sorry, an error occurred.",

@@ -91,8 +91,8 @@ class _NotificationsViewState extends State<NotificationsView>
   }
 
   Widget get _buildNotificationList {
-    if (notificationCubit.notificationList.isNullOrEmpty)
-      return _buildEmptyList;
+    // if (notificationCubit.notificationList.isNullOrEmpty)
+    //   return _buildEmptyList;
 
     return AppPaginationWidget<NotificationEntity>(
       pagingController: notificationCubit.notificationPaginationController!,
@@ -102,6 +102,7 @@ class _NotificationsViewState extends State<NotificationsView>
         return notificationCubit.getNotifications(paginationRequest);
       },
       loadingWidget: NotificationViewShimmer(),
+      emptyWidget: _buildEmptyList,
       itemBuilder: (context, item, index) => _buildNotificationCard(item),
     );
   }

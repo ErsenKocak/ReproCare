@@ -36,7 +36,6 @@ class $AssetsIconsGen {
       const $AssetsIconsEmptyWidgetGen();
   $AssetsIconsGeneralGen get general => const $AssetsIconsGeneralGen();
   $AssetsIconsInputsGen get inputs => const $AssetsIconsInputsGen();
-  $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
   $AssetsIconsSettingsGen get settings => const $AssetsIconsSettingsGen();
 }
 
@@ -187,10 +186,6 @@ class $AssetsIconsInputsGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [iconEdit, iconEye, iconEyeClose, iconInfo];
-}
-
-class $AssetsIconsLauncherGen {
-  const $AssetsIconsLauncherGen();
 }
 
 class $AssetsIconsSettingsGen {

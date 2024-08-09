@@ -14,7 +14,7 @@ relocations:
   - { offsetInCU: 0x90, offset: 0x579A7, size: 0x8, addend: 0x0, symName: '+[Converters parseNotificationCategoryOptions:]', symObjAddr: 0x0, symBinAddr: 0x4218, symSize: 0xFC }
   - { offsetInCU: 0x102, offset: 0x57A19, size: 0x8, addend: 0x0, symName: '+[Converters parseNotificationActionOptions:]', symObjAddr: 0xFC, symBinAddr: 0x4314, symSize: 0xFC }
   - { offsetInCU: 0x27, offset: 0x57AF3, size: 0x8, addend: 0x0, symName: '+[FlutterEngineManager shouldAddAppDelegateToRegistrar:]', symObjAddr: 0x0, symBinAddr: 0x4410, symSize: 0x68 }
-  - { offsetInCU: 0x41, offset: 0x57B0D, size: 0x8, addend: 0x0, symName: _backgroundEngine, symObjAddr: 0x2DD8, symBinAddr: 0x12A60, symSize: 0x0 }
+  - { offsetInCU: 0x41, offset: 0x57B0D, size: 0x8, addend: 0x0, symName: _backgroundEngine, symObjAddr: 0x2DF8, symBinAddr: 0x12A60, symSize: 0x0 }
   - { offsetInCU: 0x89, offset: 0x57B55, size: 0x8, addend: 0x0, symName: '+[FlutterEngineManager shouldAddAppDelegateToRegistrar:]', symObjAddr: 0x0, symBinAddr: 0x4410, symSize: 0x68 }
   - { offsetInCU: 0xCC, offset: 0x57B98, size: 0x8, addend: 0x0, symName: '-[FlutterEngineManager init]', symObjAddr: 0x68, symBinAddr: 0x4478, symSize: 0x6C }
   - { offsetInCU: 0x103, offset: 0x57BCF, size: 0x8, addend: 0x0, symName: '-[FlutterEngineManager startEngineIfNeeded:registerPlugins:]', symObjAddr: 0xD4, symBinAddr: 0x44E4, symSize: 0x1A8 }
@@ -99,8 +99,8 @@ relocations:
   - { offsetInCU: 0x693, offset: 0x58624, size: 0x8, addend: 0x0, symName: _IS_BADGE_ENABLED, symObjAddr: 0x6610, symBinAddr: 0x103A8, symSize: 0x0 }
   - { offsetInCU: 0x6A9, offset: 0x5863A, size: 0x8, addend: 0x0, symName: _IS_PROVISIONAL_ENABLED, symObjAddr: 0x6618, symBinAddr: 0x103B0, symSize: 0x0 }
   - { offsetInCU: 0x6BF, offset: 0x58650, size: 0x8, addend: 0x0, symName: _IS_CRITICAL_ENABLED, symObjAddr: 0x6620, symBinAddr: 0x103B8, symSize: 0x0 }
-  - { offsetInCU: 0x6E1, offset: 0x58672, size: 0x8, addend: 0x0, symName: _registerPlugins, symObjAddr: 0x14A28, symBinAddr: 0x12A68, symSize: 0x0 }
-  - { offsetInCU: 0x6FC, offset: 0x5868D, size: 0x8, addend: 0x0, symName: _actionEventSink, symObjAddr: 0x14A30, symBinAddr: 0x12A70, symSize: 0x0 }
+  - { offsetInCU: 0x6E1, offset: 0x58672, size: 0x8, addend: 0x0, symName: _registerPlugins, symObjAddr: 0x14A48, symBinAddr: 0x12A68, symSize: 0x0 }
+  - { offsetInCU: 0x6FC, offset: 0x5868D, size: 0x8, addend: 0x0, symName: _actionEventSink, symObjAddr: 0x14A50, symBinAddr: 0x12A70, symSize: 0x0 }
   - { offsetInCU: 0x7F2, offset: 0x58783, size: 0x8, addend: 0x0, symName: '+[FlutterLocalNotificationsPlugin registerWithRegistrar:]', symObjAddr: 0x0, symBinAddr: 0x4800, symSize: 0xCC }
   - { offsetInCU: 0x851, offset: 0x587E2, size: 0x8, addend: 0x0, symName: '+[FlutterLocalNotificationsPlugin setPluginRegistrantCallback:]', symObjAddr: 0xCC, symBinAddr: 0x48CC, symSize: 0xC }
   - { offsetInCU: 0x88E, offset: 0x5881F, size: 0x8, addend: 0x0, symName: '-[FlutterLocalNotificationsPlugin initWithChannel:registrar:]', symObjAddr: 0xD8, symBinAddr: 0x48D8, symSize: 0xC4 }

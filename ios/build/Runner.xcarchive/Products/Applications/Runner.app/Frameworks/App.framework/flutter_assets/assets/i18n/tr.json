@@ -32,7 +32,8 @@
     "Hide": "Gizle",
     "Read": "Okundu",
     "AreYouSureDeleteNotification": "Bildirimi silmek istediğinize emin misiniz?",
-    "NotificationEmptyInfo": "Henüz bir bildirim bulunmamaktadır."
+    "NotificationEmptyInfo": "Henüz bir bildirim bulunmamaktadır.",
+    "NotificationEmptyInfoSubTitle": "Bir bildirim oluştuğunda burda görüntülenir"
   },
   "ErrorMessages": {
     "GlobalError": "Üzgünüz, bir sorun oluştu.",
