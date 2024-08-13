@@ -24,11 +24,14 @@ import 'package:reprocare/features/notification/data/services/i_notification_ser
 import 'package:reprocare/features/notification/data/services/notification_service.dart';
 import 'package:reprocare/features/notification/domain/repositories/i_notification_repository.dart';
 import 'package:reprocare/features/notification/presentation/cubit/notification_cubit.dart';
+import 'package:reprocare/features/notification_settings/data/services/local/i_notification_settings_local_service.dart';
+import 'package:reprocare/features/notification_settings/data/services/local/notification_settings_local_service.dart';
 import 'package:reprocare/features/settings/data/repositories/user_settings_repository.dart';
 import 'package:reprocare/features/settings/data/services/i_user_settings_service.dart';
 import 'package:reprocare/features/settings/data/services/user_settings_service.dart';
 import 'package:reprocare/features/settings/domain/repositories/i_user_settings_repository.dart';
 import 'package:reprocare/features/settings/presentation/cubit/user_settings_cubit.dart';
+import 'package:reprocare/helper/audio/audio_player_helper.dart';
 import 'package:reprocare/helper/device/device_info/device_info_helper.dart';
 import 'package:reprocare/helper/network/internet_connection_check/internet_connection_check_helper.dart';
 
@@ -68,7 +71,7 @@ Future<void> initalize() async {
     ..registerLazySingleton<LanguageCubit>(
       () => LanguageCubit(),
     )
-// #Device Info
+    // #Device Info
     ..registerLazySingleton(() => DeviceInfoHelper())
     // #Device
     ..registerLazySingleton<IDeviceService>(
@@ -83,6 +86,8 @@ Future<void> initalize() async {
         _serviceLocator<DeviceInfoHelper>(),
       ),
     )
+    // #Audio
+    ..registerLazySingleton<AudioPlayerHandler>(() => AudioPlayerHandler())
 
     // #Login
     ..registerLazySingleton<IAuthService>(
@@ -98,7 +103,8 @@ Future<void> initalize() async {
           _serviceLocator<IAuthRepository>(),
           _serviceLocator<IAuthLocalService>(),
         ))
-    //# Notification
+
+    // # Notification
     ..registerLazySingleton<INotificationService>(
       () => NotificationService(_serviceLocator<NetworkClient>()),
     )
@@ -111,7 +117,12 @@ Future<void> initalize() async {
           _serviceLocator<INotificationRepository>(),
         ))
 
-    //#User Settings
+    // #Notification Local Service
+    ..registerLazySingleton<INotificationSettingsLocalService>(
+      () => NotificationSettingsLocalService(),
+    )
+
+    // #User Settings
     ..registerLazySingleton<IUserSettingsService>(
         () => UserSettingsService(_serviceLocator<NetworkClient>()))
     ..registerLazySingleton<IUserSettingsRepository>(
@@ -119,9 +130,13 @@ Future<void> initalize() async {
         _serviceLocator<IUserSettingsService>(),
       ),
     )
-    ..registerLazySingleton<UserSettingsCubit>(() => UserSettingsCubit(
+    ..registerLazySingleton<UserSettingsCubit>(
+      () => UserSettingsCubit(
         _serviceLocator<IUserSettingsRepository>(),
-        _serviceLocator<IAuthLocalService>()));
+        _serviceLocator<IAuthLocalService>(),
+        _serviceLocator<INotificationSettingsLocalService>(),
+      ),
+    );
 
   await _initializeOtherDependencies();
 
@@ -130,6 +145,7 @@ Future<void> initalize() async {
 
 Future<void> _initializeOtherDependencies() async {
   await provide<IAuthLocalService>().initialize();
+  await provide<INotificationSettingsLocalService>().initialize();
   await provide<IThemeLocalService>().initialize();
   await provide<ThemeCubit>().initialize();
 }

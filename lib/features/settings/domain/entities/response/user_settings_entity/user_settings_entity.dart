@@ -8,6 +8,7 @@ class UserSettingsEntity with _$UserSettingsEntity {
   @JsonSerializable(explicitToJson: true)
   factory UserSettingsEntity({
     bool? isNotificationActive,
+    String? soundName,
   }) = _UserSettingsEntity;
 
   factory UserSettingsEntity.fromJson(Map<String, dynamic> json) =>

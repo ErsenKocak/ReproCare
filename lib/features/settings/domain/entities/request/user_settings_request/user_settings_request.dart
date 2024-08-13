@@ -7,6 +7,7 @@ part 'user_settings_request.g.dart';
 class UserSettingsRequest with _$UserSettingsRequest {
   factory UserSettingsRequest({
     bool? isNotificationActive,
+    String? soundName,
   }) = _UserSettingsRequest;
 
   factory UserSettingsRequest.fromJson(Map<String, dynamic> json) =>

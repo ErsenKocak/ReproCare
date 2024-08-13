@@ -33,7 +33,10 @@
         "Read": "Read",
         "AreYouSureDeleteNotification": "Are you sure you want to delete the notification?",
         "NotificationEmptyInfo": "There are currently no notifications.",
-        "NotificationEmptyInfoSubTitle": "It will be displayed here when a notification is generated"
+        "NotificationEmptyInfoSubTitle": "It will be displayed here when a notification is generated",
+        "NotificationSettings": "Notification Settings",
+        "NotificationSound": "Notification Sound",
+        "UseDeviceSound": "Use Device Sound"
     },
     "ErrorMessages": {
         "GlobalError": "Sorry, an error occurred.",
@@ -117,6 +120,7 @@
         "ThemeSelection": "Theme Selection",
         "About": "About",
         "WebSite": "Official Website",
+        "AreYouSureLogout": "Are you sure you want to log out?",
         "Logout": "Logout"
     },
     "Theme": {

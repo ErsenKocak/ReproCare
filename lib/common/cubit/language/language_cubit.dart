@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:reprocare/helper/localization/localization_helper.dart';
 
 class LanguageCubit extends Cubit<Locale> {

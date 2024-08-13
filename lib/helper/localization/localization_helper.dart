@@ -11,7 +11,8 @@ class AppLocalizationHelper {
   static Locale currentLocale = tr;
 
   static Future<void> initialize() async {
-    Locale locale = Application.applicationContext.locale;
+    // Locale locale = Application.applicationContext.locale;
+    Locale locale = Locale('tr');
 
     if (localList.contains(locale)) {
       currentLocale = locale;

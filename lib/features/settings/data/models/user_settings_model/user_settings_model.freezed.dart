@@ -21,6 +21,7 @@ UserSettingsModel _$UserSettingsModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserSettingsModel {
   bool? get isNotificationActive => throw _privateConstructorUsedError;
+  String? get soundName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $UserSettingsModelCopyWith<$Res> {
           UserSettingsModel value, $Res Function(UserSettingsModel) then) =
       _$UserSettingsModelCopyWithImpl<$Res, UserSettingsModel>;
   @useResult
-  $Res call({bool? isNotificationActive});
+  $Res call({bool? isNotificationActive, String? soundName});
 }
 
 /// @nodoc
@@ -51,12 +52,17 @@ class _$UserSettingsModelCopyWithImpl<$Res, $Val extends UserSettingsModel>
   @override
   $Res call({
     Object? isNotificationActive = freezed,
+    Object? soundName = freezed,
   }) {
     return _then(_value.copyWith(
       isNotificationActive: freezed == isNotificationActive
           ? _value.isNotificationActive
           : isNotificationActive // ignore: cast_nullable_to_non_nullable
               as bool?,
+      soundName: freezed == soundName
+          ? _value.soundName
+          : soundName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -69,7 +75,7 @@ abstract class _$$UserSettingsModelImplCopyWith<$Res>
       __$$UserSettingsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool? isNotificationActive});
+  $Res call({bool? isNotificationActive, String? soundName});
 }
 
 /// @nodoc
@@ -84,12 +90,17 @@ class __$$UserSettingsModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isNotificationActive = freezed,
+    Object? soundName = freezed,
   }) {
     return _then(_$UserSettingsModelImpl(
       isNotificationActive: freezed == isNotificationActive
           ? _value.isNotificationActive
           : isNotificationActive // ignore: cast_nullable_to_non_nullable
               as bool?,
+      soundName: freezed == soundName
+          ? _value.soundName
+          : soundName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -98,17 +109,19 @@ class __$$UserSettingsModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$UserSettingsModelImpl implements _UserSettingsModel {
-  _$UserSettingsModelImpl({this.isNotificationActive});
+  _$UserSettingsModelImpl({this.isNotificationActive, this.soundName});
 
   factory _$UserSettingsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserSettingsModelImplFromJson(json);
 
   @override
   final bool? isNotificationActive;
+  @override
+  final String? soundName;
 
   @override
   String toString() {
-    return 'UserSettingsModel(isNotificationActive: $isNotificationActive)';
+    return 'UserSettingsModel(isNotificationActive: $isNotificationActive, soundName: $soundName)';
   }
 
   @override
@@ -117,12 +130,14 @@ class _$UserSettingsModelImpl implements _UserSettingsModel {
         (other.runtimeType == runtimeType &&
             other is _$UserSettingsModelImpl &&
             (identical(other.isNotificationActive, isNotificationActive) ||
-                other.isNotificationActive == isNotificationActive));
+                other.isNotificationActive == isNotificationActive) &&
+            (identical(other.soundName, soundName) ||
+                other.soundName == soundName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, isNotificationActive);
+  int get hashCode => Object.hash(runtimeType, isNotificationActive, soundName);
 
   @JsonKey(ignore: true)
   @override
@@ -140,14 +155,17 @@ class _$UserSettingsModelImpl implements _UserSettingsModel {
 }
 
 abstract class _UserSettingsModel implements UserSettingsModel {
-  factory _UserSettingsModel({final bool? isNotificationActive}) =
-      _$UserSettingsModelImpl;
+  factory _UserSettingsModel(
+      {final bool? isNotificationActive,
+      final String? soundName}) = _$UserSettingsModelImpl;
 
   factory _UserSettingsModel.fromJson(Map<String, dynamic> json) =
       _$UserSettingsModelImpl.fromJson;
 
   @override
   bool? get isNotificationActive;
+  @override
+  String? get soundName;
   @override
   @JsonKey(ignore: true)
   _$$UserSettingsModelImplCopyWith<_$UserSettingsModelImpl> get copyWith =>

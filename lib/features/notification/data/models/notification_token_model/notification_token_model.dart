@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:reprocare/features/device/data/models/user_device_model/user_device_model.dart';
 
 part 'notification_token_model.freezed.dart';
 part 'notification_token_model.g.dart';

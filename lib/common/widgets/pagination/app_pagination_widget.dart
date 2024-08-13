@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:reprocare/common/base/model/request/pagination_request_param/pagination_request_param.dart';
 import 'package:reprocare/common/base/result/base_result.dart';
-import 'package:reprocare/common/widgets/empty/empty_widget.dart';
 import 'package:reprocare/common/widgets/refresh_indicator/app_refresh_indicator.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
 import 'package:reprocare/core/extensions/null_check/null_check_extension.dart';

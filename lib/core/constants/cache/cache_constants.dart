@@ -1,1 +1,1 @@
-enum CacheConstants { User, Theme }
+enum CacheConstants { User, Theme, NotificationSettings }

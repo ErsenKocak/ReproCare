@@ -10,10 +10,12 @@ _$UserSettingsEntityImpl _$$UserSettingsEntityImplFromJson(
         Map<String, dynamic> json) =>
     _$UserSettingsEntityImpl(
       isNotificationActive: json['isNotificationActive'] as bool?,
+      soundName: json['soundName'] as String?,
     );
 
 Map<String, dynamic> _$$UserSettingsEntityImplToJson(
         _$UserSettingsEntityImpl instance) =>
     <String, dynamic>{
       'isNotificationActive': instance.isNotificationActive,
+      'soundName': instance.soundName,
     };

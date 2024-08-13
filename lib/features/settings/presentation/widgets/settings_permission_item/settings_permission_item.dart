@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reprocare/common/widgets/switch/app_switch.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
-import 'package:reprocare/features/settings/domain/entities/response/user_settings_entity/user_settings_entity.dart';
 import 'package:reprocare/features/settings/domain/enums/permission_type.dart';
 import 'package:reprocare/features/settings/presentation/cubit/user_settings_cubit.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';

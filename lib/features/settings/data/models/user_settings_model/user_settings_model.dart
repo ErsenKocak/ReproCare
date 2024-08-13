@@ -8,6 +8,7 @@ class UserSettingsModel with _$UserSettingsModel {
   @JsonSerializable(explicitToJson: true)
   factory UserSettingsModel({
     bool? isNotificationActive,
+    String? soundName,
   }) = _UserSettingsModel;
 
   factory UserSettingsModel.fromJson(Map<String, dynamic> json) =>

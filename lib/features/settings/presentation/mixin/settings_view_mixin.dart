@@ -1,13 +1,16 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:reprocare/common/cubit/language/language_cubit.dart';
 import 'package:reprocare/common/cubit/theme/theme_cubit.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
-import 'package:reprocare/common/router/app_router.dart';
+import 'package:reprocare/common/widgets/bottom_sheets/bottom_sheet/app_bottom_sheet.dart';
+import 'package:reprocare/common/widgets/bottom_sheets/question_bottom_sheet/question_bottom_sheet.dart';
 import 'package:reprocare/features/login/presentation/cubit/auth_cubit/auth_cubit.dart';
 import 'package:reprocare/features/settings/domain/entities/request/user_settings_request/user_settings_request.dart';
 import 'package:reprocare/features/settings/domain/entities/response/user_settings_entity/user_settings_entity.dart';
 import 'package:reprocare/features/settings/presentation/cubit/user_settings_cubit.dart';
 import 'package:reprocare/features/settings/presentation/views/settings_view.dart';
+import 'package:reprocare/generated/locale_keys.g.dart';
 
 mixin SettingsViewMixin on State<SettingsView> {
   late ThemeCubit themeCubit;
@@ -35,7 +38,6 @@ mixin SettingsViewMixin on State<SettingsView> {
   }
 
   void changeUserSettings(UserSettingsEntity settings) {
-    AppRouter.pop();
     userSettingsCubit.changeUserSettings(settings);
     updateUserSettings(UserSettingsRequest(
         isNotificationActive: settings.isNotificationActive));
@@ -47,6 +49,11 @@ mixin SettingsViewMixin on State<SettingsView> {
   }
 
   Future<void> logout() async {
-    await authCubit.logout();
+    await AppBottomSheet.show(
+      child: (bottomSheetContext) => QuestionBottomSheetWidget(
+        headerMessage: LocaleKeys.Settings_AreYouSureLogout.tr(),
+        onConfirmFunction: () async => await authCubit.logout(),
+      ),
+    );
   }
 }

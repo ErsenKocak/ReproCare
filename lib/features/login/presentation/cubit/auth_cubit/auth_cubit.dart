@@ -50,24 +50,24 @@ final class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
   }
 
   Future<void> logout() async {
-    _loginLocalService.delete(CacheConstants.User.name);
-    AppRouter.goNamed(AppRoutes.Login.path);
+    // _loginLocalService.delete(CacheConstants.User.name);
+    // AppRouter.goNamed(AppRoutes.Login.path);
 
-    // safeEmit(AuthState.loading());
+    safeEmit(AuthState.loading());
 
-    // final response = await _loginRepository.logout();
+    final response = await _loginRepository.logout();
 
-    // final value = switch (response) {
-    //   Success(value: final bool isLogout) => {
-    //       if (isLogout)
-    //         {
-    //           _loginLocalService.delete(CacheConstants.User.name),
-    //           AppRouter.goNamed(AppRoutes.Login.path),
-    //         }
-    //     },
-    //   Failure(exception: final AppException exception) => {
-    //       showErrorBottomSheet(exceptionMessage: exception.message),
-    //     }
-    // };
+    final value = switch (response) {
+      Success(value: final bool isLogout) => {
+          if (isLogout)
+            {
+              _loginLocalService.delete(CacheConstants.User.name),
+              AppRouter.goNamed(AppRoutes.Login.path),
+            }
+        },
+      Failure(exception: final AppException exception) => {
+          showErrorBottomSheet(exceptionMessage: exception.message),
+        }
+    };
   }
 }

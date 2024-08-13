@@ -33,6 +33,9 @@ abstract class  LocaleKeys {
   static const Notification_AreYouSureDeleteNotification = 'Notification.AreYouSureDeleteNotification';
   static const Notification_NotificationEmptyInfo = 'Notification.NotificationEmptyInfo';
   static const Notification_NotificationEmptyInfoSubTitle = 'Notification.NotificationEmptyInfoSubTitle';
+  static const Notification_NotificationSettings = 'Notification.NotificationSettings';
+  static const Notification_NotificationSound = 'Notification.NotificationSound';
+  static const Notification_UseDeviceSound = 'Notification.UseDeviceSound';
   static const Notification = 'Notification';
   static const ErrorMessages_GlobalError = 'ErrorMessages.GlobalError';
   static const ErrorMessages_NotEmpty = 'ErrorMessages.NotEmpty';
@@ -112,6 +115,7 @@ abstract class  LocaleKeys {
   static const Settings_ThemeSelection = 'Settings.ThemeSelection';
   static const Settings_About = 'Settings.About';
   static const Settings_WebSite = 'Settings.WebSite';
+  static const Settings_AreYouSureLogout = 'Settings.AreYouSureLogout';
   static const Settings_Logout = 'Settings.Logout';
   static const Settings = 'Settings';
   static const Theme_Light = 'Theme.Light';

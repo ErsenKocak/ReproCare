@@ -7,19 +7,19 @@ class InternetConnectionCheckHelper {
   bool isPopUpOpen = false;
 
   void initializeConnectivityStream() {
-    _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
-      _connectionStatus = result;
+    // _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+    //   _connectionStatus = result;
 
-      if (_connectionStatus == ConnectivityResult.none) {
-        if (isPopUpOpen == false) {
-          // SHOW POPUP
-          isPopUpOpen = true;
-        }
-      } else {
-        checkConnectivity();
-      }
-      // Got a new connectivity status!
-    });
+    //   if (_connectionStatus == ConnectivityResult.none) {
+    //     if (isPopUpOpen == false) {
+    //       // SHOW POPUP
+    //       isPopUpOpen = true;
+    //     }
+    //   } else {
+    //     checkConnectivity();
+    //   }
+    //   // Got a new connectivity status!
+    // });
   }
 
   Future<bool> checkConnectivity() async {

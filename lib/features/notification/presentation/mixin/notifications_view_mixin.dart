@@ -1,8 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:reprocare/common/base/model/request/pagination_request_param/pagination_request_param.dart';
-import 'package:reprocare/common/base/result/base_result.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/common/widgets/bottom_sheets/bottom_sheet/app_bottom_sheet.dart';
 import 'package:reprocare/common/widgets/bottom_sheets/question_bottom_sheet/question_bottom_sheet.dart';
@@ -10,7 +7,6 @@ import 'package:reprocare/features/notification/domain/entities/response/notific
 import 'package:reprocare/features/notification/presentation/cubit/notification_cubit.dart';
 import 'package:reprocare/features/notification/presentation/view/notifications_view.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
-import 'package:reprocare/core/extensions/list/list_extension.dart';
 
 mixin NotificationViewMixin on State<NotificationsView> {
   late ValueNotifier<List<NotificationEntity>> notificationExpandNotifier;

@@ -15,6 +15,7 @@ import 'package:reprocare/features/bottom_navigation_bar/presentation/view/botto
 import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
 import 'package:reprocare/features/login/presentation/view/login_view.dart';
 import 'package:reprocare/features/notification/presentation/view/notifications_view.dart';
+import 'package:reprocare/features/notification_settings/presentation/view/notification_settings_view.dart';
 import 'package:reprocare/features/settings/presentation/views/settings_view.dart';
 import 'package:reprocare/helper/firebase/analytics/firebase_analytics_helper.dart';
 
@@ -44,11 +45,17 @@ class AppRouter {
             routeEffect: AppRouteEffect.none,
           ),
           _generateGoRoute(
-            route: AppRoutes.Settings.path,
-            isShellRoute: true,
-            view: (parameter) => SettingsView(),
-            routeEffect: AppRouteEffect.none,
-          ),
+              route: AppRoutes.Settings.path,
+              isShellRoute: true,
+              view: (parameter) => SettingsView(),
+              routeEffect: AppRouteEffect.none,
+              subRoutes: [
+                _generateGoRoute(
+                  route: AppRoutes.NotificationSettings.path,
+                  isShellRoute: true,
+                  view: (parameter) => NotificationSettingsView(),
+                ),
+              ]),
         ],
       ),
       _generateGoRoute(

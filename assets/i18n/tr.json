@@ -33,7 +33,10 @@
     "Read": "Okundu",
     "AreYouSureDeleteNotification": "Bildirimi silmek istediğinize emin misiniz?",
     "NotificationEmptyInfo": "Henüz bir bildirim bulunmamaktadır.",
-    "NotificationEmptyInfoSubTitle": "Bir bildirim oluştuğunda burda görüntülenir"
+    "NotificationEmptyInfoSubTitle": "Bir bildirim oluştuğunda burda görüntülenir",
+    "NotificationSettings": "Bildirim Ayarları",
+    "NotificationSound": "Bildirim Sesi",
+    "UseDeviceSound": "Cihaz Sesini Kullan"
   },
   "ErrorMessages": {
     "GlobalError": "Üzgünüz, bir sorun oluştu.",
@@ -117,6 +120,7 @@
     "ThemeSelection": "Tema Seçimi",
     "About": "Hakkımızda",
     "WebSite": "Resmi Web Sitesi",
+    "AreYouSureLogout": "Çıkış yapmak istediğinize emin misiniz ?",
     "Logout": "Çıkış Yap"
   },
   "Theme": {

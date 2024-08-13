@@ -6,6 +6,7 @@ enum AppRoutes {
   Login('/login'),
   Profile('/profile'),
   Settings('/settings'),
+  NotificationSettings('notificationSettings'),
   AboutUs('/aboutus');
 
   const AppRoutes(this.path);

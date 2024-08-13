@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reprocare/common/router/app_router.dart';
 import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/constants/colors/app_dark_colors.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
@@ -137,16 +136,17 @@ class AppBottomSheet {
                           ?.copyWith(fontWeight: AppFontWeight.medium.value),
                     )
                   : const SizedBox(),
-              titleSuffix ??
-                  GestureDetector(
-                    onTap: () => AppRouter.pop(),
-                    child: Assets.icons.bottomSheet.iconClose.svg(
-                      color: AppThemes.brightness == Brightness.light
-                          ? AppLightColors.lightGrey
-                          : null,
-                      height: 25.h,
-                    ),
-                  ),
+              titleSuffix ?? const SizedBox()
+              // ??
+              //     GestureDetector(
+              //       onTap: () => AppRouter.pop(),
+              //       child: Assets.icons.bottomSheet.iconClose.svg(
+              //         color: AppThemes.brightness == Brightness.light
+              //             ? AppLightColors.lightGrey
+              //             : null,
+              //         height: 25.h,
+              //       ),
+              //     ),
             ],
           ),
         ],

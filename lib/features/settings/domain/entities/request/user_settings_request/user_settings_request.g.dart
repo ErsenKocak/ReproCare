@@ -10,10 +10,12 @@ _$UserSettingsRequestImpl _$$UserSettingsRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$UserSettingsRequestImpl(
       isNotificationActive: json['isNotificationActive'] as bool?,
+      soundName: json['soundName'] as String?,
     );
 
 Map<String, dynamic> _$$UserSettingsRequestImplToJson(
         _$UserSettingsRequestImpl instance) =>
     <String, dynamic>{
       'isNotificationActive': instance.isNotificationActive,
+      'soundName': instance.soundName,
     };

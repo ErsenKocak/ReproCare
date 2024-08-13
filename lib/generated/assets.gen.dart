@@ -8,8 +8,9 @@
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class $AssetsI18nGen {
   const $AssetsI18nGen();
@@ -27,24 +28,51 @@ class $AssetsI18nGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// Directory path: assets/icons/app_bar
   $AssetsIconsAppBarGen get appBar => const $AssetsIconsAppBarGen();
+
+  /// Directory path: assets/icons/bottom_navigation_bar
   $AssetsIconsBottomNavigationBarGen get bottomNavigationBar =>
       const $AssetsIconsBottomNavigationBarGen();
+
+  /// Directory path: assets/icons/bottom_sheet
   $AssetsIconsBottomSheetGen get bottomSheet =>
       const $AssetsIconsBottomSheetGen();
+
+  /// Directory path: assets/icons/empty_widget
   $AssetsIconsEmptyWidgetGen get emptyWidget =>
       const $AssetsIconsEmptyWidgetGen();
+
+  /// Directory path: assets/icons/general
   $AssetsIconsGeneralGen get general => const $AssetsIconsGeneralGen();
+
+  /// Directory path: assets/icons/inputs
   $AssetsIconsInputsGen get inputs => const $AssetsIconsInputsGen();
+
+  /// Directory path: assets/icons/launcher
+  $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
+
+  /// Directory path: assets/icons/settings
   $AssetsIconsSettingsGen get settings => const $AssetsIconsSettingsGen();
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// Directory path: assets/images/bottom_sheet
   $AssetsImagesBottomSheetGen get bottomSheet =>
       const $AssetsImagesBottomSheetGen();
+
+  /// Directory path: assets/images/splash
   $AssetsImagesSplashGen get splash => const $AssetsImagesSplashGen();
+}
+
+class $AssetsSoundsGen {
+  const $AssetsSoundsGen();
+
+  /// Directory path: assets/sounds/notification
+  $AssetsSoundsNotificationGen get notification =>
+      const $AssetsSoundsNotificationGen();
 }
 
 class $AssetsIconsAppBarGen {
@@ -188,6 +216,10 @@ class $AssetsIconsInputsGen {
   List<SvgGenImage> get values => [iconEdit, iconEye, iconEyeClose, iconInfo];
 }
 
+class $AssetsIconsLauncherGen {
+  const $AssetsIconsLauncherGen();
+}
+
 class $AssetsIconsSettingsGen {
   const $AssetsIconsSettingsGen();
 
@@ -215,6 +247,9 @@ class $AssetsIconsSettingsGen {
   SvgGenImage get iconWebSite =>
       const SvgGenImage('assets/icons/settings/icon_web_site.svg');
 
+  /// File path: assets/icons/settings/sound.svg
+  SvgGenImage get sound => const SvgGenImage('assets/icons/settings/sound.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
         iconAbout,
@@ -222,7 +257,8 @@ class $AssetsIconsSettingsGen {
         iconLogout,
         iconPrivacy,
         iconTheme,
-        iconWebSite
+        iconWebSite,
+        sound
       ];
 }
 
@@ -289,18 +325,142 @@ class $AssetsImagesSplashGen {
   List<AssetGenImage> get values => [imgSplash, imgSplashFullWhite];
 }
 
+class $AssetsSoundsNotificationGen {
+  const $AssetsSoundsNotificationGen();
+
+  /// File path: assets/sounds/notification/alarm.wav
+  String get alarm => 'assets/sounds/notification/alarm.wav';
+
+  /// File path: assets/sounds/notification/arpeggio.wav
+  String get arpeggio => 'assets/sounds/notification/arpeggio.wav';
+
+  /// File path: assets/sounds/notification/arrived.wav
+  String get arrived => 'assets/sounds/notification/arrived.wav';
+
+  /// File path: assets/sounds/notification/azure.wav
+  String get azure => 'assets/sounds/notification/azure.wav';
+
+  /// File path: assets/sounds/notification/chocolate.wav
+  String get chocolate => 'assets/sounds/notification/chocolate.wav';
+
+  /// File path: assets/sounds/notification/crystal.wav
+  String get crystal => 'assets/sounds/notification/crystal.wav';
+
+  /// File path: assets/sounds/notification/crystal_drop1.wav
+  String get crystalDrop1 => 'assets/sounds/notification/crystal_drop1.wav';
+
+  /// File path: assets/sounds/notification/dontpanic.wav
+  String get dontpanic => 'assets/sounds/notification/dontpanic.wav';
+
+  /// File path: assets/sounds/notification/echo.wav
+  String get echo => 'assets/sounds/notification/echo.wav';
+
+  /// File path: assets/sounds/notification/girtab.wav
+  String get girtab => 'assets/sounds/notification/girtab.wav';
+
+  /// File path: assets/sounds/notification/harmonics.wav
+  String get harmonics => 'assets/sounds/notification/harmonics.wav';
+
+  /// File path: assets/sounds/notification/heaven.wav
+  String get heaven => 'assets/sounds/notification/heaven.wav';
+
+  /// File path: assets/sounds/notification/insertcoin.wav
+  String get insertcoin => 'assets/sounds/notification/insertcoin.wav';
+
+  /// File path: assets/sounds/notification/jump.wav
+  String get jump => 'assets/sounds/notification/jump.wav';
+
+  /// File path: assets/sounds/notification/luna.wav
+  String get luna => 'assets/sounds/notification/luna.wav';
+
+  /// File path: assets/sounds/notification/magenta.wav
+  String get magenta => 'assets/sounds/notification/magenta.wav';
+
+  /// File path: assets/sounds/notification/naughty.wav
+  String get naughty => 'assets/sounds/notification/naughty.wav';
+
+  /// File path: assets/sounds/notification/orchid.wav
+  String get orchid => 'assets/sounds/notification/orchid.wav';
+
+  /// File path: assets/sounds/notification/pixiedust.wav
+  String get pixiedust => 'assets/sounds/notification/pixiedust.wav';
+
+  /// File path: assets/sounds/notification/regalia.wav
+  String get regalia => 'assets/sounds/notification/regalia.wav';
+
+  /// File path: assets/sounds/notification/run.wav
+  String get run => 'assets/sounds/notification/run.wav';
+
+  /// File path: assets/sounds/notification/s_tickety_tock.wav
+  String get sTicketyTock => 'assets/sounds/notification/s_tickety_tock.wav';
+
+  /// File path: assets/sounds/notification/schedule.wav
+  String get schedule => 'assets/sounds/notification/schedule.wav';
+
+  /// File path: assets/sounds/notification/violet.wav
+  String get violet => 'assets/sounds/notification/violet.wav';
+
+  /// File path: assets/sounds/notification/viridian.wav
+  String get viridian => 'assets/sounds/notification/viridian.wav';
+
+  /// File path: assets/sounds/notification/woodpecker.wav
+  String get woodpecker => 'assets/sounds/notification/woodpecker.wav';
+
+  /// List of all assets
+  List<String> get values => [
+        alarm,
+        arpeggio,
+        arrived,
+        azure,
+        chocolate,
+        crystal,
+        crystalDrop1,
+        dontpanic,
+        echo,
+        girtab,
+        harmonics,
+        heaven,
+        insertcoin,
+        jump,
+        luna,
+        magenta,
+        naughty,
+        orchid,
+        pixiedust,
+        regalia,
+        run,
+        sTicketyTock,
+        schedule,
+        violet,
+        viridian,
+        woodpecker
+      ];
+}
+
 class Assets {
   Assets._();
 
+  static const String aEnv = '.env.json';
   static const $AssetsI18nGen i18n = $AssetsI18nGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsSoundsGen sounds = $AssetsSoundsGen();
+
+  /// List of all assets
+  static List<String> get values => [aEnv];
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  });
 
   final String _assetName;
+
+  final Size? size;
+  final Set<String> flavors;
 
   Image image({
     Key? key,
@@ -372,9 +532,22 @@ class AssetGenImage {
 }
 
 class SvgGenImage {
-  const SvgGenImage(this._assetName);
+  const SvgGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  }) : _isVecFormat = false;
+
+  const SvgGenImage.vec(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  }) : _isVecFormat = true;
 
   final String _assetName;
+  final Size? size;
+  final Set<String> flavors;
+  final bool _isVecFormat;
 
   SvgPicture svg({
     Key? key,
@@ -389,19 +562,32 @@ class SvgGenImage {
     WidgetBuilder? placeholderBuilder,
     String? semanticsLabel,
     bool excludeFromSemantics = false,
-    SvgTheme theme = const SvgTheme(),
+    SvgTheme? theme,
     ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
     @deprecated Color? color,
     @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
     @deprecated bool cacheColorFilter = false,
   }) {
-    return SvgPicture.asset(
-      _assetName,
+    final BytesLoader loader;
+    if (_isVecFormat) {
+      loader = AssetBytesLoader(
+        _assetName,
+        assetBundle: bundle,
+        packageName: package,
+      );
+    } else {
+      loader = SvgAssetLoader(
+        _assetName,
+        assetBundle: bundle,
+        packageName: package,
+        theme: theme,
+      );
+    }
+    return SvgPicture(
+      loader,
       key: key,
       matchTextDirection: matchTextDirection,
-      bundle: bundle,
-      package: package,
       width: width,
       height: height,
       fit: fit,
@@ -410,10 +596,8 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      theme: theme,
-      colorFilter: colorFilter,
-      color: color,
-      colorBlendMode: colorBlendMode,
+      colorFilter: colorFilter ??
+          (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
     );

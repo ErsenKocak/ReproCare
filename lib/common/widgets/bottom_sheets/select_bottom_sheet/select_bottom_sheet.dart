@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reprocare/common/router/app_router.dart';
 import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/constants/colors/app_dark_colors.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
@@ -16,13 +15,13 @@ class AppSelectBottomSheet {
     T? selectedItem,
     required Function(T item) onChange,
     required String Function(T item) renderItemName,
-  }) {
-    showModalBottomSheet(
+  }) async {
+    await showModalBottomSheet(
       context: Application.applicationContext,
       isScrollControlled: true,
       enableDrag: true,
       useSafeArea: true,
-      constraints: BoxConstraints(maxHeight: 0.75.sh),
+      constraints: BoxConstraints(maxHeight: 0.90.sh),
       isDismissible: true,
       backgroundColor: AppThemes.brightness == Brightness.light
           ? AppLightColors.white
@@ -128,15 +127,16 @@ class _SelectWidgetState<T> extends State<_SelectWidget<T>> {
                           ?.copyWith(fontWeight: AppFontWeight.medium.value),
                     )
                   : const SizedBox(),
-              GestureDetector(
-                onTap: () => AppRouter.pop(),
-                child: Assets.icons.bottomSheet.iconClose.svg(
-                  color: AppThemes.brightness == Brightness.light
-                      ? AppLightColors.black
-                      : null,
-                  height: 25.h,
-                ),
-              ),
+              const SizedBox()
+              // GestureDetector(
+              //   onTap: () => AppRouter.pop(),
+              //   child: Assets.icons.bottomSheet.iconClose.svg(
+              //     color: AppThemes.brightness == Brightness.light
+              //         ? AppLightColors.black
+              //         : null,
+              //     height: 25.h,
+              //   ),
+              // ),
             ],
           ),
         ],
@@ -167,7 +167,6 @@ class _SelectWidgetState<T> extends State<_SelectWidget<T>> {
       onTap: () {
         selectedItemNotifier.value = item;
         widget.onChange(item);
-        AppRouter.pop();
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 4.h),
@@ -178,7 +177,7 @@ class _SelectWidgetState<T> extends State<_SelectWidget<T>> {
         decoration: BoxDecoration(
           color: selectedItemNotifier.value == item
               ? AppThemes.brightness == Brightness.light
-                  ? AppLightColors.pink100
+                  ? AppLightColors.primaryColor
                   : AppDarkColors.primaryColor
               : Colors.transparent,
           borderRadius: BorderRadius.circular(8),
@@ -193,7 +192,9 @@ class _SelectWidgetState<T> extends State<_SelectWidget<T>> {
           alignment: Alignment.centerLeft,
           child: Text(
             widget.renderItemName(item),
-            style: AppThemes.currentTheme.textTheme.bodySmall,
+            style: AppThemes.currentTheme.textTheme.bodySmall?.copyWith(
+                color:
+                    selectedItemNotifier.value == item ? Colors.white : null),
           ),
         ),
       ),

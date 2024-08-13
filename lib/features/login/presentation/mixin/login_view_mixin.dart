@@ -8,6 +8,7 @@ import 'package:reprocare/features/login/domain/entities/request/login_request_p
 import 'package:reprocare/features/login/presentation/cubit/auth_cubit/auth_cubit.dart';
 import 'package:reprocare/features/login/presentation/view/login_view.dart';
 import 'package:reprocare/helper/device/device_info/device_info_helper.dart';
+import 'package:reprocare/helper/notification/firebase_notification/firebase_nofitication_helper.dart';
 
 mixin LoginViewMixin on State<LoginView> {
   late GlobalKey<FormState> formKey;
@@ -29,6 +30,8 @@ mixin LoginViewMixin on State<LoginView> {
     passwordObscureTextNotifer = ValueNotifier<bool>(true);
     authCubit = ServiceLocatorProvider.provide<AuthCubit>();
     DeviceInfoHelper().getUserDeviceRequest();
+
+    FirebaseNotificationHelper.getToken;
   }
 
   blocStateListener(BuildContext context, AuthState state) {

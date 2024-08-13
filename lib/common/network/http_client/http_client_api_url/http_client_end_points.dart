@@ -1,6 +1,6 @@
 enum HttpClientEndPoints {
   Login('/User/Login'),
-  Logout(''), //Aktif değil
+  Logout('/User/Logout'),
   GetNotifications('/PushNotification/GetPushNotification'),
   DeleteNotification(''), //Aktif değil
   ReadNotification('/PushNotification/PushNotificationRead'),

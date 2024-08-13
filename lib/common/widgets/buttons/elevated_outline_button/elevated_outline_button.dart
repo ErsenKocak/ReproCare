@@ -32,7 +32,7 @@ class AppElevatedOutlineButton extends StatelessWidget {
         fixedSize: isLong == true
             ? Size(
                 100.sw,
-                52.h,
+                42.h,
               )
             : null,
         backgroundColor: buttonColor != null

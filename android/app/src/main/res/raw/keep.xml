@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools"
-    tools:keep="@raw/alarm"
+    tools:keep="@raw/alarm,@raw/,@raw/arrived,@raw/azure,@raw/chocolate,@raw/crystal_drop1@raw/crystal,@raw/dontpanic,@raw/echo,@raw/girtab,@raw/harmonics,@raw/heaved,@raw/insertcoin,@raw/jump,@raw/luna,@raw/magenta,@raw/naughty,@raw/orchid,@raw/pixiedust,@raw/regalia,@raw/run,@raw/s_tickety_tock,@raw/schedule,@raw/violet,@raw/viridian,@raw/woodpecker,"
     />
+

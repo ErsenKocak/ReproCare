@@ -10,6 +10,8 @@ import 'package:reprocare/common/cubit/theme/theme_cubit.dart';
 import 'package:reprocare/common/cubit/theme/theme_state_model.dart';
 import 'package:reprocare/common/functions/app/app_functions.dart';
 import 'package:reprocare/common/router/app_route_observer_mixin.dart';
+import 'package:reprocare/common/router/app_router.dart';
+import 'package:reprocare/common/router/app_routes.dart';
 import 'package:reprocare/common/widgets/app_bar/app_bar_widget.dart';
 
 import 'package:reprocare/common/widgets/bottom_sheets/bottom_sheet/app_bottom_sheet.dart';
@@ -21,17 +23,13 @@ import 'package:reprocare/core/constants/colors/app_dark_colors.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
 import 'package:reprocare/core/extensions/sized_box/sized_box_extension.dart';
-import 'package:reprocare/features/settings/domain/enums/permission_type.dart';
 import 'package:reprocare/features/settings/presentation/cubit/user_settings_cubit.dart';
 import 'package:reprocare/features/settings/presentation/mixin/settings_view_mixin.dart';
-import 'package:reprocare/features/settings/presentation/widgets/settings_language_item/settings_language_item.dart';
 import 'package:reprocare/features/settings/presentation/widgets/settings_list_item/data/entities/list_tile_item.dart';
 import 'package:reprocare/features/settings/presentation/widgets/settings_list_item/list_tile_item_widget.dart';
-import 'package:reprocare/features/settings/presentation/widgets/settings_permission_item/settings_permission_item.dart';
 import 'package:reprocare/features/settings/presentation/widgets/settings_theme_item.dart/settings_theme_item.dart';
 import 'package:reprocare/generated/assets.gen.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
-import 'package:reprocare/helper/localization/localization_helper.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
@@ -132,28 +130,9 @@ class _SettingsViewState extends State<SettingsView>
           path: Assets.icons.general.iconAppBarNotification.path,
           color: AppLightColors.white,
         )),
-        title: LocaleKeys.Settings_PermissionSettings.tr(),
-        onTap: () {
-          AppBottomSheet.show(
-            contentPadding:
-                EdgeInsets.symmetric(vertical: 10.h, horizontal: 24.w),
-            child: (bottomSheetContext) => Column(
-              children: [
-                SettingsPermissionItem(
-                  permissionType: PermissionType.Notification,
-                  isActive:
-                      userSettingsCubit.userSettings?.isNotificationActive ??
-                          false,
-                  onChange: () {
-                    changeUserSettings(userSettingsCubit.userSettings!.copyWith(
-                        isNotificationActive: !userSettingsCubit
-                            .userSettings!.isNotificationActive!));
-                  },
-                ),
-              ],
-            ),
-          );
-        },
+        title: LocaleKeys.Notification_Notifications.tr(),
+        onTap: () =>
+            AppRouter.navigatePushNamed(AppRoutes.NotificationSettings.path),
       ),
       ListTileItem(
         leadingWidget: _listTileItemLeading(
@@ -191,9 +170,7 @@ class _SettingsViewState extends State<SettingsView>
           Assets.icons.settings.iconLogout.svg(color: AppLightColors.white),
         ),
         title: LocaleKeys.Settings_Logout.tr(),
-        onTap: () async {
-          await logout();
-        },
+        onTap: () async => await logout(),
       ),
     ];
 
