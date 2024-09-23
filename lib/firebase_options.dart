@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyA6QpbqLlIhcV7wrp23HwnIRjzL10Z-SqA',
-    appId: '1:826475858519:android:e3675bc944a4caacff7112',
+    appId: '1:826475858519:android:f24984b62f8e0473ff7112',
     messagingSenderId: '826475858519',
     projectId: 'reprocare-293a9',
     storageBucket: 'reprocare-293a9.appspot.com',
@@ -59,10 +59,10 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAvaLdxpm-Tx0cHnewn7NZqm3VV4hh_oyg',
-    appId: '1:826475858519:ios:06a394d988d35b99ff7112',
+    appId: '1:826475858519:ios:2dec6f95b512e272ff7112',
     messagingSenderId: '826475858519',
     projectId: 'reprocare-293a9',
     storageBucket: 'reprocare-293a9.appspot.com',
-    iosBundleId: 'com.reprocare.reprocare-mobile.development',
+    iosBundleId: 'com.reprocare.reprocare-mobile',
   );
 }
