@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/ersenkocak/Desktop/Ersen/Setups/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/ersenkocak/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/ersenkocak/Desktop/Ersen/Projects/Flutter/ReproCare/android/app/.cxx/RelWithDebInfo/1q1b5o1l/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/ersenkocak/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/ersenkocak/Desktop/Ersen/Projects/Flutter/ReproCare/android/app/.cxx/RelWithDebInfo/1q1b5o1l/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

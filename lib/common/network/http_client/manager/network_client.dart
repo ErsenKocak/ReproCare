@@ -275,7 +275,6 @@ final class NetworkClient {
 
     if (token.isNotEmpty) {
       headers.addAll({"Authorization": "Bearer $token"});
-      AppLogger.call(title: 'Token', value: token);
     }
 
     return headers;
