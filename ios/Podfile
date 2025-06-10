@@ -1,4 +1,3 @@
-
 # Uncomment this line to define a global platform for your project
 platform :ios, '13.0'
 
@@ -47,6 +46,13 @@ post_install do |installer|
         '$(inherited)',
         'AUDIO_SESSION_MICROPHONE=0'
       ]
+      
+      # Add these lines for Firebase
+      config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+      config.build_settings['ENABLE_BITCODE'] = 'NO'
+      
+      # Fix for Xcode 15
+      config.build_settings['DEAD_CODE_STRIPPING'] = 'YES'
     end
   end
 end

@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:dio/dio.dart';
 import 'package:reprocare/common/base/result/base_result.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
+import 'package:reprocare/common/logger/app_logger.dart';
 import 'package:reprocare/common/network/http_client/interceptor/dio_chucker_interceptor.dart';
 import 'package:reprocare/common/network/http_client/interceptor/dio_logger_interceptor.dart';
 import 'package:reprocare/common/network/http_client/model/cancel_token.dart';
@@ -274,6 +275,7 @@ final class NetworkClient {
 
     if (token.isNotEmpty) {
       headers.addAll({"Authorization": "Bearer $token"});
+      AppLogger.call(title: 'Token', value: token);
     }
 
     return headers;

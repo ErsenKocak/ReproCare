@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:logger/logger.dart';
 import 'package:reprocare/common/logger/app_logger.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -58,13 +59,18 @@ class AppFunctions {
 
   static Future openStringUrl({required String url}) async {
     if (await canLaunchUrlString(url)) {
-      await launchUrlString(url, mode: LaunchMode.inAppWebView);
+      await launchUrlString(url, mode: LaunchMode.externalApplication);
     } else {
-      AppLogger.call(
-        logLevel: Level.error,
-        title: 'Open String URL',
-        value: 'Could not launch $url',
-      );
+      Uri uri = Uri.parse(url);
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri);
+      } else {
+        AppLogger.call(
+          logLevel: Level.error,
+          title: 'Open String URL',
+          value: 'Could not launch $url',
+        );
+      }
     }
   }
 

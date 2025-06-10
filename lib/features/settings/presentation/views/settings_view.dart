@@ -162,7 +162,7 @@ class _SettingsViewState extends State<SettingsView>
         ),
         title: LocaleKeys.Settings_WebSite.tr(),
         onTap: () => AppFunctions.openStringUrl(
-          url: 'https://reprocare.com.tr/',
+          url: 'https://reprocare.com.tr',
         ),
       ),
       ListTileItem(

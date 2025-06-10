@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +21,6 @@ import 'package:reprocare/features/notification/presentation/widgets/shimmer/not
 import 'package:reprocare/generated/assets.gen.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
 import 'dart:ui' as ui;
-
 
 class NotificationsView extends StatefulWidget {
   const NotificationsView({super.key});
