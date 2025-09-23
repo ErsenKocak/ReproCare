@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +14,7 @@ import 'package:reprocare/common/init/service_locator/service_locator_provider.d
 import 'package:reprocare/common/router/app_router.dart';
 import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
+import 'package:reprocare/core/utils/http_overrider/app_http_overrider.dart';
 import 'package:reprocare/helper/localization/localization_helper.dart';
 
 Future<void> main() async {
@@ -19,6 +22,8 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+
+  HttpOverrides.global = AppHttpOverrider();
 
   runApp(
     EasyLocalization(
