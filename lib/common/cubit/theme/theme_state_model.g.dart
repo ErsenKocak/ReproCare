@@ -11,7 +11,7 @@ _$ThemeStateModelImpl _$$ThemeStateModelImplFromJson(
     _$ThemeStateModelImpl(
       themeMode:
           $enumDecodeNullable(_$ThemeModeEnumEnumMap, json['themeMode']) ??
-              ThemeModeEnum.System,
+              ThemeModeEnum.Light,
     );
 
 Map<String, dynamic> _$$ThemeStateModelImplToJson(
@@ -21,7 +21,6 @@ Map<String, dynamic> _$$ThemeStateModelImplToJson(
     };
 
 const _$ThemeModeEnumEnumMap = {
-  ThemeModeEnum.System: 'System',
   ThemeModeEnum.Light: 'Light',
   ThemeModeEnum.Dark: 'Dark',
 };

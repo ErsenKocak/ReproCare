@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:chucker_flutter/chucker_flutter.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/single_child_widget.dart';
@@ -27,7 +30,8 @@ class AppRouter {
     initialLocation: AppRoutes.Login.path,
     observers: [
       appRouteObserver,
-      FirebaseAnalyticsHelper.navigatorObserver,
+      if (!kIsWeb && (Platform.isAndroid || Platform.isIOS))
+        FirebaseAnalyticsHelper.navigatorObserver,
       ChuckerFlutter.navigatorObserver,
     ],
     debugLogDiagnostics: false,

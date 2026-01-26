@@ -58,7 +58,7 @@ final class FirebaseNotificationHelper {
   }
 
   static Future<void> createAndroidChannel() async {
-    if (Platform.isIOS) return;
+    if (!Platform.isAndroid) return;
 
     CacheManager _notificationLocalService =
         ServiceLocatorProvider.provide<CacheManager>();

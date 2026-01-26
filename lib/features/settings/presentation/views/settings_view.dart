@@ -149,8 +149,6 @@ class _SettingsViewState extends State<SettingsView>
                 SettingsThemeItem(themeMode: ThemeModeEnum.Light),
                 8.h.sbxh,
                 SettingsThemeItem(themeMode: ThemeModeEnum.Dark),
-                8.h.sbxh,
-                SettingsThemeItem(themeMode: ThemeModeEnum.System),
               ],
             ),
           );

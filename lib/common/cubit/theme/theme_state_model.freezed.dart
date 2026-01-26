@@ -97,7 +97,7 @@ class __$$ThemeStateModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ThemeStateModelImpl implements _ThemeStateModel {
-  _$ThemeStateModelImpl({this.themeMode = ThemeModeEnum.System});
+  _$ThemeStateModelImpl({this.themeMode = ThemeModeEnum.Light});
 
   factory _$ThemeStateModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ThemeStateModelImplFromJson(json);

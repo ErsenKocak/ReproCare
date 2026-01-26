@@ -24,10 +24,12 @@ class AppInitializer {
     await EasyLocalization.ensureInitialized();
     await setAppEnviroments();
     await dependencyInjection.initalize();
-    await AppLocalNotificationHelper.initialize();
-    await FirebaseNotificationHelper.initialize();
-    await FirebaseAnalyticsHelper.initialize();
-    await FirebaseCrashlyticsHelper.initialize();
+    if (!kIsWeb) {
+      await AppLocalNotificationHelper.initialize();
+      await FirebaseNotificationHelper.initialize();
+      await FirebaseAnalyticsHelper.initialize();
+      await FirebaseCrashlyticsHelper.initialize();
+    }
 
     AppLoading.initialize();
     DioChuckerInterceptor.initalize();

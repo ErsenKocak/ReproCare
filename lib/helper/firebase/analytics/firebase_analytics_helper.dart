@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/foundation.dart';
 
 class FirebaseAnalyticsHelper {
   static late FirebaseAnalytics _instance;
@@ -9,6 +12,7 @@ class FirebaseAnalyticsHelper {
   }
 
   static Future<void> logScreenView(String screenName) async {
+    if (!kIsWeb && (!Platform.isAndroid && !Platform.isIOS)) return;
     await _instance.logScreenView(
       screenName: screenName,
       screenClass: 'App Views',

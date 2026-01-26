@@ -8,7 +8,7 @@ part 'theme_state_model.g.dart';
 @Freezed(equal: false)
 class ThemeStateModel with _$ThemeStateModel implements BaseState {
   factory ThemeStateModel({
-    @Default(ThemeModeEnum.System) ThemeModeEnum themeMode,
+    @Default(ThemeModeEnum.Light) ThemeModeEnum themeMode,
   }) = _ThemeStateModel;
 
   factory ThemeStateModel.fromJson(Map<String, dynamic> json) =>
