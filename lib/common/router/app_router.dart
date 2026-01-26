@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:go_router/go_router.dart';
+import 'package:reprocare/common/cache/cache_manager.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/common/logger/app_logger.dart';
 import 'package:reprocare/common/router/app_route_effect.dart';
@@ -12,10 +13,11 @@ import 'package:reprocare/common/router/transition_builder.dart';
 import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/constants/cache/cache_constants.dart';
 import 'package:reprocare/features/bottom_navigation_bar/presentation/view/bottom_navigation_bar_view.dart';
-import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
+import 'package:reprocare/features/dashboard/presentation/view/dashboard_view.dart';
 import 'package:reprocare/features/login/presentation/view/login_view.dart';
 import 'package:reprocare/features/notification/presentation/view/notifications_view.dart';
 import 'package:reprocare/features/notification_settings/presentation/view/notification_settings_view.dart';
+import 'package:reprocare/features/settings/domain/entities/response/user_settings_entity/user_entity.dart';
 import 'package:reprocare/features/settings/presentation/views/settings_view.dart';
 import 'package:reprocare/helper/firebase/analytics/firebase_analytics_helper.dart';
 
@@ -38,6 +40,12 @@ class AppRouter {
           );
         },
         routes: [
+          _generateGoRoute(
+            route: AppRoutes.Dashboard.path,
+            isShellRoute: true,
+            view: (parameter) => DashboardView(),
+            routeEffect: AppRouteEffect.none,
+          ),
           _generateGoRoute(
             route: AppRoutes.Notification.path,
             isShellRoute: true,
@@ -68,14 +76,14 @@ class AppRouter {
       AppLogger.call(title: 'Go Router Redirect', value: state.matchedLocation);
 
       if (state.matchedLocation == AppRoutes.Login.path) {
-        final IAuthLocalService _loginLocalService =
-            ServiceLocatorProvider.provide<IAuthLocalService>();
+        final CacheManager cacheManager =
+            ServiceLocatorProvider.provide<CacheManager>();
 
-        final _loginEntity =
-            await _loginLocalService.get(CacheConstants.User.name);
+        final _loginEntity = await cacheManager.getObject(
+            CacheConstants.User.name, UserEntity.fromJson);
 
         if (_loginEntity != null) {
-          return AppRoutes.Notification.path;
+          return AppRoutes.Dashboard.path;
         }
       }
       FirebaseAnalyticsHelper.logScreenView(state.matchedLocation);

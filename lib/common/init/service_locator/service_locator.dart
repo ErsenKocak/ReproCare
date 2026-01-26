@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:reprocare/common/cache/cache_manager.dart';
+import 'package:reprocare/common/cache/i_cache_service.dart';
+import 'package:reprocare/common/cache/secure_cache_service.dart';
 import 'package:reprocare/common/cubit/language/language_cubit.dart';
-import 'package:reprocare/common/cubit/theme/data/services/i_theme_local_service.dart';
-import 'package:reprocare/common/cubit/theme/data/services/theme_local_service.dart';
 import 'package:reprocare/common/cubit/theme/theme_cubit.dart';
 import 'package:reprocare/common/logger/app_logger.dart';
 import 'package:reprocare/common/network/http_client/manager/network_client.dart';
@@ -13,8 +14,6 @@ import 'package:reprocare/features/device/data/services/i_device_service.dart';
 import 'package:reprocare/features/device/domain/repositories/i_device_repository.dart';
 import 'package:reprocare/features/device/presentation/cubit/device_cubit.dart';
 import 'package:reprocare/features/login/data/repositories/auth_repository/auth_repository.dart';
-import 'package:reprocare/features/login/data/services/local/auth_local_service.dart';
-import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
 import 'package:reprocare/features/login/data/services/remote/auth_service.dart';
 import 'package:reprocare/features/login/data/services/remote/i_auth_service.dart';
 import 'package:reprocare/features/login/domain/repositories/login_repository/i_auth_repository.dart';
@@ -24,8 +23,6 @@ import 'package:reprocare/features/notification/data/services/i_notification_ser
 import 'package:reprocare/features/notification/data/services/notification_service.dart';
 import 'package:reprocare/features/notification/domain/repositories/i_notification_repository.dart';
 import 'package:reprocare/features/notification/presentation/cubit/notification_cubit.dart';
-import 'package:reprocare/features/notification_settings/data/services/local/i_notification_settings_local_service.dart';
-import 'package:reprocare/features/notification_settings/data/services/local/notification_settings_local_service.dart';
 import 'package:reprocare/features/settings/data/repositories/user_settings_repository.dart';
 import 'package:reprocare/features/settings/data/services/i_user_settings_service.dart';
 import 'package:reprocare/features/settings/data/services/user_settings_service.dart';
@@ -62,11 +59,14 @@ Future<void> initalize() async {
         connectionCheckHelper: _serviceLocator<InternetConnectionCheckHelper>(),
       ),
     )
+    ..registerLazySingleton<ICacheService>(() => SecureCacheService())
+    ..registerLazySingleton<CacheManager>(
+      () => CacheManager(cacheService: _serviceLocator<ICacheService>()),
+    )
 
     // #Theme
-    ..registerLazySingleton<IThemeLocalService>(() => ThemeLocalService())
     ..registerLazySingleton<ThemeCubit>(
-      () => ThemeCubit(_serviceLocator<IThemeLocalService>()),
+      () => ThemeCubit(_serviceLocator<CacheManager>()),
     )
     ..registerLazySingleton<LanguageCubit>(
       () => LanguageCubit(),
@@ -93,7 +93,6 @@ Future<void> initalize() async {
     ..registerLazySingleton<IAuthService>(
       () => AuthService(_serviceLocator<NetworkClient>()),
     )
-    ..registerLazySingleton<IAuthLocalService>(() => AuthLocalService())
     ..registerLazySingleton<IAuthRepository>(
       () => AuthRepository(
         _serviceLocator<IAuthService>(),
@@ -101,7 +100,7 @@ Future<void> initalize() async {
     )
     ..registerLazySingleton<AuthCubit>(() => AuthCubit(
           _serviceLocator<IAuthRepository>(),
-          _serviceLocator<IAuthLocalService>(),
+          _serviceLocator<CacheManager>(),
         ))
 
     // # Notification
@@ -117,11 +116,6 @@ Future<void> initalize() async {
           _serviceLocator<INotificationRepository>(),
         ))
 
-    // #Notification Local Service
-    ..registerLazySingleton<INotificationSettingsLocalService>(
-      () => NotificationSettingsLocalService(),
-    )
-
     // #User Settings
     ..registerLazySingleton<IUserSettingsService>(
         () => UserSettingsService(_serviceLocator<NetworkClient>()))
@@ -133,8 +127,7 @@ Future<void> initalize() async {
     ..registerLazySingleton<UserSettingsCubit>(
       () => UserSettingsCubit(
         _serviceLocator<IUserSettingsRepository>(),
-        _serviceLocator<IAuthLocalService>(),
-        _serviceLocator<INotificationSettingsLocalService>(),
+        _serviceLocator<CacheManager>(),
       ),
     );
 
@@ -144,9 +137,6 @@ Future<void> initalize() async {
 }
 
 Future<void> _initializeOtherDependencies() async {
-  await provide<IAuthLocalService>().initialize();
-  await provide<INotificationSettingsLocalService>().initialize();
-  await provide<IThemeLocalService>().initialize();
   await provide<ThemeCubit>().initialize();
 }
 

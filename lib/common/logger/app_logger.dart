@@ -22,11 +22,5 @@ final class AppLogger {
       logLevel ?? Level.fatal,
       LogJson.format(value, title: title),
     );
-
-    /// Alternative
-
-    // log(
-    //     level: logLevel?.value ?? Level.fatal.value,
-    //     LogJson.format(value, title: title));
   }
 }

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:reprocare/common/cache/cache_manager.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/common/logger/app_logger.dart';
 import 'package:reprocare/core/constants/cache/cache_constants.dart';
-import 'package:reprocare/features/notification_settings/data/services/local/i_notification_settings_local_service.dart';
 import 'package:reprocare/features/notification_settings/domain/entities/notification_sound_item/notification_sound_item.dart';
-
 import 'package:reprocare/features/notification_settings/presentation/view/notification_settings_view.dart';
 import 'package:reprocare/features/settings/domain/entities/request/user_settings_request/user_settings_request.dart';
 import 'package:reprocare/features/settings/domain/entities/response/user_settings_entity/user_settings_entity.dart';
@@ -15,7 +14,6 @@ import 'package:reprocare/helper/audio/audio_player_helper.dart';
 mixin NotificationSettingsMixin on State<NotificationSettingsView> {
   late UserSettingsCubit userSettingsCubit;
   late AudioPlayerHandler audioPlayerHandler;
-  late INotificationSettingsLocalService _notificationSettingsLocalService;
 
   @override
   void initState() {
@@ -26,8 +24,6 @@ mixin NotificationSettingsMixin on State<NotificationSettingsView> {
   Future<void> initializeMixin() async {
     userSettingsCubit = ServiceLocatorProvider.provide<UserSettingsCubit>();
     audioPlayerHandler = ServiceLocatorProvider.provide<AudioPlayerHandler>();
-    _notificationSettingsLocalService =
-        ServiceLocatorProvider.provide<INotificationSettingsLocalService>();
 
     userSettingsCubit.initialize();
     _initializeServices();

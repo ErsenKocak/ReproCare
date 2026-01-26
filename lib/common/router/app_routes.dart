@@ -1,9 +1,13 @@
 import 'package:collection/collection.dart';
 
 enum AppRoutes {
+  // ----------- AUTH PAGES -----------
+  Login('/login'),
+  // ----------- BOTTOM NAVIGATION PAGES -----------
+  Dashboard('/dashboard'),
   Onboarding('/onboarding'),
   Notification('/notification'),
-  Login('/login'),
+  // ----------- SETTINGS PAGES -----------
   Profile('/profile'),
   Settings('/settings'),
   NotificationSettings('notificationSettings'),

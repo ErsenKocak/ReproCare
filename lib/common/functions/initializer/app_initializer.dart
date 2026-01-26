@@ -3,12 +3,12 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:reprocare/common/network/http_client/interceptor/dio_chucker_interceptor.dart';
 import 'package:reprocare/common/network/http_client/model/cancel_token.dart';
 import 'package:reprocare/common/widgets/app_loading/app_loading.dart';
-import 'package:reprocare/core/cache/hive_cache_initializer.dart';
 import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/enums/app_mode/app_mode.dart';
 import 'package:reprocare/common/init/service_locator/service_locator.dart'
@@ -23,7 +23,6 @@ class AppInitializer {
     WidgetsFlutterBinding.ensureInitialized();
     await EasyLocalization.ensureInitialized();
     await setAppEnviroments();
-    await HiveCacheInitializer.initialize();
     await dependencyInjection.initalize();
     await AppLocalNotificationHelper.initialize();
     await FirebaseNotificationHelper.initialize();
@@ -40,8 +39,21 @@ class AppInitializer {
     Map environment = jsonDecode(environmentString);
 
     Application.appMode = AppMode.values[environment["environmentMode"]];
-    late String platformKey;
-    platformKey = Platform.operatingSystem;
+
+    late String? platformKey;
+    if (kIsWeb) {
+      platformKey = 'web';
+    } else if (Platform.isAndroid) {
+      platformKey = 'android';
+    } else if (Platform.isIOS) {
+      platformKey = 'ios';
+    } else if (Platform.isMacOS) {
+      platformKey = 'macos';
+    } else if (Platform.isWindows) {
+      platformKey = 'windows';
+    } else if (Platform.isLinux) {
+      platformKey = 'linux';
+    }
     Application.applicationName =
         '${environment["applicationName"]}${Application.appMode.appTag}';
     Application.apiBaseUrl =

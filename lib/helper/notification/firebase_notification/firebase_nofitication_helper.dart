@@ -6,11 +6,11 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_notification_channel/flutter_notification_channel.dart';
 import 'package:flutter_notification_channel/notification_importance.dart';
 import 'package:flutter_notification_channel/notification_visibility.dart';
+import 'package:reprocare/common/cache/cache_manager.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/common/logger/app_logger.dart';
 import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/constants/cache/cache_constants.dart';
-import 'package:reprocare/features/notification_settings/data/services/local/i_notification_settings_local_service.dart';
 import 'package:reprocare/features/notification_settings/domain/entities/notification_sound_item/notification_sound_item.dart';
 import 'package:reprocare/firebase_options.dart';
 import 'package:reprocare/helper/notification/local_notification/local_notification_helper.dart';
@@ -60,10 +60,12 @@ final class FirebaseNotificationHelper {
   static Future<void> createAndroidChannel() async {
     if (Platform.isIOS) return;
 
-    INotificationSettingsLocalService _notificationLocalService =
-        ServiceLocatorProvider.provide<INotificationSettingsLocalService>();
-    NotificationSoundItem? notificationSound = await _notificationLocalService
-        .get(CacheConstants.NotificationSettings.name);
+    CacheManager _notificationLocalService =
+        ServiceLocatorProvider.provide<CacheManager>();
+    NotificationSoundItem? notificationSound =
+        await _notificationLocalService.getObject(
+            CacheConstants.NotificationSettings.name,
+            NotificationSoundItem.fromJson);
     AppLogger.call(
         title: 'Create Android Channel --  Notification Sound',
         value: notificationSound?.toJson());

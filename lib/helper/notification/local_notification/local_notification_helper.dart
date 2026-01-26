@@ -5,11 +5,11 @@ import 'dart:math';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:logger/logger.dart';
+import 'package:reprocare/common/cache/cache_manager.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/common/logger/app_logger.dart';
 import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/constants/cache/cache_constants.dart';
-import 'package:reprocare/features/notification_settings/data/services/local/i_notification_settings_local_service.dart';
 import 'package:reprocare/features/notification_settings/domain/entities/notification_sound_item/notification_sound_item.dart';
 
 final class AppLocalNotificationHelper {
@@ -26,10 +26,12 @@ final class AppLocalNotificationHelper {
   static Future<void> initialize() async {
     await flutterLocalNotificationsPlugin.cancelAll();
 
-    INotificationSettingsLocalService _notificationLocalService =
-        ServiceLocatorProvider.provide<INotificationSettingsLocalService>();
-    NotificationSoundItem? notificationSound = await _notificationLocalService
-        .get(CacheConstants.NotificationSettings.name);
+    CacheManager _notificationLocalService =
+        ServiceLocatorProvider.provide<CacheManager>();
+    NotificationSoundItem? notificationSound =
+        await _notificationLocalService.getObject(
+            CacheConstants.NotificationSettings.name,
+            NotificationSoundItem.fromJson);
     AppLogger.call(
         title: 'Local Notification Helper -- Initialize --  Notification Sound',
         value: notificationSound?.toJson());
@@ -121,10 +123,12 @@ final class AppLocalNotificationHelper {
 
   static Future<void> showNotification(RemoteMessage message) async {
     _notificationId++;
-    INotificationSettingsLocalService _notificationLocalService =
-        ServiceLocatorProvider.provide<INotificationSettingsLocalService>();
-    NotificationSoundItem? notificationSound = await _notificationLocalService
-        .get(CacheConstants.NotificationSettings.name);
+    CacheManager _notificationLocalService =
+        ServiceLocatorProvider.provide<CacheManager>();
+    NotificationSoundItem? notificationSound =
+        await _notificationLocalService.getObject(
+            CacheConstants.NotificationSettings.name,
+            NotificationSoundItem.fromJson);
     AppLogger.call(
         title:
             'Local Notification Helper -- Show Notification --  Notification Sound',

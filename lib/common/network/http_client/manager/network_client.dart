@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:dio/dio.dart';
 import 'package:reprocare/common/base/result/base_result.dart';
+import 'package:reprocare/common/cache/cache_manager.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/common/logger/app_logger.dart';
 import 'package:reprocare/common/network/http_client/interceptor/dio_chucker_interceptor.dart';
@@ -14,7 +15,6 @@ import 'package:reprocare/common/widgets/bottom_sheets/bottom_sheet/app_bottom_s
 import 'package:reprocare/common/widgets/bottom_sheets/error_bottom_sheet/error_bottom_sheet.dart';
 import 'package:reprocare/core/constants/cache/cache_constants.dart';
 import 'package:reprocare/core/constants/network/http_call_type/http_call_type.dart';
-import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
 import 'package:reprocare/features/login/presentation/cubit/auth_cubit/auth_cubit.dart';
 import 'package:reprocare/features/settings/domain/entities/response/user_settings_entity/user_entity.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
@@ -267,10 +267,10 @@ final class NetworkClient {
       // "Accept-Language":
       //     "${AppLocalizationHelper.currentLocale.languageCode.toUpperCase()}",
     };
-    final IAuthLocalService _loginService =
-        ServiceLocatorProvider.provide<IAuthLocalService>();
-    UserEntity? _loginReponseEntity =
-        await _loginService.get(CacheConstants.User.name);
+    final CacheManager cacheManager =
+        ServiceLocatorProvider.provide<CacheManager>();
+    UserEntity? _loginReponseEntity = await cacheManager.getObject(
+        CacheConstants.User.name, UserEntity.fromJson);
     String token = _loginReponseEntity?.token ?? '';
 
     if (token.isNotEmpty) {

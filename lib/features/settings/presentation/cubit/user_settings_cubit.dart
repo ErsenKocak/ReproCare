@@ -4,10 +4,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:reprocare/common/base/cubit/base_cubit.dart';
 import 'package:reprocare/common/base/cubit/base_state.dart';
 import 'package:reprocare/common/base/result/base_result.dart';
+import 'package:reprocare/common/cache/cache_manager.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/core/constants/cache/cache_constants.dart';
-import 'package:reprocare/features/login/data/services/local/i_auth_local_service.dart';
-import 'package:reprocare/features/notification_settings/data/services/local/i_notification_settings_local_service.dart';
 import 'package:reprocare/features/notification_settings/domain/entities/notification_sound_item/notification_sound_item.dart';
 
 import 'package:reprocare/features/settings/domain/entities/request/user_settings_request/user_settings_request.dart';
@@ -22,20 +21,16 @@ part 'user_settings_cubit.freezed.dart';
 
 class UserSettingsCubit extends Cubit<UserSettingsState>
     with BaseCubit<UserSettingsState> {
-  UserSettingsCubit(this._userSettingsRepository, this._loginLocalService,
-      this._notificationLocalService)
+  UserSettingsCubit(this._userSettingsRepository, this.cacheManager)
       : super(UserSettingsState.initial());
   final IUserSettingsRepository _userSettingsRepository;
-  final IAuthLocalService _loginLocalService;
-  INotificationSettingsLocalService _notificationLocalService;
+  CacheManager cacheManager;
   UserSettingsEntity? userSettings;
   late List<NotificationSoundItem> notificationSounds;
   NotificationSoundItem? activeNotificationSound;
 
   @override
   Future<void> initialize() async {
-    _notificationLocalService =
-        ServiceLocatorProvider.provide<INotificationSettingsLocalService>();
     userSettings = null;
     safeEmit(UserSettingsState.initial());
     notificationSounds = [
@@ -231,15 +226,16 @@ class UserSettingsCubit extends Cubit<UserSettingsState>
           fileName: 'default');
 
   Future<NotificationSoundItem?> getNotificationSoundFromLocalStorage() async {
-    NotificationSoundItem? notificationSound = await _notificationLocalService
-        .get(CacheConstants.NotificationSettings.name);
+    NotificationSoundItem? notificationSound = await cacheManager.getObject(
+        CacheConstants.NotificationSettings.name,
+        NotificationSoundItem.fromJson);
 
     return notificationSound;
   }
 
   void saveNotificationSoundToLocalStorage(
       NotificationSoundItem notificationSoundItem) {
-    _notificationLocalService.put(
+    cacheManager.setObject(
         CacheConstants.NotificationSettings.name, notificationSoundItem);
   }
 

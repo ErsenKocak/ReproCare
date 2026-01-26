@@ -67,16 +67,22 @@ class _BottomNavigationBarViewState extends State<BottomNavigationBarView>
   List<BottomBarItem> get _buildBottomBarItems {
     final bottomBarItems = <BottomBarItem>[
       _buildBottomBarItem(
+        unSelectedIconPath: Assets.icons.general.iconInfo.path,
+        selectedIconPath: Assets.icons.general.iconInfo.path,
+        title: 'Dashboard',
+        viewIndex: 0,
+      ),
+      _buildBottomBarItem(
         unSelectedIconPath: Assets.icons.general.iconAppBarNotification.path,
         selectedIconPath: Assets.icons.general.iconAppBarNotification.path,
         title: LocaleKeys.BottomNavigationBar_Home.tr(),
-        viewIndex: 0,
+        viewIndex: 1,
       ),
       _buildBottomBarItem(
         unSelectedIconPath: Assets.icons.bottomNavigationBar.iconSettings.path,
         selectedIconPath: Assets.icons.bottomNavigationBar.iconSettings.path,
         title: LocaleKeys.BottomNavigationBar_Profile.tr(),
-        viewIndex: 1,
+        viewIndex: 2,
       ),
     ];
 

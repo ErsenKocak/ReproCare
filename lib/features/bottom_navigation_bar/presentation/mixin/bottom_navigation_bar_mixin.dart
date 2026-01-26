@@ -63,8 +63,10 @@ mixin BottomNavigationBarMixin on State<BottomNavigationBarView> {
     activeIndexNotifier.value = index;
     switch (index) {
       case 0:
-        bottomNavigatorRoute = AppRoutes.Notification.path;
+        bottomNavigatorRoute = AppRoutes.Dashboard.path;
       case 1:
+        bottomNavigatorRoute = AppRoutes.Notification.path;
+      case 2:
         bottomNavigatorRoute = AppRoutes.Settings.path;
     }
     FirebaseAnalyticsHelper.logScreenView(bottomNavigatorRoute);
