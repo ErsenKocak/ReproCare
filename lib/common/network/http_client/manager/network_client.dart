@@ -6,7 +6,6 @@ import 'package:dio/dio.dart';
 import 'package:reprocare/common/base/result/base_result.dart';
 import 'package:reprocare/common/cache/cache_manager.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
-import 'package:reprocare/common/logger/app_logger.dart';
 import 'package:reprocare/common/network/http_client/interceptor/dio_chucker_interceptor.dart';
 import 'package:reprocare/common/network/http_client/interceptor/dio_logger_interceptor.dart';
 import 'package:reprocare/common/network/http_client/model/cancel_token.dart';

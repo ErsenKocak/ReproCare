@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:reprocare/common/widgets/app_bar/custom_app_bar.dart';
+import 'package:reprocare/core/enums/app_screen_type/app_screen_type.dart';
 import 'package:reprocare/features/notification_settings/presentation/view/notification_settings_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,13 +16,10 @@ import 'package:reprocare/common/functions/app/app_functions.dart';
 import 'package:reprocare/common/router/app_route_observer_mixin.dart';
 import 'package:reprocare/common/router/app_router.dart';
 import 'package:reprocare/common/router/app_routes.dart';
-import 'package:reprocare/common/widgets/app_bar/app_bar_widget.dart';
-
 import 'package:reprocare/common/widgets/bottom_sheets/bottom_sheet/app_bottom_sheet.dart';
 import 'package:reprocare/common/widgets/buttons/elevated_button/elevated_button.dart';
 import 'package:reprocare/common/widgets/scrollable_widgets/scrollable_body/scrollable_body.dart';
 import 'package:reprocare/common/widgets/svg_picture/app_svg_picture.dart';
-import 'package:reprocare/common/widgets/responsive/platform_page_container.dart';
 import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/constants/colors/app_dark_colors.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
@@ -60,29 +59,31 @@ class _SettingsViewState extends State<SettingsView>
   }
 
   get _buildAppBar {
-    return AppBarWidget(
-      titleText: LocaleKeys.Settings_Settings.tr(),
+    AppScreenType screenType = AppScreenType.lg.getTypeFromWidth();
+    if (screenType != AppScreenType.xs) return null;
+
+    return CustomAppBar(
+      leading: const SizedBox(),
+      title: LocaleKeys.Settings_Settings.tr(),
     );
   }
 
   Widget get _buildBody {
     return BlocBuilder<UserSettingsCubit, UserSettingsState>(
       builder: (context, state) {
-        return PlatformPageContainer(
-          child: ScrollableBody(
-            body: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                8.h.sbxh,
-                _buildSettingsItems,
-              ],
-            ),
-            withoutExpandedWidget: Padding(
-              padding: EdgeInsets.only(bottom: 12.h),
-              child: Text(
-                '${Application.versionName}(${Application.versionCode})',
-                style: AppThemes.currentTheme.textTheme.labelSmall,
-              ),
+        return ScrollableBody(
+          body: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              8.h.sbxh,
+              _buildSettingsItems,
+            ],
+          ),
+          withoutExpandedWidget: Padding(
+            padding: EdgeInsets.only(bottom: 12.h),
+            child: Text(
+              '${Application.versionName}(${Application.versionCode})',
+              style: AppThemes.currentTheme.textTheme.labelSmall,
             ),
           ),
         );

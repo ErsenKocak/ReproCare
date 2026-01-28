@@ -17,7 +17,7 @@ class AppSelectBottomSheet {
     required String Function(T item) renderItemName,
   }) async {
     await showModalBottomSheet(
-      context: Application.applicationContext,
+      context: Application.context,
       isScrollControlled: true,
       enableDrag: true,
       useSafeArea: true,

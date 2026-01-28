@@ -1,13 +1,13 @@
 import 'package:google_fonts/google_fonts.dart';
 
-enum AppFontFamily { MontSerrat, EuclidCircularB }
+enum AppFontFamily { Montserrat, EuclidCircularB }
 
 extension AppFontFamilyValue on AppFontFamily {
   String get value {
     switch (this) {
       case AppFontFamily.EuclidCircularB:
         return 'Eucclid Circular B';
-      case AppFontFamily.MontSerrat:
+      case AppFontFamily.Montserrat:
         return GoogleFonts.montserrat().fontFamily!;
 
       default:

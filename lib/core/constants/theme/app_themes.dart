@@ -5,9 +5,10 @@ import 'package:reprocare/core/constants/colors/app_light_colors.dart';
 import 'package:reprocare/core/constants/font_family/app_font_family.dart';
 import 'package:reprocare/core/constants/font_weight/app_font_weight.dart';
 import 'package:reprocare/core/constants/text_styles/app_text_styles.dart';
+import 'package:reprocare/core/constants/text_types/app_text_types.dart';
 
 final class AppThemes {
-  static ThemeData get currentTheme => Theme.of(Application.applicationContext);
+  static ThemeData get currentTheme => Theme.of(Application.context);
 
   static Brightness get brightness => currentTheme.brightness;
 
@@ -48,21 +49,6 @@ final class AppThemes {
         cardTheme: const CardTheme(
           color: AppLightColors.backgroundLightGrey,
         ),
-        textTheme: TextTheme(
-          labelSmall: AppTextStyles.generate(fontSize: 10),
-          bodySmall: AppTextStyles.generate(fontSize: 12),
-          bodyMedium: AppTextStyles.generate(fontSize: 14),
-          bodyLarge: AppTextStyles.generate(fontSize: 16),
-          titleSmall: AppTextStyles.generate(fontSize: 18),
-          titleMedium: AppTextStyles.generate(
-            fontSize: 20,
-            fontWeight: AppFontWeight.semiBold,
-          ),
-          titleLarge: AppTextStyles.generate(
-            fontSize: 24,
-            fontWeight: AppFontWeight.semiBold,
-          ),
-        ),
       );
 
   static ThemeData get darkTheme => ThemeData.dark().copyWith(
@@ -76,7 +62,7 @@ final class AppThemes {
           color: AppDarkColors.primaryColor,
           titleTextStyle: TextStyle(
             color: AppDarkColors.white,
-            fontSize: 16,
+            fontSize: AppTextType.titleMedium.fontSize,
             fontFamily: AppFontFamily.EuclidCircularB.value,
             fontWeight: AppFontWeight.semiBold.value,
           ),
@@ -95,28 +81,6 @@ final class AppThemes {
         ),
         cardTheme: const CardTheme(
           color: AppDarkColors.secondaryDarkColor,
-        ),
-        textTheme: TextTheme(
-          labelSmall:
-              AppTextStyles.generate(fontSize: 10, color: AppDarkColors.white),
-          bodySmall:
-              AppTextStyles.generate(fontSize: 12, color: AppDarkColors.white),
-          bodyMedium:
-              AppTextStyles.generate(fontSize: 14, color: AppDarkColors.white),
-          bodyLarge:
-              AppTextStyles.generate(fontSize: 16, color: AppDarkColors.white),
-          titleSmall:
-              AppTextStyles.generate(fontSize: 18, color: AppDarkColors.white),
-          titleMedium: AppTextStyles.generate(
-            fontSize: 20,
-            color: AppDarkColors.white,
-            fontWeight: AppFontWeight.semiBold,
-          ),
-          titleLarge: AppTextStyles.generate(
-            fontSize: 24,
-            color: AppDarkColors.white,
-            fontWeight: AppFontWeight.semiBold,
-          ),
         ),
       );
 }

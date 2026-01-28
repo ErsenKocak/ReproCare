@@ -1,7 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:reprocare/common/widgets/app_bar/app_bar_widget.dart';
+import 'package:reprocare/common/widgets/app_bar/custom_app_bar.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
+import 'package:reprocare/core/enums/app_screen_type/app_screen_type.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
 
 class ProfileView extends StatefulWidget {
@@ -15,14 +16,18 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppbar,
+      appBar: _buildAppBar,
       body: _buildBody,
     );
   }
 
-  get _buildAppbar {
-    return AppBarWidget(
-      titleText: LocaleKeys.BottomNavigationBar_Profile.tr(),
+  get _buildAppBar {
+    AppScreenType screenType = AppScreenType.lg.getTypeFromWidth();
+    if (screenType != AppScreenType.xs) return const SizedBox();
+
+    return CustomAppBar(
+      leading: const SizedBox(),
+      title: LocaleKeys.BottomNavigationBar_Profile.tr(),
     );
   }
 

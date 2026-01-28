@@ -1,11 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reprocare/common/widgets/app_bar/app_bar_widget.dart';
-import 'package:reprocare/common/widgets/responsive/platform_page_container.dart';
+import 'package:reprocare/common/widgets/app_bar/custom_app_bar.dart';
 import 'package:reprocare/common/widgets/responsive/responsive_builder.dart';
-import 'package:reprocare/core/constants/font_weight/app_font_weight.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
+import 'package:reprocare/core/enums/app_screen_type/app_screen_type.dart';
 import 'package:reprocare/features/notification/presentation/mixin/notifications_view_mixin.dart';
 import 'package:reprocare/features/notification/presentation/widgets/notification_list_widget.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
@@ -22,43 +20,25 @@ class _NotificationsViewState extends State<NotificationsView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppbar,
+      appBar: _buildAppBar,
       body: _buildBody,
     );
   }
 
-  PreferredSizeWidget? get _buildAppbar {
-    // On Web, we might hide the AppBar if we have a Card header,
-    // or keep it but make it cleaner.
-    // However, ResponsiveBuilder is inside body, so AppBar is shared.
-    // For Web "Card design", usually we want the title INSIDE the card, not on the scaffold.
-    // But let's check ResponsiveBuilder allows removing AppBar?
-    // The Scaffold wraps everything.
-    // If I want no AppBar on Web, I need to make _buildAppbar conditional or
-    // move Scaffold inside the layouts (which duplicates Scaffold).
-    // Simple approach: Use ResponsiveBuilder at the root of build, returning Scaffolds.
+  get _buildAppBar {
+    AppScreenType screenType = AppScreenType.lg.getTypeFromWidth();
+    if (screenType != AppScreenType.xs) return null;
 
-    return ResponsiveBuilder.isWeb(context)
-        ? null
-        : AppBarWidget(
-            titleWidget: Column(
-              children: [
-                Text(
-                  LocaleKeys.Notification_Notifications.tr(),
-                  style: AppThemes.currentTheme.textTheme.bodyLarge?.copyWith(
-                    fontWeight: AppFontWeight.medium.value,
-                    overflow: TextOverflow.visible,
-                  ),
-                ),
-              ],
-            ),
-          );
+    return CustomAppBar(
+      leading: const SizedBox(),
+      title: LocaleKeys.Notification_Notifications.tr(),
+    );
   }
 
   Widget get _buildBody {
     return ResponsiveBuilder(
       mobile: _buildMobileLayout,
-      web: _buildWebLayout,
+      defaultWidget: _buildWebLayout,
     );
   }
 
@@ -119,6 +99,6 @@ class _NotificationsViewState extends State<NotificationsView>
   }
 
   Widget get _buildMobileLayout {
-    return PlatformPageContainer(child: NotificationListWidget());
+    return NotificationListWidget();
   }
 }

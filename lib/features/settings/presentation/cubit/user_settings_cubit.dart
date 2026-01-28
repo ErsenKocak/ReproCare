@@ -5,7 +5,6 @@ import 'package:reprocare/common/base/cubit/base_cubit.dart';
 import 'package:reprocare/common/base/cubit/base_state.dart';
 import 'package:reprocare/common/base/result/base_result.dart';
 import 'package:reprocare/common/cache/cache_manager.dart';
-import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/core/constants/cache/cache_constants.dart';
 import 'package:reprocare/features/notification_settings/domain/entities/notification_sound_item/notification_sound_item.dart';
 

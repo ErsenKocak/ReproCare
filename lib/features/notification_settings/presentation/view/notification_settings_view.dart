@@ -1,10 +1,8 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reprocare/common/widgets/app_bar/app_bar_widget.dart';
+import 'package:reprocare/common/widgets/app_bar/custom_app_bar.dart';
 import 'package:reprocare/common/widgets/app_bar/leading/arrow_back/app_bar_arrow_back_leading.dart';
 import 'package:reprocare/common/widgets/bottom_sheets/bottom_sheet/app_bottom_sheet.dart';
 import 'package:reprocare/common/widgets/bottom_sheets/select_bottom_sheet/select_bottom_sheet.dart';
@@ -12,6 +10,7 @@ import 'package:reprocare/common/widgets/svg_picture/app_svg_picture.dart';
 import 'package:reprocare/core/constants/colors/app_dark_colors.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
+import 'package:reprocare/core/enums/app_screen_type/app_screen_type.dart';
 import 'package:reprocare/core/extensions/sized_box/sized_box_extension.dart';
 import 'package:reprocare/features/notification_settings/domain/entities/notification_sound_item/notification_sound_item.dart';
 
@@ -44,9 +43,12 @@ class _NotificationSettingsViewState extends State<NotificationSettingsView>
   }
 
   get _buildAppBar {
-    return AppBarWidget(
-      leading: AppBarArrowBackLeading(),
-      titleText: LocaleKeys.Notification_NotificationSettings.tr(),
+    AppScreenType screenType = AppScreenType.lg.getTypeFromWidth();
+    if (screenType != AppScreenType.xs) return null;
+
+    return CustomAppBar(
+      leading: const SizedBox(),
+      title: LocaleKeys.Notification_NotificationSettings.tr(),
     );
   }
 }

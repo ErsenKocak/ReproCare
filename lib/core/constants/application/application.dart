@@ -7,7 +7,7 @@ class Application {
   static GlobalKey<NavigatorState> shellNavigatorKey =
       GlobalKey<NavigatorState>();
 
-  static BuildContext get applicationContext => navigatorKey.currentContext!;
+  static BuildContext get context => navigatorKey.currentContext!;
 
   /// Updated from env.json file.
   static int versionCode = 0;

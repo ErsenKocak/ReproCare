@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:reprocare/common/init/service_locator/service_locator_provider.dart';
 import 'package:reprocare/common/router/app_router.dart';
 import 'package:reprocare/common/router/app_routes.dart';
-import 'package:reprocare/features/bottom_navigation_bar/presentation/view/bottom_navigation_bar_view.dart';
 import 'package:reprocare/features/device/domain/entities/request/user_device_request_param/user_device_request_param.dart';
 import 'package:reprocare/features/device/presentation/cubit/device_cubit.dart';
 import 'package:reprocare/features/notification/domain/entities/request/notification_token_request_param/notification_token_request_param.dart';

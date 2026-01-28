@@ -22,7 +22,7 @@ class AppBottomSheet {
     final EdgeInsetsGeometry? titleMargin,
   }) async {
     return showModalBottomSheet<T>(
-      context: Application.applicationContext,
+      context: Application.context,
       useSafeArea: useSafeArea!,
       isScrollControlled: true,
       isDismissible: true,

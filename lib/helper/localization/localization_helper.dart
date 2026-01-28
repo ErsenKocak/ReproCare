@@ -21,6 +21,6 @@ class AppLocalizationHelper {
 
   static Future<void> changeLocale({required Locale locale}) async {
     currentLocale = locale;
-    await Application.applicationContext.setLocale(currentLocale);
+    await Application.context.setLocale(currentLocale);
   }
 }

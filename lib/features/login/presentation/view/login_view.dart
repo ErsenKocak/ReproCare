@@ -2,12 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reprocare/common/widgets/app_bar/app_bar_widget.dart';
+import 'package:reprocare/common/widgets/app_bar/custom_app_bar.dart';
 import 'package:reprocare/common/widgets/responsive/responsive_builder.dart';
 import 'package:reprocare/common/widgets/buttons/elevated_button/elevated_button.dart';
 import 'package:reprocare/common/widgets/form_elements/info_item/form_info_item.dart';
 import 'package:reprocare/common/widgets/form_elements/text_form_field/app_text_form_field.dart';
 import 'package:reprocare/core/enums/app_padding/app_padding.dart';
+import 'package:reprocare/core/enums/app_screen_type/app_screen_type.dart';
 import 'package:reprocare/core/extensions/sized_box/sized_box_extension.dart';
 import 'package:reprocare/core/utils/formatter/text_input_formatter.dart';
 import 'package:reprocare/core/utils/validator/text_input_validator/text_input_validator.dart';
@@ -28,14 +29,18 @@ class _LoginViewState extends State<LoginView> with LoginViewMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: _buildAppbar,
+      appBar: _buildAppBar,
       body: _buildBody,
     );
   }
 
-  get _buildAppbar {
-    return AppBarWidget(
-      titleText: LocaleKeys.Global_LoginToReproCare.tr(),
+  get _buildAppBar {
+    AppScreenType screenType = AppScreenType.lg.getTypeFromWidth();
+    if (screenType != AppScreenType.xs) return null;
+
+    return CustomAppBar(
+      leading: const SizedBox(),
+      title: LocaleKeys.Global_LoginToReproCare.tr(),
     );
   }
 
@@ -45,7 +50,7 @@ class _LoginViewState extends State<LoginView> with LoginViewMixin {
       builder: (context, state) {
         return ResponsiveBuilder(
           mobile: _buildMobileLayout,
-          web: _buildWebLayout,
+          defaultWidget: _buildWebLayout,
         );
       },
     );
