@@ -11,7 +11,7 @@ import 'package:reprocare/features/settings/domain/entities/response/user_settin
 import 'package:reprocare/features/settings/presentation/cubit/user_settings_cubit.dart';
 import 'package:reprocare/helper/audio/audio_player_helper.dart';
 
-mixin NotificationSettingsMixin on State<NotificationSettingsView> {
+mixin NotificationSettingsMixin<T extends StatefulWidget> on State<T> {
   late UserSettingsCubit userSettingsCubit;
   late AudioPlayerHandler audioPlayerHandler;
 

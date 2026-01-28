@@ -34,12 +34,12 @@ class NotificationSettingsView extends StatefulWidget {
 }
 
 class _NotificationSettingsViewState extends State<NotificationSettingsView>
-    with NotificationSettingsMixin {
+    with NotificationSettingsMixin<NotificationSettingsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar,
-      body: _buildBody,
+      body: NotificationSettingsContent(mixin: this),
     );
   }
 
@@ -49,18 +49,73 @@ class _NotificationSettingsViewState extends State<NotificationSettingsView>
       titleText: LocaleKeys.Notification_NotificationSettings.tr(),
     );
   }
+}
 
-  Widget get _buildBody {
+class WebNotificationSettingsDialog extends StatefulWidget {
+  const WebNotificationSettingsDialog({super.key});
+
+  @override
+  State<WebNotificationSettingsDialog> createState() =>
+      _WebNotificationSettingsDialogState();
+}
+
+class _WebNotificationSettingsDialogState
+    extends State<WebNotificationSettingsDialog>
+    with NotificationSettingsMixin<WebNotificationSettingsDialog> {
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: AppThemes.currentTheme.scaffoldBackgroundColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: 500, maxHeight: 400),
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    LocaleKeys.Notification_NotificationSettings.tr(),
+                    style: AppThemes.currentTheme.textTheme.titleMedium,
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () => Navigator.of(context).pop(),
+                  )
+                ],
+              ),
+              Divider(),
+              Expanded(
+                child: NotificationSettingsContent(mixin: this),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class NotificationSettingsContent extends StatelessWidget {
+  final NotificationSettingsMixin mixin;
+
+  const NotificationSettingsContent({required this.mixin, super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.max,
+      mainAxisSize: MainAxisSize.min, // Changed to min for Dialog
       children: [
         8.h.sbxh,
-        _buildSettingsItems,
+        _buildSettingsItems(context),
       ],
     );
   }
 
-  Widget get _buildSettingsItems {
+  Widget _buildSettingsItems(BuildContext context) {
     List<ListTileItem> viewItems = [
       ListTileItem(
         leadingWidget: _buildListTileItemLeading(AppSvgPicture(
@@ -79,13 +134,13 @@ class _NotificationSettingsViewState extends State<NotificationSettingsView>
                   children: [
                     SettingsPermissionItem(
                       permissionType: PermissionType.Notification,
-                      isActive: userSettingsCubit
-                              .userSettings?.isNotificationActive ??
+                      isActive: mixin.userSettingsCubit.userSettings
+                              ?.isNotificationActive ??
                           false,
                       onChange: () {
-                        changeUserPermissionSettings(
-                            userSettingsCubit.userSettings!.copyWith(
-                                isNotificationActive: !userSettingsCubit
+                        mixin.changeUserPermissionSettings(
+                            mixin.userSettingsCubit.userSettings!.copyWith(
+                                isNotificationActive: !mixin.userSettingsCubit
                                     .userSettings!.isNotificationActive!));
                       },
                     ),
@@ -104,16 +159,16 @@ class _NotificationSettingsViewState extends State<NotificationSettingsView>
         title: LocaleKeys.Notification_NotificationSound.tr(),
         onTap: () async {
           await AppSelectBottomSheet.show<NotificationSoundItem>(
-            items: userSettingsCubit.notificationSounds,
-            selectedItem: userSettingsCubit.activeNotificationSound,
+            items: mixin.userSettingsCubit.notificationSounds,
+            selectedItem: mixin.userSettingsCubit.activeNotificationSound,
             renderItemName: (item) => item.name,
             onChange: (item) async {
-              await onTapNotificationSound(item);
+              await mixin.onTapNotificationSound(item);
             },
           );
 
-          if (audioPlayerHandler.playerIsPlaying()) {
-            await audioPlayerHandler.playerStop();
+          if (mixin.audioPlayerHandler.playerIsPlaying()) {
+            await mixin.audioPlayerHandler.playerStop();
           }
         },
       )

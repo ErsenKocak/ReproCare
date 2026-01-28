@@ -12,7 +12,7 @@ import 'package:reprocare/helper/firebase/analytics/firebase_analytics_helper.da
 import 'package:reprocare/helper/localization/localization_helper.dart';
 import 'package:reprocare/helper/notification/firebase_notification/firebase_nofitication_helper.dart';
 
-mixin BottomNavigationBarMixin on State<BottomNavigationBarView> {
+mixin BottomNavigationBarMixin<T extends StatefulWidget> on State<T> {
   late ValueNotifier<int> activeIndexNotifier;
   late DeviceCubit deviceCubit;
   late NotificationCubit notificationCubit;

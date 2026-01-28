@@ -24,7 +24,9 @@ class BottomNavigationBarView extends StatefulWidget {
 }
 
 class _BottomNavigationBarViewState extends State<BottomNavigationBarView>
-    with BottomNavigationBarMixin, RouterObserverMixin {
+    with
+        BottomNavigationBarMixin<BottomNavigationBarView>,
+        RouterObserverMixin {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeStateModel>(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reprocare/common/widgets/app_bar/app_bar_widget.dart';
+import 'package:reprocare/common/widgets/responsive/responsive_builder.dart';
 import 'package:reprocare/common/widgets/buttons/elevated_button/elevated_button.dart';
 import 'package:reprocare/common/widgets/form_elements/info_item/form_info_item.dart';
 import 'package:reprocare/common/widgets/form_elements/text_form_field/app_text_form_field.dart';
@@ -42,30 +43,83 @@ class _LoginViewState extends State<LoginView> with LoginViewMixin {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: blocStateListener,
       builder: (context, state) {
-        return Form(
-          key: formKey,
-          autovalidateMode: AutovalidateMode.disabled,
-          child: Padding(
-              padding: context.paddingVerticalHigh3,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Spacer(),
-                  Column(
-                    children: [
-                      _buildloginInfo,
-                      20.h.sbxh,
-                      _buildPhoneNumberInput,
-                      20.h.sbxh,
-                      _buildPasswordInput
-                    ],
-                  ),
-                  Spacer(flex: 2),
-                  _buildLoginButton
-                ],
-              )),
+        return ResponsiveBuilder(
+          mobile: _buildMobileLayout,
+          web: _buildWebLayout,
         );
       },
+    );
+  }
+
+  Widget get _buildWebLayout {
+    return Center(
+      child: Container(
+        width: 450,
+        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 48),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              offset: const Offset(0, 4),
+              blurRadius: 20,
+            ),
+          ],
+          border: Border.all(color: Colors.grey.shade200),
+        ),
+        child: Form(
+          key: formKey,
+          autovalidateMode: AutovalidateMode.disabled,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                LocaleKeys.Global_LoginToReproCare.tr(),
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor,
+                    ),
+              ),
+              const SizedBox(height: 32),
+              _buildloginInfo,
+              const SizedBox(height: 24),
+              _buildPhoneNumberInput,
+              const SizedBox(height: 16),
+              _buildPasswordInput,
+              const SizedBox(height: 32),
+              _buildLoginButton,
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget get _buildMobileLayout {
+    return Form(
+      key: formKey,
+      autovalidateMode: AutovalidateMode.disabled,
+      child: Padding(
+        padding: context.paddingVerticalHigh3,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            const Spacer(),
+            Column(
+              children: [
+                _buildloginInfo,
+                20.h.sbxh,
+                _buildPhoneNumberInput,
+                20.h.sbxh,
+                _buildPasswordInput
+              ],
+            ),
+            const Spacer(flex: 2),
+            _buildLoginButton
+          ],
+        ),
+      ),
     );
   }
 

@@ -23,7 +23,7 @@
   "dart.warnWhenEditingFilesOutsideWorkspace": false,
   "dart.renameFilesWithClasses": "prompt",
   "window.zoomLevel": 1,
-  "workbench.colorTheme": "Theme Darker",
+  "workbench.colorTheme": "Tokyo Night",
   "editor.bracketPairColorization.enabled": true,
   "editor.inlineSuggest.enabled": true,
   "editor.formatOnSave": true,

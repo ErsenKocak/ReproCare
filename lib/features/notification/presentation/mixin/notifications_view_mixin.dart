@@ -5,10 +5,9 @@ import 'package:reprocare/common/widgets/bottom_sheets/bottom_sheet/app_bottom_s
 import 'package:reprocare/common/widgets/bottom_sheets/question_bottom_sheet/question_bottom_sheet.dart';
 import 'package:reprocare/features/notification/domain/entities/response/notification_model/notification_entity.dart';
 import 'package:reprocare/features/notification/presentation/cubit/notification_cubit.dart';
-import 'package:reprocare/features/notification/presentation/view/notifications_view.dart';
 import 'package:reprocare/generated/locale_keys.g.dart';
 
-mixin NotificationViewMixin on State<NotificationsView> {
+mixin NotificationViewMixin<T extends StatefulWidget> on State<T> {
   late ValueNotifier<List<NotificationEntity>> notificationExpandNotifier;
   late NotificationCubit notificationCubit;
 

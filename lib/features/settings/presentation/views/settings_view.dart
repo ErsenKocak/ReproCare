@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:reprocare/features/notification_settings/presentation/view/notification_settings_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reprocare/common/cubit/language/language_cubit.dart';
@@ -18,6 +20,7 @@ import 'package:reprocare/common/widgets/bottom_sheets/bottom_sheet/app_bottom_s
 import 'package:reprocare/common/widgets/buttons/elevated_button/elevated_button.dart';
 import 'package:reprocare/common/widgets/scrollable_widgets/scrollable_body/scrollable_body.dart';
 import 'package:reprocare/common/widgets/svg_picture/app_svg_picture.dart';
+import 'package:reprocare/common/widgets/responsive/platform_page_container.dart';
 import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/constants/colors/app_dark_colors.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
@@ -65,19 +68,21 @@ class _SettingsViewState extends State<SettingsView>
   Widget get _buildBody {
     return BlocBuilder<UserSettingsCubit, UserSettingsState>(
       builder: (context, state) {
-        return ScrollableBody(
-          body: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              8.h.sbxh,
-              _buildSettingsItems,
-            ],
-          ),
-          withoutExpandedWidget: Padding(
-            padding: EdgeInsets.only(bottom: 12.h),
-            child: Text(
-              '${Application.versionName}(${Application.versionCode})',
-              style: AppThemes.currentTheme.textTheme.labelSmall,
+        return PlatformPageContainer(
+          child: ScrollableBody(
+            body: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                8.h.sbxh,
+                _buildSettingsItems,
+              ],
+            ),
+            withoutExpandedWidget: Padding(
+              padding: EdgeInsets.only(bottom: 12.h),
+              child: Text(
+                '${Application.versionName}(${Application.versionCode})',
+                style: AppThemes.currentTheme.textTheme.labelSmall,
+              ),
             ),
           ),
         );
@@ -105,34 +110,22 @@ class _SettingsViewState extends State<SettingsView>
 
   Widget get _buildSettingsItems {
     List<ListTileItem> viewItems = [
-      // ListTileItem(
-      //   leadingWidget: _listTileItemLeading(Icon(
-      //     Icons.language,
-      //     color: AppLightColors.white,
-      //   )),
-      //   title: LocaleKeys.Settings_Language.tr(),
-      //   onTap: () {
-      //     AppBottomSheet.show(
-      //       contentPadding:
-      //           EdgeInsets.symmetric(vertical: 10.h, horizontal: 24.w),
-      //       child: (bottomSheetContext) => Column(
-      //         children: [
-      //           SettingsLanguageItem(locale: AppLocalizationHelper.tr),
-      //           8.h.sbxh,
-      //           SettingsLanguageItem(locale: AppLocalizationHelper.en),
-      //         ],
-      //       ),
-      //     );
-      //   },
-      // ),
       ListTileItem(
         leadingWidget: _listTileItemLeading(AppSvgPicture(
           path: Assets.icons.general.iconAppBarNotification.path,
           color: AppLightColors.white,
         )),
         title: LocaleKeys.Notification_Notifications.tr(),
-        onTap: () =>
-            AppRouter.navigatePushNamed(AppRoutes.NotificationSettings.path),
+        onTap: () {
+          if (kIsWeb) {
+            showDialog(
+              context: context,
+              builder: (context) => const WebNotificationSettingsDialog(),
+            );
+          } else {
+            AppRouter.navigatePushNamed(AppRoutes.NotificationSettings.path);
+          }
+        },
       ),
       ListTileItem(
         leadingWidget: _listTileItemLeading(
@@ -172,6 +165,10 @@ class _SettingsViewState extends State<SettingsView>
       ),
     ];
 
+    if (kIsWeb) {
+      return _buildWebSettingsGrid(viewItems);
+    }
+
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
@@ -186,7 +183,83 @@ class _SettingsViewState extends State<SettingsView>
     );
   }
 
+  Widget _buildWebSettingsGrid(List<ListTileItem> items) {
+    return LayoutBuilder(builder: (context, constraints) {
+      return Wrap(
+        spacing: 24,
+        runSpacing: 24,
+        children: items.map((item) => _buildWebSettingCard(item)).toList(),
+      );
+    });
+  }
+
+  Widget _buildWebSettingCard(ListTileItem item) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: item.onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          width: 300,
+          padding: EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: AppThemes.currentTheme.cardColor,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.05),
+                blurRadius: 20,
+                offset: Offset(0, 4),
+              ),
+            ],
+            border: Border.all(
+              color: AppThemes.currentTheme.dividerColor.withOpacity(0.5),
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: AppLightColors.primaryColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: item.leadingWidget,
+              ),
+              SizedBox(height: 16),
+              Text(
+                item.title,
+                style: AppThemes.currentTheme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'View details', // Placeholder or remove
+                style: AppThemes.currentTheme.textTheme.bodySmall?.copyWith(
+                  color: AppLightColors.secondaryTextColor,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _listTileItemLeading(Widget leading) {
+    // For Web Grid, verify if we need to modify this.
+    // leadingWidget is reused.
+    // But inside the grid card, I am wrapping leadingWidget again.
+    // The original leadingWidget has a Container background.
+    // I can strip it or just use it.
+    // Actually, ListTileItemWidget expects leadingWidget wrapped.
+    // But for my grid, I might want the raw icon.
+    // ListTileItem defines leadingWidget as Widget.
+    // _listTileItemLeading wraps the icon.
+    // In Grid, I'll just use it as is, it's fine.
+
     return Container(
       padding: EdgeInsets.all(4),
       decoration: BoxDecoration(

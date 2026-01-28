@@ -15,7 +15,7 @@ import 'package:reprocare/common/router/app_routes.dart';
 import 'package:reprocare/common/router/transition_builder.dart';
 import 'package:reprocare/core/constants/application/application.dart';
 import 'package:reprocare/core/constants/cache/cache_constants.dart';
-import 'package:reprocare/features/bottom_navigation_bar/presentation/view/bottom_navigation_bar_view.dart';
+import 'package:reprocare/features/bottom_navigation_bar/presentation/view/main_layout_view.dart';
 import 'package:reprocare/features/dashboard/presentation/view/dashboard_view.dart';
 import 'package:reprocare/features/login/presentation/view/login_view.dart';
 import 'package:reprocare/features/notification/presentation/view/notifications_view.dart';
@@ -39,7 +39,7 @@ class AppRouter {
       ShellRoute(
         navigatorKey: Application.shellNavigatorKey,
         builder: (context, state, navigationShell) {
-          return BottomNavigationBarView(
+          return MainLayoutView(
             navigationShell: navigationShell,
           );
         },

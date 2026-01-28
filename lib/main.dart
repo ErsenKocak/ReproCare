@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -47,7 +48,7 @@ class ReproCareApp extends StatelessWidget {
       child: BlocBuilder<ThemeCubit, ThemeStateModel>(
         builder: (context, state) {
           return ScreenUtilInit(
-              designSize: Size(375, 812),
+              designSize: kIsWeb ? const Size(1440, 900) : const Size(375, 812),
               minTextAdapt: true,
               child: MaterialApp.router(
                 title: Application.applicationName,

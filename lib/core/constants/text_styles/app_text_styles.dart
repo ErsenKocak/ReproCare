@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
@@ -13,7 +14,7 @@ class AppTextStyles {
     final AppFontFamily? fontFamily,
   }) =>
       TextStyle(
-        fontSize: fontSize?.sp ?? 12.sp,
+        fontSize: kIsWeb ? (fontSize ?? 12) : (fontSize?.sp ?? 12.sp),
         fontWeight: fontWeight?.value ?? AppFontWeight.regular.value,
         fontFamily: _buildFontFamily(
           fontFamily: fontFamily,
