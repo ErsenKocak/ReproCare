@@ -27,7 +27,7 @@ import 'package:reprocare/helper/firebase/analytics/firebase_analytics_helper.da
 class AppRouter {
   static final GoRouter router = GoRouter(
     navigatorKey: Application.navigatorKey,
-    initialLocation: AppRoutes.Login.path,
+    initialLocation: AppRoutes.Dashboard.path,
     observers: [
       appRouteObserver,
       if (!kIsWeb && (Platform.isAndroid || Platform.isIOS))

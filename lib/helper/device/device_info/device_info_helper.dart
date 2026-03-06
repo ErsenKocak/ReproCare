@@ -21,6 +21,12 @@ class DeviceInfoHelper {
         title: 'DEVICE INFO -- IOS',
         value: (_deviceData as IosDeviceInfo).toMap(),
       );
+    } else if (Platform.isMacOS) {
+      _deviceData = await deviceInfoPlugin.macOsInfo;
+      AppLogger.call(
+        title: 'DEVICE INFO -- MACOS',
+        value: (_deviceData as MacOsDeviceInfo).toMap(),
+      );
     }
     return _deviceData;
   }
@@ -40,7 +46,19 @@ class DeviceInfoHelper {
         language:
             AppLocalizationHelper.currentLocale.languageCode.toUpperCase(),
       );
-    } else {
+    } else if (Platform.isIOS) {
+      userDeviceRequestParam = userDeviceRequestParam.copyWith(
+        name: baseDeviceInfo.data['name'],
+        model: baseDeviceInfo.data['model'],
+        deviceId: baseDeviceInfo.data['identifierForVendor'],
+        physicalDevice:
+            baseDeviceInfo.data['isPhysicalDevice'] == 'true' ? true : false,
+        systemVersion: baseDeviceInfo.data['systemVersion'],
+        platform: Platform.operatingSystem,
+        language:
+            AppLocalizationHelper.currentLocale.languageCode.toUpperCase(),
+      );
+    } else if (Platform.isMacOS) {
       userDeviceRequestParam = userDeviceRequestParam.copyWith(
         name: baseDeviceInfo.data['name'],
         model: baseDeviceInfo.data['model'],

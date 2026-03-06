@@ -317,8 +317,8 @@ final class NetworkClient {
             bodyMessage: LocaleKeys.ErrorMessages_PleaseReLogin.tr(),
           ),
         );
-        final authCubit = ServiceLocatorProvider.provide<AuthCubit>();
-        await authCubit.logout();
+        // final authCubit = ServiceLocatorProvider.provide<AuthCubit>();
+        // await authCubit.logout();
         AppCancelToken.cancelToken.cancel();
         AppCancelToken.initialize();
 

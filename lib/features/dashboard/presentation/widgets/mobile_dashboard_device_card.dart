@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:reprocare/common/widgets/icons/app_icon.dart';
 import 'package:reprocare/core/constants/colors/app_light_colors.dart';
 import 'package:reprocare/core/constants/theme/app_themes.dart';
 import 'package:reprocare/features/dashboard/presentation/widgets/dashboard_device_card.dart';
+import 'package:reprocare/generated/assets.gen.dart';
 
 class MobileDashboardDeviceCard extends StatelessWidget {
   final String deviceName;
@@ -46,8 +48,7 @@ class MobileDashboardDeviceCard extends StatelessWidget {
                         color: Colors.grey.shade100,
                         borderRadius: BorderRadius.circular(6),
                       ),
-                      child: Icon(Icons.grid_view,
-                          size: 14, color: Colors.grey.shade600),
+                      child: Assets.icons.dashboard.icCardMenu.svg(),
                     ),
                     const SizedBox(width: 8),
                     Text(

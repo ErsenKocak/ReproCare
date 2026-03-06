@@ -24,7 +24,7 @@ class AppInitializer {
     await EasyLocalization.ensureInitialized();
     await setAppEnviroments();
     await dependencyInjection.initalize();
-    if (!kIsWeb) {
+    if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
       await AppLocalNotificationHelper.initialize();
       await FirebaseNotificationHelper.initialize();
       await FirebaseAnalyticsHelper.initialize();

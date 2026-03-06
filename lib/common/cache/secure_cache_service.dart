@@ -17,8 +17,11 @@ class SecureCacheService implements ICacheService {
     wOptions: WindowsOptions(),
     lOptions: LinuxOptions(),
     mOptions: MacOsOptions(
-      accessibility: KeychainAccessibility.first_unlock_this_device,
+      accessibility: KeychainAccessibility.first_unlock,
       accountName: 'reprocare_account',
+      synchronizable: true,
+      useDataProtectionKeyChain: true,
+      groupId: 'reprocare_group',
     ),
     webOptions: WebOptions(
       dbName: 'reprocare_secure_storage',

@@ -150,6 +150,7 @@ flutter:
     - assets/icons/inputs/
     - assets/sounds/
     - assets/sounds/notification/
+    - assets/icons/dashboard/
 
   fonts:
     - family: Euclid Circular B

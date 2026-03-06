@@ -39,6 +39,9 @@ class $AssetsIconsGen {
   $AssetsIconsBottomSheetGen get bottomSheet =>
       const $AssetsIconsBottomSheetGen();
 
+  /// Directory path: assets/icons/dashboard
+  $AssetsIconsDashboardGen get dashboard => const $AssetsIconsDashboardGen();
+
   /// Directory path: assets/icons/empty_widget
   $AssetsIconsEmptyWidgetGen get emptyWidget =>
       const $AssetsIconsEmptyWidgetGen();
@@ -137,6 +140,48 @@ class $AssetsIconsBottomSheetGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [iconClose];
+}
+
+class $AssetsIconsDashboardGen {
+  const $AssetsIconsDashboardGen();
+
+  /// File path: assets/icons/dashboard/ic_card_menu.svg
+  SvgGenImage get icCardMenu =>
+      const SvgGenImage('assets/icons/dashboard/ic_card_menu.svg');
+
+  /// File path: assets/icons/dashboard/ic_card_slide.svg
+  SvgGenImage get icCardSlide =>
+      const SvgGenImage('assets/icons/dashboard/ic_card_slide.svg');
+
+  /// File path: assets/icons/dashboard/ic_co2.svg
+  SvgGenImage get icCo2 =>
+      const SvgGenImage('assets/icons/dashboard/ic_co2.svg');
+
+  /// File path: assets/icons/dashboard/ic_ln_level.svg
+  SvgGenImage get icLnLevel =>
+      const SvgGenImage('assets/icons/dashboard/ic_ln_level.svg');
+
+  /// File path: assets/icons/dashboard/ic_o2.svg
+  SvgGenImage get icO2 => const SvgGenImage('assets/icons/dashboard/ic_o2.svg');
+
+  /// File path: assets/icons/dashboard/ic_temperature.svg
+  SvgGenImage get icTemperature =>
+      const SvgGenImage('assets/icons/dashboard/ic_temperature.svg');
+
+  /// File path: assets/icons/dashboard/ic_usage_amount.svg
+  SvgGenImage get icUsageAmount =>
+      const SvgGenImage('assets/icons/dashboard/ic_usage_amount.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+        icCardMenu,
+        icCardSlide,
+        icCo2,
+        icLnLevel,
+        icO2,
+        icTemperature,
+        icUsageAmount
+      ];
 }
 
 class $AssetsIconsEmptyWidgetGen {
@@ -451,16 +496,11 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  });
+  const AssetGenImage(this._assetName, {this.size = null});
 
   final String _assetName;
 
   final Size? size;
-  final Set<String> flavors;
 
   Image image({
     Key? key,
@@ -534,19 +574,17 @@ class AssetGenImage {
 class SvgGenImage {
   const SvgGenImage(
     this._assetName, {
-    this.size,
-    this.flavors = const {},
+    this.size = null,
   }) : _isVecFormat = false;
 
   const SvgGenImage.vec(
     this._assetName, {
-    this.size,
-    this.flavors = const {},
+    this.size = null,
   }) : _isVecFormat = true;
 
   final String _assetName;
+
   final Size? size;
-  final Set<String> flavors;
   final bool _isVecFormat;
 
   SvgPicture svg({
@@ -569,23 +607,12 @@ class SvgGenImage {
     @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
     @deprecated bool cacheColorFilter = false,
   }) {
-    final BytesLoader loader;
-    if (_isVecFormat) {
-      loader = AssetBytesLoader(
-        _assetName,
-        assetBundle: bundle,
-        packageName: package,
-      );
-    } else {
-      loader = SvgAssetLoader(
-        _assetName,
-        assetBundle: bundle,
-        packageName: package,
-        theme: theme,
-      );
-    }
     return SvgPicture(
-      loader,
+      _isVecFormat
+          ? AssetBytesLoader(_assetName,
+              assetBundle: bundle, packageName: package)
+          : SvgAssetLoader(_assetName,
+              assetBundle: bundle, packageName: package),
       key: key,
       matchTextDirection: matchTextDirection,
       width: width,
@@ -596,6 +623,7 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
+      theme: theme,
       colorFilter: colorFilter ??
           (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
