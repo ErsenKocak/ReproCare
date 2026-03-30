@@ -311,16 +311,16 @@ final class NetworkClient {
     switch (exception.response?.statusCode) {
       case HttpStatus.unauthorized:
       case HttpStatus.forbidden:
-        await AppBottomSheet.show(
-          child: (bottomSheetContext) => ErrorBottomSheet(
-            headerMessage: LocaleKeys.ErrorMessages_SessionExpired.tr(),
-            bodyMessage: LocaleKeys.ErrorMessages_PleaseReLogin.tr(),
-          ),
-        );
+        // await AppBottomSheet.show(
+        //   child: (bottomSheetContext) => ErrorBottomSheet(
+        //     headerMessage: LocaleKeys.ErrorMessages_SessionExpired.tr(),
+        //     bodyMessage: LocaleKeys.ErrorMessages_PleaseReLogin.tr(),
+        //   ),
+        // );
         // final authCubit = ServiceLocatorProvider.provide<AuthCubit>();
         // await authCubit.logout();
-        AppCancelToken.cancelToken.cancel();
-        AppCancelToken.initialize();
+        // AppCancelToken.cancelToken.cancel();
+        // AppCancelToken.initialize();
 
         throw exception;
 

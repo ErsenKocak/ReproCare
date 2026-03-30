@@ -10,6 +10,8 @@ class MainFlutterWindow: NSWindow {
 
     RegisterGeneratedPlugins(registry: flutterViewController)
 
+    self.contentMinSize = NSSize(width: 400, height: 700)
+
     super.awakeFromNib()
   }
 }

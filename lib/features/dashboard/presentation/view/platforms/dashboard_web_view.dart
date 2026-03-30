@@ -22,12 +22,16 @@ class DashboardWebView extends StatelessWidget {
         children: [
           // Content Header
           Container(
+            width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              runSpacing: 16,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     const Text(
                       'İzleme ve Kontrol Paneli',
@@ -142,9 +146,9 @@ class DashboardWebView extends StatelessWidget {
                 GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    childAspectRatio: 1.6,
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 420,
+                    mainAxisExtent: 260,
                     crossAxisSpacing: 24,
                     mainAxisSpacing: 24,
                   ),
@@ -239,8 +243,8 @@ class DashboardWebView extends StatelessWidget {
                               child: LongPressDraggable<String>(
                                 data: '${device.id}|${lab.id}',
                                 feedback: SizedBox(
-                                  width: 300,
-                                  height: 200,
+                                  width: 420,
+                                  height: 260,
                                   child: Opacity(
                                     opacity: 0.8,
                                     child: Material(
